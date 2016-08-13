@@ -1,0 +1,13 @@
+F:\BitCoinsWebApp\BitCoinsWebApp.Utilities\bin\Debug\BitCoinsWebApp.Utilities.dll
+F:\BitCoinsWebApp\BitCoinsWebApp.Utilities\bin\Debug\BitCoinsWebApp.Utilities.pdb
+F:\BitCoinsWebApp\BitCoinsWebApp.Utilities\bin\Debug\Autofac.dll
+F:\BitCoinsWebApp\BitCoinsWebApp.Utilities\bin\Debug\Autofac.Integration.Mvc.dll
+F:\BitCoinsWebApp\BitCoinsWebApp.Utilities\bin\Debug\AutoMapper.dll
+F:\BitCoinsWebApp\BitCoinsWebApp.Utilities\bin\Debug\log4net.dll
+F:\BitCoinsWebApp\BitCoinsWebApp.Utilities\bin\Debug\Autofac.xml
+F:\BitCoinsWebApp\BitCoinsWebApp.Utilities\bin\Debug\Autofac.Integration.Mvc.xml
+F:\BitCoinsWebApp\BitCoinsWebApp.Utilities\bin\Debug\AutoMapper.xml
+F:\BitCoinsWebApp\BitCoinsWebApp.Utilities\bin\Debug\log4net.xml
+F:\BitCoinsWebApp\BitCoinsWebApp.Utilities\obj\Debug\BitCoinsWebApp.Utilities.csprojResolveAssemblyReference.cache
+F:\BitCoinsWebApp\BitCoinsWebApp.Utilities\obj\Debug\BitCoinsWebApp.Utilities.dll
+F:\BitCoinsWebApp\BitCoinsWebApp.Utilities\obj\Debug\BitCoinsWebApp.Utilities.pdb

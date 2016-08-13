@@ -1,0 +1,4 @@
+F:\BitCoinsWebApp\BitCoinsWebApp.Model\bin\Debug\BitCoinsWebApp.Model.dll
+F:\BitCoinsWebApp\BitCoinsWebApp.Model\bin\Debug\BitCoinsWebApp.Model.pdb
+F:\BitCoinsWebApp\BitCoinsWebApp.Model\obj\Debug\BitCoinsWebApp.Model.dll
+F:\BitCoinsWebApp\BitCoinsWebApp.Model\obj\Debug\BitCoinsWebApp.Model.pdb

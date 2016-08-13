@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>@ViewBag.Title - A Finance Company</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" /> 
+    <link rel="icon" href="@Url.Content("~/Content/Images/favicon.png")" type="image/png">    
+    <link rel="stylesheet" href="@Url.Content("~/Content/themes/all-stylesheets.css")" type="text/css" />
+     <link rel="stylesheet" href="@Url.Content("~/Content/themes/owl.carousel.css")" type="text/css" />
+</head>
+<body class="home-page" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <div class="greyBg header-con col-lg-12 col-md-12 col-sm-12 col-xs-12" id="headerCon">
+        <div class="container">
+            <div class="row">
+                <aside class="header col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="logo pull-left">
+                        <a class=" page-scroll" href="#page-top">
+                            <img src="@Url.Content("~/Content/Images/logo.png")" alt="logo" /></a>
+                    </div>
+                    <nav class="navbar navbar-default pull-right">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header page-scroll">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                                    <!--navbar-header-->
+                                </div>
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <div class="row">
+                                        <ul class="nav navbar-nav">
+                                            <li class="active"><a class=" page-scroll" href="#page-top">Home</a></li>
+                                            <li><a class=" page-scroll" href="#about">About us</a></li>
+                                            <li><a class=" page-scroll" href="#services">Services</a></li>
+                                            <li><a class=" page-scroll" href="#team">Team</a></li>
+                                            <li><a class=" page-scroll" href="#projects">Projects</a></li>
+                                            <li><a class=" page-scroll" href="#blog">Blog</a></li>
+                                            <li><a class=" page-scroll" href="#contact">Contact</a></li>
+                                        </ul>
+                                        <!--row-->
+                                    </div>
+                                    <!--collapse-->
+                                </div>
+                                <!--row-->
+                            </div>
+                            <!--container-fluid-->
+                        </div>
+                        <!--navbar-->
+                    </nav>
+                    <!--header-->
+                </aside>
+                <!--row-->
+            </div>
+            <!--container-->
+        </div>
+        <!--greyBg-->
+    </div>
+    @RenderBody()
+    <!--=====================================-->
+    <!--============== Footer ===============-->
+    <!--=====================================-->
+    <div class="darkBlueBg paddingBox col-lg-12 col-md-12 col-sm-12 col-xs-12" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="footer col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <aside class="newsletter col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <h5>newsletter</h5>
+                        <div class="form-group pull-left">
+                            <input type="email" class="form-control" placeholder="Enter your email" name="letter-email" id="letter-email">
+                        </div>
+                        <button type="submit" class="btn btn-default pull-left">Go</button>
+                        <div class="clearfix"></div>
+                        <ul>
+                            <li><i class="fa fa-map-marker"></i>121 King Street, Melbourne Australia</li>
+                            <li><i class="fa fa-phone"></i>+1 2586 4587 634</li>
+                            <li><i class="fa fa-envelope"></i><a href="mailto:info@fcgroup.com">info@fcgroup.com</a></li>
+                        </ul>
+                        <!--newsletter-->
+                    </aside>
+                    <aside class="sitemap col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <h5>our services</h5>
+                        <ul>
+                            <li><a href="#">Investment Planning</a></li>
+                            <li><a href="#">Retairment Planning</a></li>
+                            <li><a href="#">Mutial Funds</a></li>
+                            <li><a href="#">Saving & Investments</a></li>
+                            <li><a href="#">Tax Advisory Service</a></li>
+                        </ul>
+                        <!--sitemap-->
+                    </aside>
+                    <aside class="twitter-feeds col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <h5>Twitter Feeds</h5>
+                        <ul>
+                            <li><i class="fa fa-twitter"></i><a href="#">A well-designed #eComme & back 
+              office in egration is ...
+              <span class="tweet-link">https://t.co/0Nn8mVrebG</span>
+                                <span class="tweet-date">December , 01, 2016</span></a></li>
+                            <li><i class="fa fa-twitter"></i><a href="#">A well-designed #eCommerce solution
+              back office in egration is ...
+              <span class="tweet-link">https://t.co/0Nn8mVrebG</span>
+                                <span class="tweet-date">December , 01, 2016</span></a></li>
+                        </ul>
+                        <!--twitter-feeds-->
+                    </aside>
+                    <aside class="copyright-section col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="logo pull-left">
+                            <a href="@Url.Action("Index", "Home")">
+                                <img src="@Url.Content("~/Content/Images/footer-logo.png")"" alt="logo" /></a>
+                        </div>
+                        <ul>
+                            <li>Copyright © FC Group 2016.</li>
+                            <li>All rights reserved.</li>
+                            <li>Created by: <a href="#">Designingmedia</a></li>
+                        </ul>
+                        <div class="social-icons">
+                            <ul>
+                                <li><a href="#" class="fa fa-facebook"></a></li>
+                                <li><a href="#" class="fa fa-twitter"></a></li>
+                                <li><a href="#" class="fa fa-linkedin"></a></li>
+                                <li><a href="#" class="fa fa-google-plus"></a></li>
+                            </ul>
+                            <!--social-icons-->
+                        </div>
+                        <!--copyright-section-->
+                    </aside>
+                    <!--footer-->
+                </div>
+                <!--row-->
+            </div>
+            <!--container-->
+        </div>
+        <!--darkBlueBg-->
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="@Url.Content("~/Scripts/jquery-1.12.3.min.js")"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="@Url.Content("~/Scripts/bootstrap/bootstrap.js")"></script>
+    <!-- Counter -->
+    <script src="@Url.Content("~/Scripts/counter/counter.js")"></script>
+    <!-- Owl Carousel -->
+    <script src="@Url.Content("~/Scripts/owl.carousel.js")"></script>
+    <!-- LAZY EFFECTS Scripts -->
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.unveilEffects.js")"></script>
+    <!-- Scrolling Nav JavaScript -->
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.easing.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/scrolling-nav.js")"></script>
+    <!-- Filter gallery -->
+    <script src="@Url.Content("~/Scripts/projects/isotope.js")"></script>
+    <!-- Form Submission -->
+    <script src="@Url.Content("~/Scripts/form-submission/validate.js")"></script>
+    <script src="@Url.Content("~/Scriptsform-submission/contact-form.js")"></script>
+    <!-- Custom Scripts -->   
+    <script src="@Url.Content("~/Scripts/custom.js")"></script>   
+    @RenderSection("scripts", required: false)
+</body>
+</html>

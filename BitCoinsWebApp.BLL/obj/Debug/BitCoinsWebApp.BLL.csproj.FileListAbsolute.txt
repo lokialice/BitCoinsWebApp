@@ -1,0 +1,15 @@
+F:\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\BitCoinsWebApp.BLL.dll
+F:\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\BitCoinsWebApp.BLL.pdb
+F:\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\AutoMapper.dll
+F:\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\BitCoinsWebApp.DAL.dll
+F:\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\BitCoinsWebApp.Model.dll
+F:\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\log4net.dll
+F:\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\BitCoinsWebApp.Utilities.dll
+F:\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\BitCoinsWebApp.DAL.pdb
+F:\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\BitCoinsWebApp.Model.pdb
+F:\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\AutoMapper.xml
+F:\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\log4net.xml
+F:\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\BitCoinsWebApp.Utilities.pdb
+F:\BitCoinsWebApp\BitCoinsWebApp.BLL\obj\Debug\BitCoinsWebApp.BLL.csprojResolveAssemblyReference.cache
+F:\BitCoinsWebApp\BitCoinsWebApp.BLL\obj\Debug\BitCoinsWebApp.BLL.dll
+F:\BitCoinsWebApp\BitCoinsWebApp.BLL\obj\Debug\BitCoinsWebApp.BLL.pdb

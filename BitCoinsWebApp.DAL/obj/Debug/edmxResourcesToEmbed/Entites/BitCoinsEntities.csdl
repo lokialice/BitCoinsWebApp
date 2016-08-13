@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BitCoinsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BitCoinsEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="UserAccounts" EntityType="BitCoinsModel.UserAccount" />
+  </EntityContainer>
+  <EntityType Name="UserAccount">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Nullable="false" Type="Int32" />
+    <Property Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="Age" Nullable="false" Type="Int32" />
+    <Property Name="Gender" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="BitCoinsQR" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="BitCoinsCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="IDParent" Type="Int32" />
+    <Property Name="IDRole" Nullable="false" Type="Int32" />
+    <Property Type="String" Name="Address" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+  </EntityType>
+</Schema>
