@@ -15,12 +15,14 @@
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="Age" Type="int" Nullable="false" />
-          <Property Name="Gender" Type="varchar" Nullable="false" MaxLength="25" />
-          <Property Name="Address" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="BitCoinsQR" Type="varchar" Nullable="false" MaxLength="150" />
-          <Property Name="BitCoinsCode" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Gender" Type="varchar" MaxLength="25" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="BitCoinsQR" Type="varchar" MaxLength="150" />
+          <Property Name="BitCoinsCode" Type="varchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="IDRole" Type="int" Nullable="false" />
           <Property Name="IDParent" Type="int" />
@@ -36,18 +38,20 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Nullable="false" Type="Int32" />
-          <Property Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="Age" Nullable="false" Type="Int32" />
-          <Property Name="Gender" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="BitCoinsQR" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" Type="String" />
-          <Property Name="BitCoinsCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Gender" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BitCoinsQR" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="BitCoinsCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IDRole" Type="Int32" Nullable="false" />
           <Property Name="IDParent" Type="Int32" />
-          <Property Name="IDRole" Nullable="false" Type="Int32" />
-          <Property Type="String" Name="Address" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="Phone" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -58,17 +62,19 @@
           <EntitySetMapping Name="UserAccounts">
             <EntityTypeMapping TypeName="BitCoinsModel.UserAccount">
               <MappingFragment StoreEntitySet="UserAccount">
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="BitCoinsQR" ColumnName="BitCoinsQR" />
                 <ScalarProperty Name="BitCoinsCode" ColumnName="BitCoinsCode" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IDRole" ColumnName="IDRole" />
                 <ScalarProperty Name="IDParent" ColumnName="IDParent" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -94,8 +100,8 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram DiagramId="2269d5b0853a4ee7ac5744a0fababf5b" Name="Diagram1">
-        <EntityTypeShape EntityType="BitCoinsModel.UserAccount" PointX="0.75" PointY="0.75" Width="1.5" IsExpanded="true" />
+      <Diagram DiagramId="8bdfe05e7eea4a1aa1bfea3c4aa42a7b" Name="Diagram1">
+        <EntityTypeShape EntityType="BitCoinsModel.UserAccount" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </Diagrams>
   </Designer>

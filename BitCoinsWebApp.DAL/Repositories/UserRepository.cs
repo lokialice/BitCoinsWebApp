@@ -9,19 +9,19 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using UserDTO = BitCoinsWebApp.Model.User;
+    using UserDTO = BitCoinsWebApp.Model.UserProfile;
 
     public class UserRepository : IUserRepository
     {
         private readonly BitCoinsEntities _pce;
         private readonly string _connectionString;
         log4net.ILog logger = log4net.LogManager.GetLogger(typeof(UserRepository));  //Declaring Log4Net  
-  
+
         public UserRepository(string connectionString)
         {
             _connectionString = connectionString;
             _pce = new BitCoinsEntities(connectionString);
-        }        
+        }
 
         public UserDTO GetUser(int userId)
         {
@@ -33,11 +33,11 @@
                 {
                     return null;
                 }
-
-                User mappedUser = Mapper.Map<UserAccount, UserDTO>(userAccount);
+                Mapper.CreateMap<UserAccount, UserProfile>();
+                UserProfile mappedUser = Mapper.Map<UserAccount, UserDTO>(userAccount);
                 return mappedUser;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Logging.TrackError(_connectionString, ex, "GetUser");
                 return null;
@@ -49,21 +49,70 @@
         {
             try
             {
-                UserAccount userAccount = _pce.UserAccounts.FirstOrDefault(m => m.UserName.Equals(userName) && m.Password.Equals(password) && m.IsActive == true);
+                UserAccount userAccount = _pce.UserAccounts.
+                    FirstOrDefault(m => m.UserName.Equals(userName) &&
+                        m.Password.Equals(password) && m.IsActive == true);
                 if (userAccount == null)
                 {
                     return null;
                 }
-                Mapper.CreateMap<UserAccount,User>();
-                User mappedUser = new User();
-                mappedUser = Mapper.Map<UserAccount, User>(userAccount, mappedUser);
+                Mapper.CreateMap<UserAccount, UserProfile>();
+                UserProfile mappedUser = mappedUser = Mapper.Map<UserAccount, UserProfile>(userAccount);
                 return mappedUser;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                logger.Error(ex.ToString());  
+                logger.Error(ex.ToString());
                 return null;
             }
-         }
+        }
+
+
+
+
+        public bool Create(UserDTO user)
+        {
+            try
+            {
+                Mapper.CreateMap<UserProfile, UserAccount>();
+                UserAccount mappedUser = mappedUser = Mapper.Map<UserProfile, UserAccount>(user);
+                mappedUser.Password = SHA1.Encode(user.Password);
+                _pce.AddToUserAccounts(mappedUser);
+                _pce.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.ToString());
+                return false;
+            }
+        }
+
+        public bool Update(UserDTO user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(UserDTO user)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public UserProfile CheckUserName(string username)
+        {
+            Mapper.CreateMap<UserAccount, UserProfile>();
+            var user = _pce.UserAccounts.SingleOrDefault(m => m.UserName.Equals(username));
+            UserProfile mappedUser = Mapper.Map<UserAccount, UserProfile>(user);
+            return mappedUser;
+        }
+
+        public UserProfile CheckEmailExist(string email)
+        {
+            Mapper.CreateMap<UserAccount, UserProfile>();
+            var user = _pce.UserAccounts.SingleOrDefault(m => m.Email.Equals(email));
+            UserProfile mappedUser = Mapper.Map<UserAccount, UserProfile>(user);
+            return mappedUser;
+        }
     }
 }

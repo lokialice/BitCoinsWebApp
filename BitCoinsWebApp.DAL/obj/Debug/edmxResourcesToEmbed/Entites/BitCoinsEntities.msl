@@ -4,17 +4,19 @@
     <EntitySetMapping Name="UserAccounts">
       <EntityTypeMapping TypeName="BitCoinsModel.UserAccount">
         <MappingFragment StoreEntitySet="UserAccount">
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Age" ColumnName="Age" />
           <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="BitCoinsQR" ColumnName="BitCoinsQR" />
           <ScalarProperty Name="BitCoinsCode" ColumnName="BitCoinsCode" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IDRole" ColumnName="IDRole" />
           <ScalarProperty Name="IDParent" ColumnName="IDParent" />
         </MappingFragment>
       </EntityTypeMapping>

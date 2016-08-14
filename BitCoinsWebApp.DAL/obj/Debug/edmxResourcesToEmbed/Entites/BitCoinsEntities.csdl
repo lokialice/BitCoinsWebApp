@@ -7,17 +7,19 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Nullable="false" Type="Int32" />
-    <Property Name="UserName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
-    <Property Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
-    <Property Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
-    <Property Name="Age" Nullable="false" Type="Int32" />
-    <Property Name="Gender" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" Type="String" />
-    <Property Name="BitCoinsQR" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" Type="String" />
-    <Property Name="BitCoinsCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+    <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Gender" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BitCoinsQR" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="BitCoinsCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IDRole" Type="Int32" Nullable="false" />
     <Property Name="IDParent" Type="Int32" />
-    <Property Name="IDRole" Nullable="false" Type="Int32" />
-    <Property Type="String" Name="Address" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <Property Type="String" Name="Phone" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

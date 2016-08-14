@@ -15,7 +15,7 @@ namespace BitCoinsWebApp.BLL
         /// </summary>
         /// <param name="userId">The user identifier.</param>
         /// <returns>User.</returns>
-        User GetUser(int userId);
+        UserProfile GetUser(int userId);
         /// <summary>
         /// Logins the specified user name.
         /// </summary>
@@ -23,6 +23,38 @@ namespace BitCoinsWebApp.BLL
         /// <param name="password">The password.</param>
         /// <param name="isActive">if set to <c>true</c> [is active].</param>
         /// <returns>User.</returns>
-        User Login(string userName, string password, bool isActive);
+        UserProfile Login(string userName, string password, bool isActive);
+
+        /// <summary>
+        /// Creates the specified user.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        bool Create(UserProfile user);
+        /// <summary>
+        /// Updates the specified user.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        bool Update(UserProfile user);
+        /// <summary>
+        /// Deletes the specified user.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        bool Delete(UserProfile user);
+        /// <summary>
+        /// Checks the name of the user.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        UserProfile CheckUserName(string username);
+
+        /// <summary>
+        /// Checks the email exist.
+        /// </summary>
+        /// <param name="email">The email.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        UserProfile CheckEmailExist(string email);
     }
 }

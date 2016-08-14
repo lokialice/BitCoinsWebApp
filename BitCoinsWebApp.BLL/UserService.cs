@@ -2,6 +2,7 @@
 {
     using BitCoinsWebApp.DAL.Repositories;
     using BitCoinsWebApp.Model;
+    using BitCoinsWebApp.Utilities;
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -24,7 +25,7 @@
         /// </summary>
         /// <param name="userId">The user identifier.</param>
         /// <returns>User.</returns>
-        public User GetUser(int userId)
+        public UserProfile GetUser(int userId)
         {
             return _repository.GetUser(userId);
         }
@@ -36,9 +37,37 @@
         /// <param name="password">The password.</param>
         /// <param name="isActive">if set to <c>true</c> [is active].</param>
         /// <returns>User.</returns>
-        public User Login(string userName, string password, bool isActive)
+        public UserProfile Login(string userName, string password, bool isActive)
         {
+            password = SHA1.Encode(password);
             return _repository.Login(userName, password, isActive);
-        }       
+        }
+
+
+        public bool Create(UserProfile user)
+        {              
+            return _repository.Create(user);
+        }
+
+        public bool Update(UserProfile user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(UserProfile user)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public UserProfile CheckUserName(string username)
+        {
+            return _repository.CheckUserName(username);
+        }
+
+        public UserProfile CheckEmailExist(string email)
+        {
+            return _repository.CheckEmailExist(email);
+        }
     }
 }

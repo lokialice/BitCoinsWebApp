@@ -12,13 +12,15 @@ using BitCoinsWebApp.Model;
 using BitCoinsWebApp.BLL;
 
 namespace BitCoinsWebApp.Controllers
-{        
+{
     public class AccountController : BaseController
     {
-        
-        //
-        // GET: /Account/Login
 
+        /// <summary>
+        /// Logins the specified return URL.
+        /// </summary>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns>ActionResult.</returns>
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -26,17 +28,20 @@ namespace BitCoinsWebApp.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/Login
 
-        [HttpPost]       
-        public ActionResult Login(User userAccount)
-        {            
-            User user = _userService.Login(userAccount.UserName, userAccount.Password,true);
+        /// <summary>
+        /// Logins the specified user account.
+        /// </summary>
+        /// <param name="userAccount">The user account.</param>
+        /// <returns>ActionResult.</returns>
+        [HttpPost]
+        public ActionResult Login(UserProfile userAccount)
+        {
+            UserProfile user = _userService.Login(userAccount.UserName, userAccount.Password, true);
             if (user != null)
             {
                 Session["UserLogin"] = user.UserName;
-                return View("Index");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -44,6 +49,59 @@ namespace BitCoinsWebApp.Controllers
                 return View("Index");
             }
         }
-      
+
+        [AllowAnonymous]
+        public ActionResult Register(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult Register(UserProfile userAccount)
+        {
+            if (_userService.CheckEmailExist(userAccount.Email) == null
+                && _userService.CheckUserName(userAccount.UserName) == null)
+            {
+                if (userAccount.Password.Equals(userAccount.ConfirmPassword))
+                {
+                    var user = _userService.Create(userAccount);
+                    if (user)
+                    {
+                        return View("Login");
+                    }
+                    else
+                    {
+                        return View("Index");
+                    }
+                }
+                else
+                {
+                    ViewBag.PasswordError = "Password not match ! Please try again!";
+                    return View();
+                }
+            }
+            else 
+            {
+                if (_userService.CheckEmailExist(userAccount.Email) != null)
+                {
+                    ViewBag.EmailError = "Email already exist ! Please try again!";
+                    return View();
+                }
+                else
+                {
+                    if (_userService.CheckUserName(userAccount.UserName) != null)
+                    {
+                        ViewBag.UserNameError = "User Name already exist ! Please try again!";
+                        return View();
+                    }
+                }
+                return View();
+            }
+            
+
+        }
+
     }
 }

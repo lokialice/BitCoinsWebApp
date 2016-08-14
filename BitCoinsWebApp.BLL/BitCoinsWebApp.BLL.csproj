@@ -63,6 +63,10 @@
       <Project>{c2db0cca-4a67-4d61-8313-e1870db941cd}</Project>
       <Name>BitCoinsWebApp.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BitCoinsWebApp.Utilities\BitCoinsWebApp.Utilities.csproj">
+      <Project>{0545fd29-6a18-45f6-a2e9-5c5b6ab9e1b2}</Project>
+      <Name>BitCoinsWebApp.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

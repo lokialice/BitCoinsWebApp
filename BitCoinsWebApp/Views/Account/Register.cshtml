@@ -1,37 +1,60 @@
-﻿@model BitCoinsWebApp.Models.RegisterModel
+﻿@model BitCoinsWebApp.Model.UserProfile
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Register - FC Group";
+    Layout = "~/Views/Shared/_LayoutManager.cshtml";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Create a new account.</h2>
-</hgroup>
-
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
-
-    <fieldset>
-        <legend>Registration Form</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.ConfirmPassword)
-                @Html.PasswordFor(m => m.ConfirmPassword)
-            </li>
-        </ol>
-        <input type="submit" value="Register" />
-    </fieldset>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<div class="preloader">
+    <div class="cssload-speeding-wheel"></div>
+</div>
+<section id="wrapper" class="login-register">
+    <div class="login-box">
+        <div class="white-box">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @id = "loginform", @class = "form-horizontal form-material" }))
+            {
+                <h3 class="box-title m-b-20">Sign In</h3>
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        @Html.TextBoxFor(m => Model.UserName, new { @id = "username", @maxlength = 50, @size = "44", @class = "form-control", @placeholder = "User Name", required = "required" })
+                        <span class="help-block" style="color: #a94442">@ViewBag.UserNameError</span>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        @Html.TextBoxFor(m => Model.Email, new { @id = "email", @maxlength = 50, @size = "44", @class = "form-control", @placeholder = "Email", required = "required" })
+                        <span class="help-block" id="emailError" style="color: #a94442">@ViewBag.EmailError</span>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        @Html.PasswordFor(m => Model.Password, new { @id = "password", @maxlength = 50, @size = "44", @class = "form-control", @placeholder = "Password", required = "required" })
+                        <span class="help-block" id="passwordError" style="color: #a94442">@ViewBag.PasswordError</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        @Html.PasswordFor(m => Model.ConfirmPassword, new { @id = "confirmpass", @maxlength = 50, @size = "44", @class = "form-control", @placeholder = "Confirm Password", required = "required" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="checkbox checkbox-primary p-t-0">
+                            <input id="checkbox-signup" type="checkbox">
+                            <label for="checkbox-signup">I agree to all <a href="#">Terms</a></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-center m-t-20">
+                    <div class="col-xs-12">
+                        <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit" id="signUp">Sign Up</button>
+                    </div>
+                </div>
+                <div class="form-group m-b-0">
+                    <div class="col-sm-12 text-center">
+                        <p>Already have an account? <a href="@Url.Action("Login", "Account")" class="text-primary m-l-5"><b>Sign In</b></a></p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

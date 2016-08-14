@@ -28,7 +28,9 @@
         {
             protected override void Configure()
             {
-                CreateMap<UserAccount, User>().ReverseMap();                    
+                CreateMap<UserAccount, UserProfile>().ForMember(x => x.ConfirmPassword, opt => opt.Ignore()).ReverseMap();
+                CreateMap<UserProfile, UserAccount>().ReverseMap();   
+                    
             }
         }
 

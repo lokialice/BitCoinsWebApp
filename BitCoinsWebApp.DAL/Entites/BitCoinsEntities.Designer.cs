@@ -117,28 +117,18 @@ namespace BitCoinsWebApp.DAL.Entites
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="userName">Initial value of the UserName property.</param>
         /// <param name="password">Initial value of the Password property.</param>
-        /// <param name="name">Initial value of the Name property.</param>
-        /// <param name="age">Initial value of the Age property.</param>
-        /// <param name="gender">Initial value of the Gender property.</param>
-        /// <param name="bitCoinsQR">Initial value of the BitCoinsQR property.</param>
-        /// <param name="bitCoinsCode">Initial value of the BitCoinsCode property.</param>
-        /// <param name="iDRole">Initial value of the IDRole property.</param>
-        /// <param name="address">Initial value of the Address property.</param>
+        /// <param name="email">Initial value of the Email property.</param>
         /// <param name="isActive">Initial value of the IsActive property.</param>
-        public static UserAccount CreateUserAccount(global::System.Int32 id, global::System.String userName, global::System.String password, global::System.String name, global::System.Int32 age, global::System.String gender, global::System.String bitCoinsQR, global::System.String bitCoinsCode, global::System.Int32 iDRole, global::System.String address, global::System.Boolean isActive)
+        /// <param name="iDRole">Initial value of the IDRole property.</param>
+        public static UserAccount CreateUserAccount(global::System.Int32 id, global::System.String userName, global::System.String password, global::System.String email, global::System.Boolean isActive, global::System.Int32 iDRole)
         {
             UserAccount userAccount = new UserAccount();
             userAccount.ID = id;
             userAccount.UserName = userName;
             userAccount.Password = password;
-            userAccount.Name = name;
-            userAccount.Age = age;
-            userAccount.Gender = gender;
-            userAccount.BitCoinsQR = bitCoinsQR;
-            userAccount.BitCoinsCode = bitCoinsCode;
-            userAccount.IDRole = iDRole;
-            userAccount.Address = address;
+            userAccount.Email = email;
             userAccount.IsActive = isActive;
+            userAccount.IDRole = iDRole;
             return userAccount;
         }
 
@@ -226,6 +216,30 @@ namespace BitCoinsWebApp.DAL.Entites
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
+        public global::System.String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                OnEmailChanging(value);
+                ReportPropertyChanging("Email");
+                _Email = StructuralObject.SetValidValue(value, false, "Email");
+                ReportPropertyChanged("Email");
+                OnEmailChanged();
+            }
+        }
+        private global::System.String _Email;
+        partial void OnEmailChanging(global::System.String value);
+        partial void OnEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public global::System.String Name
         {
             get
@@ -236,7 +250,7 @@ namespace BitCoinsWebApp.DAL.Entites
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false, "Name");
+                _Name = StructuralObject.SetValidValue(value, true, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -248,9 +262,9 @@ namespace BitCoinsWebApp.DAL.Entites
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 Age
+        public Nullable<global::System.Int32> Age
         {
             get
             {
@@ -265,14 +279,14 @@ namespace BitCoinsWebApp.DAL.Entites
                 OnAgeChanged();
             }
         }
-        private global::System.Int32 _Age;
-        partial void OnAgeChanging(global::System.Int32 value);
+        private Nullable<global::System.Int32> _Age;
+        partial void OnAgeChanging(Nullable<global::System.Int32> value);
         partial void OnAgeChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String Gender
         {
@@ -284,7 +298,7 @@ namespace BitCoinsWebApp.DAL.Entites
             {
                 OnGenderChanging(value);
                 ReportPropertyChanging("Gender");
-                _Gender = StructuralObject.SetValidValue(value, false, "Gender");
+                _Gender = StructuralObject.SetValidValue(value, true, "Gender");
                 ReportPropertyChanged("Gender");
                 OnGenderChanged();
             }
@@ -296,7 +310,31 @@ namespace BitCoinsWebApp.DAL.Entites
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Address
+        {
+            get
+            {
+                return _Address;
+            }
+            set
+            {
+                OnAddressChanging(value);
+                ReportPropertyChanging("Address");
+                _Address = StructuralObject.SetValidValue(value, true, "Address");
+                ReportPropertyChanged("Address");
+                OnAddressChanged();
+            }
+        }
+        private global::System.String _Address;
+        partial void OnAddressChanging(global::System.String value);
+        partial void OnAddressChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String BitCoinsQR
         {
@@ -308,7 +346,7 @@ namespace BitCoinsWebApp.DAL.Entites
             {
                 OnBitCoinsQRChanging(value);
                 ReportPropertyChanging("BitCoinsQR");
-                _BitCoinsQR = StructuralObject.SetValidValue(value, false, "BitCoinsQR");
+                _BitCoinsQR = StructuralObject.SetValidValue(value, true, "BitCoinsQR");
                 ReportPropertyChanged("BitCoinsQR");
                 OnBitCoinsQRChanged();
             }
@@ -320,7 +358,7 @@ namespace BitCoinsWebApp.DAL.Entites
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String BitCoinsCode
         {
@@ -332,7 +370,7 @@ namespace BitCoinsWebApp.DAL.Entites
             {
                 OnBitCoinsCodeChanging(value);
                 ReportPropertyChanging("BitCoinsCode");
-                _BitCoinsCode = StructuralObject.SetValidValue(value, false, "BitCoinsCode");
+                _BitCoinsCode = StructuralObject.SetValidValue(value, true, "BitCoinsCode");
                 ReportPropertyChanged("BitCoinsCode");
                 OnBitCoinsCodeChanged();
             }
@@ -344,26 +382,26 @@ namespace BitCoinsWebApp.DAL.Entites
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> IDParent
+        public global::System.Boolean IsActive
         {
             get
             {
-                return _IDParent;
+                return _IsActive;
             }
             set
             {
-                OnIDParentChanging(value);
-                ReportPropertyChanging("IDParent");
-                _IDParent = StructuralObject.SetValidValue(value, "IDParent");
-                ReportPropertyChanged("IDParent");
-                OnIDParentChanged();
+                OnIsActiveChanging(value);
+                ReportPropertyChanging("IsActive");
+                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
+                ReportPropertyChanged("IsActive");
+                OnIsActiveChanged();
             }
         }
-        private Nullable<global::System.Int32> _IDParent;
-        partial void OnIDParentChanging(Nullable<global::System.Int32> value);
-        partial void OnIDParentChanged();
+        private global::System.Boolean _IsActive;
+        partial void OnIsActiveChanging(global::System.Boolean value);
+        partial void OnIsActiveChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -392,50 +430,50 @@ namespace BitCoinsWebApp.DAL.Entites
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String Address
+        public Nullable<global::System.Int32> IDParent
         {
             get
             {
-                return _Address;
+                return _IDParent;
             }
             set
             {
-                OnAddressChanging(value);
-                ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, false, "Address");
-                ReportPropertyChanged("Address");
-                OnAddressChanged();
+                OnIDParentChanging(value);
+                ReportPropertyChanging("IDParent");
+                _IDParent = StructuralObject.SetValidValue(value, "IDParent");
+                ReportPropertyChanged("IDParent");
+                OnIDParentChanged();
             }
         }
-        private global::System.String _Address;
-        partial void OnAddressChanging(global::System.String value);
-        partial void OnAddressChanged();
+        private Nullable<global::System.Int32> _IDParent;
+        partial void OnIDParentChanging(Nullable<global::System.Int32> value);
+        partial void OnIDParentChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Boolean IsActive
+        public global::System.String Phone
         {
             get
             {
-                return _IsActive;
+                return _Phone;
             }
             set
             {
-                OnIsActiveChanging(value);
-                ReportPropertyChanging("IsActive");
-                _IsActive = StructuralObject.SetValidValue(value, "IsActive");
-                ReportPropertyChanged("IsActive");
-                OnIsActiveChanged();
+                OnPhoneChanging(value);
+                ReportPropertyChanging("Phone");
+                _Phone = StructuralObject.SetValidValue(value, true, "Phone");
+                ReportPropertyChanged("Phone");
+                OnPhoneChanged();
             }
         }
-        private global::System.Boolean _IsActive;
-        partial void OnIsActiveChanging(global::System.Boolean value);
-        partial void OnIsActiveChanged();
+        private global::System.String _Phone;
+        partial void OnPhoneChanging(global::System.String value);
+        partial void OnPhoneChanged();
 
         #endregion
 
