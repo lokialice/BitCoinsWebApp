@@ -4,6 +4,7 @@
     using BitCoinsWebApp.DAL.Entites;
     using BitCoinsWebApp.Model;
     using BitCoinsWebApp.Utilities;
+    using log4net;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -15,7 +16,7 @@
     {
         private readonly BitCoinsEntities _pce;
         private readonly string _connectionString;
-        log4net.ILog logger = log4net.LogManager.GetLogger(typeof(UserRepository));  //Declaring Log4Net  
+        private static readonly ILog logger = LogManager.GetLogger(typeof(UserRepository).Name);  //Declaring Log4Net  
 
         public UserRepository(string connectionString)
         {
@@ -39,7 +40,7 @@
             }
             catch (Exception ex)
             {
-                Logging.TrackError(_connectionString, ex, "GetUser");
+                logger.Error(ex.ToString());
                 return null;
             }
 
@@ -73,10 +74,11 @@
         public bool Create(UserDTO user)
         {
             try
-            {
+            {               
                 Mapper.CreateMap<UserProfile, UserAccount>();
                 UserAccount mappedUser = mappedUser = Mapper.Map<UserProfile, UserAccount>(user);
                 mappedUser.Password = SHA1.Encode(user.Password);
+                mappedUser.IDRole =  Convert.ToInt32(UserLevel.Standard);
                 _pce.AddToUserAccounts(mappedUser);
                 _pce.SaveChanges();
                 return true;

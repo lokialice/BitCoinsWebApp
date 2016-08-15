@@ -6,8 +6,84 @@
     <edmx:StorageModels>
     <Schema Namespace="BitCoinsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="BitCoinsModelStoreContainer">
+          <EntitySet Name="Document" EntityType="BitCoinsModel.Store.Document" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ImageUpload" EntityType="BitCoinsModel.Store.ImageUpload" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="BitCoinsModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Transfer" EntityType="BitCoinsModel.Store.Transfer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TransferHistory" EntityType="BitCoinsModel.Store.TransferHistory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TransferType" EntityType="BitCoinsModel.Store.TransferType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserAccount" EntityType="BitCoinsModel.Store.UserAccount" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserRole" EntityType="BitCoinsModel.Store.UserRole" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Transfer_TransferType" Association="BitCoinsModel.Store.FK_Transfer_TransferType">
+            <End Role="TransferType" EntitySet="TransferType" />
+            <End Role="Transfer" EntitySet="Transfer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transfer_UserAccount" Association="BitCoinsModel.Store.FK_Transfer_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="Transfer" EntitySet="Transfer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccount_UserRole" Association="BitCoinsModel.Store.FK_UserAccount_UserRole">
+            <End Role="UserRole" EntitySet="UserRole" />
+            <End Role="UserAccount" EntitySet="UserAccount" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="DocumentID" />
+          </Key>
+          <Property Name="DocumentID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DocumentName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DocumentBinary" Type="varbinary(max)" Nullable="false" />
+          <Property Name="CreateDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ImageUpload">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImageName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ImageBinary" Type="varbinary(max)" Nullable="false" />
+          <Property Name="CreateDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Transfer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="TransferType" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+          <Property Name="CreateDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransferHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="TransferName" Type="varchar" MaxLength="50" />
+          <Property Name="TransferType" Type="int" />
+          <Property Name="Amout" Type="float" />
+          <Property Name="CreatDate" Type="date" />
+        </EntityType>
+        <EntityType Name="TransferType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TransferType" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="UserAccount">
           <Key>
             <PropertyRef Name="ID" />
@@ -17,6 +93,10 @@
           <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="Email" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="ImageProfile" Type="int" />
+          <Property Name="FacebookLink" Type="varchar" MaxLength="150" />
+          <Property Name="SkypeID" Type="varchar" MaxLength="150" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="Age" Type="int" />
           <Property Name="Gender" Type="varchar" MaxLength="25" />
@@ -27,12 +107,87 @@
           <Property Name="IDRole" Type="int" Nullable="false" />
           <Property Name="IDParent" Type="int" />
         </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LevelUser" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Transfer_TransferType">
+          <End Role="TransferType" Type="BitCoinsModel.Store.TransferType" Multiplicity="1" />
+          <End Role="Transfer" Type="BitCoinsModel.Store.Transfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransferType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transfer">
+              <PropertyRef Name="TransferType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transfer_UserAccount">
+          <End Role="UserAccount" Type="BitCoinsModel.Store.UserAccount" Multiplicity="1" />
+          <End Role="Transfer" Type="BitCoinsModel.Store.Transfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transfer">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccount_UserRole">
+          <End Role="UserRole" Type="BitCoinsModel.Store.UserRole" Multiplicity="1" />
+          <End Role="UserAccount" Type="BitCoinsModel.Store.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+      warning 6013: The table/view 'BitCoins.dbo.Post' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="Post">
+        <Property Name="ID" Type="int" />
+        <Property Name="PostAuthor" Type="int" />
+        <Property Name="PostDate" Type="date" />
+        <Property Name="PostTittle" Type="text" />
+        <Property Name="PostExcerpt" Type="text" />
+        <Property Name="PostContent" Type="text" />
+        <Property Name="PostStatus" Type="bit" />
+      </EntityType>-->
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BitCoinsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BitCoinsEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="UserAccounts" EntityType="BitCoinsModel.UserAccount" />
+          <EntitySet Name="Documents" EntityType="BitCoinsModel.Document" />
+          <EntitySet Name="ImageUploads" EntityType="BitCoinsModel.ImageUpload" />
+          <EntitySet Name="Transfers" EntityType="BitCoinsModel.Transfer" />
+          <EntitySet Name="TransferHistories" EntityType="BitCoinsModel.TransferHistory" />
+          <EntitySet Name="TransferTypes" EntityType="BitCoinsModel.TransferType" />
+          <EntitySet Name="UserRoles" EntityType="BitCoinsModel.UserRole" />
+          <AssociationSet Name="FK_Transfer_TransferType" Association="BitCoinsModel.FK_Transfer_TransferType">
+            <End Role="TransferType" EntitySet="TransferTypes" />
+            <End Role="Transfer" EntitySet="Transfers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transfer_UserAccount" Association="BitCoinsModel.FK_Transfer_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="Transfer" EntitySet="Transfers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccount_UserRole" Association="BitCoinsModel.FK_UserAccount_UserRole">
+            <End Role="UserRole" EntitySet="UserRoles" />
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+          </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="BitCoinsModel.sysdiagram" />
         </EntityContainer>
         <EntityType Name="UserAccount">
           <Key>
@@ -52,6 +207,117 @@
           <Property Name="IDRole" Type="Int32" Nullable="false" />
           <Property Name="IDParent" Type="Int32" />
           <Property Type="String" Name="Phone" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="Amount" />
+          <Property Type="Int32" Name="ImageProfile" />
+          <Property Type="String" Name="FacebookLink" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SkypeID" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Transfers" Relationship="BitCoinsModel.FK_Transfer_UserAccount" FromRole="UserAccount" ToRole="Transfer" />
+          <NavigationProperty Name="UserRole" Relationship="BitCoinsModel.FK_UserAccount_UserRole" FromRole="UserAccount" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="DocumentID" />
+          </Key>
+          <Property Type="Int32" Name="DocumentID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="DocumentName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="DocumentBinary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="ImageUpload">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImageName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="ImageBinary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Transfer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="TransferType" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Double" Name="Amount" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="0" />
+          <NavigationProperty Name="TransferType1" Relationship="BitCoinsModel.FK_Transfer_TransferType" FromRole="Transfer" ToRole="TransferType" />
+          <NavigationProperty Name="UserAccount" Relationship="BitCoinsModel.FK_Transfer_UserAccount" FromRole="Transfer" ToRole="UserAccount" />
+        </EntityType>
+        <EntityType Name="TransferHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="TransferName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="TransferType" />
+          <Property Type="Double" Name="Amout" />
+          <Property Type="DateTime" Name="CreatDate" Precision="0" />
+        </EntityType>
+        <EntityType Name="TransferType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TransferType1" Nullable="false" />
+          <Property Type="String" Name="Description" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Transfers" Relationship="BitCoinsModel.FK_Transfer_TransferType" FromRole="TransferType" ToRole="Transfer" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="LevelUser" Nullable="false" />
+          <Property Type="String" Name="Description" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserAccounts" Relationship="BitCoinsModel.FK_UserAccount_UserRole" FromRole="UserRole" ToRole="UserAccount" />
+        </EntityType>
+        <Association Name="FK_Transfer_TransferType">
+          <End Type="BitCoinsModel.TransferType" Role="TransferType" Multiplicity="1" />
+          <End Type="BitCoinsModel.Transfer" Role="Transfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransferType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transfer">
+              <PropertyRef Name="TransferType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transfer_UserAccount">
+          <End Type="BitCoinsModel.UserAccount" Role="UserAccount" Multiplicity="1" />
+          <End Type="BitCoinsModel.Transfer" Role="Transfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Transfer">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccount_UserRole">
+          <End Type="BitCoinsModel.UserRole" Role="UserRole" Multiplicity="1" />
+          <End Type="BitCoinsModel.UserAccount" Role="UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="principal_id" Nullable="false" />
+          <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="version" />
+          <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -62,6 +328,10 @@
           <EntitySetMapping Name="UserAccounts">
             <EntityTypeMapping TypeName="BitCoinsModel.UserAccount">
               <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="SkypeID" ColumnName="SkypeID" />
+                <ScalarProperty Name="FacebookLink" ColumnName="FacebookLink" />
+                <ScalarProperty Name="ImageProfile" ColumnName="ImageProfile" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -76,6 +346,78 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="IDRole" ColumnName="IDRole" />
                 <ScalarProperty Name="IDParent" ColumnName="IDParent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="BitCoinsModel.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="DocumentBinary" ColumnName="DocumentBinary" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImageUploads">
+            <EntityTypeMapping TypeName="BitCoinsModel.ImageUpload">
+              <MappingFragment StoreEntitySet="ImageUpload">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ImageBinary" ColumnName="ImageBinary" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transfers">
+            <EntityTypeMapping TypeName="BitCoinsModel.Transfer">
+              <MappingFragment StoreEntitySet="Transfer">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TransferType" ColumnName="TransferType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransferHistories">
+            <EntityTypeMapping TypeName="BitCoinsModel.TransferHistory">
+              <MappingFragment StoreEntitySet="TransferHistory">
+                <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+                <ScalarProperty Name="Amout" ColumnName="Amout" />
+                <ScalarProperty Name="TransferType" ColumnName="TransferType" />
+                <ScalarProperty Name="TransferName" ColumnName="TransferName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransferTypes">
+            <EntityTypeMapping TypeName="BitCoinsModel.TransferType">
+              <MappingFragment StoreEntitySet="TransferType">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TransferType1" ColumnName="TransferType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="BitCoinsModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LevelUser" ColumnName="LevelUser" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BitCoinsModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -100,8 +442,18 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram DiagramId="8bdfe05e7eea4a1aa1bfea3c4aa42a7b" Name="Diagram1">
+      <Diagram DiagramId="8bdfe05e7eea4a1aa1bfea3c4aa42a7b" Name="Diagram1" ZoomLevel="80">
         <EntityTypeShape EntityType="BitCoinsModel.UserAccount" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BitCoinsModel.Document" Width="1.5" PointX="3" PointY="0.625" />
+        <EntityTypeShape EntityType="BitCoinsModel.ImageUpload" Width="1.5" PointX="4.75" PointY="0.625" />
+        <EntityTypeShape EntityType="BitCoinsModel.Transfer" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BitCoinsModel.TransferHistory" Width="1.5" PointX="7.375" PointY="3.25" />
+        <EntityTypeShape EntityType="BitCoinsModel.TransferType" Width="1.5" PointX="5.25" PointY="3.125" />
+        <EntityTypeShape EntityType="BitCoinsModel.UserRole" Width="1.5" PointX="6.375" PointY="0.625" />
+        <AssociationConnector Association="BitCoinsModel.FK_Transfer_TransferType" />
+        <AssociationConnector Association="BitCoinsModel.FK_Transfer_UserAccount" />
+        <AssociationConnector Association="BitCoinsModel.FK_UserAccount_UserRole" />
+        <EntityTypeShape EntityType="BitCoinsModel.sysdiagram" Width="1.5" PointX="4.2129667067029359" PointY="9.48172574186778" />
       </Diagram>
     </Diagrams>
   </Designer>

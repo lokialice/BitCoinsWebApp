@@ -172,6 +172,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2918,7 +2919,6 @@
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
@@ -2928,6 +2928,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2973,6 +2975,10 @@
     <ProjectReference Include="..\BitCoinsWebApp.Model\BitCoinsWebApp.Model.csproj">
       <Project>{c2db0cca-4a67-4d61-8313-e1870db941cd}</Project>
       <Name>BitCoinsWebApp.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BitCoinsWebApp.Utilities\BitCoinsWebApp.Utilities.csproj">
+      <Project>{0545fd29-6a18-45f6-a2e9-5c5b6ab9e1b2}</Project>
+      <Name>BitCoinsWebApp.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

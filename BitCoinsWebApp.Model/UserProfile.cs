@@ -45,6 +45,15 @@
         public string BitCoinsCode { get; set; }
         [DataMember]
         public bool IsActive { get; set; }
+        [DataMember]
+        public float Amount { get; set; }
+        [DataMember]
+        public int ImageProfile { get; set; }
+        [DataMember]
+        public string FacebookLink { get; set; }
+        [DataMember]
+        public string SkypeID { get; set; }
+       
 
     }
 

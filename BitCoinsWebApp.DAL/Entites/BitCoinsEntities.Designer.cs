@@ -17,6 +17,14 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
+#region EDM Relationship Metadata
+
+[assembly: EdmRelationshipAttribute("BitCoinsModel", "FK_Transfer_TransferType", "TransferType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BitCoinsWebApp.DAL.Entites.TransferType), "Transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BitCoinsWebApp.DAL.Entites.Transfer), true)]
+[assembly: EdmRelationshipAttribute("BitCoinsModel", "FK_Transfer_UserAccount", "UserAccount", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BitCoinsWebApp.DAL.Entites.UserAccount), "Transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BitCoinsWebApp.DAL.Entites.Transfer), true)]
+[assembly: EdmRelationshipAttribute("BitCoinsModel", "FK_UserAccount_UserRole", "UserRole", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BitCoinsWebApp.DAL.Entites.UserRole), "UserAccount", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BitCoinsWebApp.DAL.Entites.UserAccount), true)]
+
+#endregion
+
 namespace BitCoinsWebApp.DAL.Entites
 {
     #region Contexts
@@ -80,6 +88,118 @@ namespace BitCoinsWebApp.DAL.Entites
             }
         }
         private ObjectSet<UserAccount> _UserAccounts;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Document> Documents
+        {
+            get
+            {
+                if ((_Documents == null))
+                {
+                    _Documents = base.CreateObjectSet<Document>("Documents");
+                }
+                return _Documents;
+            }
+        }
+        private ObjectSet<Document> _Documents;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ImageUpload> ImageUploads
+        {
+            get
+            {
+                if ((_ImageUploads == null))
+                {
+                    _ImageUploads = base.CreateObjectSet<ImageUpload>("ImageUploads");
+                }
+                return _ImageUploads;
+            }
+        }
+        private ObjectSet<ImageUpload> _ImageUploads;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Transfer> Transfers
+        {
+            get
+            {
+                if ((_Transfers == null))
+                {
+                    _Transfers = base.CreateObjectSet<Transfer>("Transfers");
+                }
+                return _Transfers;
+            }
+        }
+        private ObjectSet<Transfer> _Transfers;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TransferHistory> TransferHistories
+        {
+            get
+            {
+                if ((_TransferHistories == null))
+                {
+                    _TransferHistories = base.CreateObjectSet<TransferHistory>("TransferHistories");
+                }
+                return _TransferHistories;
+            }
+        }
+        private ObjectSet<TransferHistory> _TransferHistories;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TransferType> TransferTypes
+        {
+            get
+            {
+                if ((_TransferTypes == null))
+                {
+                    _TransferTypes = base.CreateObjectSet<TransferType>("TransferTypes");
+                }
+                return _TransferTypes;
+            }
+        }
+        private ObjectSet<TransferType> _TransferTypes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<UserRole> UserRoles
+        {
+            get
+            {
+                if ((_UserRoles == null))
+                {
+                    _UserRoles = base.CreateObjectSet<UserRole>("UserRoles");
+                }
+                return _UserRoles;
+            }
+        }
+        private ObjectSet<UserRole> _UserRoles;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<sysdiagram> sysdiagrams
+        {
+            get
+            {
+                if ((_sysdiagrams == null))
+                {
+                    _sysdiagrams = base.CreateObjectSet<sysdiagram>("sysdiagrams");
+                }
+                return _sysdiagrams;
+            }
+        }
+        private ObjectSet<sysdiagram> _sysdiagrams;
 
         #endregion
 
@@ -92,6 +212,62 @@ namespace BitCoinsWebApp.DAL.Entites
         {
             base.AddObject("UserAccounts", userAccount);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Documents EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToDocuments(Document document)
+        {
+            base.AddObject("Documents", document);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ImageUploads EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToImageUploads(ImageUpload imageUpload)
+        {
+            base.AddObject("ImageUploads", imageUpload);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Transfers EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTransfers(Transfer transfer)
+        {
+            base.AddObject("Transfers", transfer);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TransferHistories EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTransferHistories(TransferHistory transferHistory)
+        {
+            base.AddObject("TransferHistories", transferHistory);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TransferTypes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTransferTypes(TransferType transferType)
+        {
+            base.AddObject("TransferTypes", transferType);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the UserRoles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToUserRoles(UserRole userRole)
+        {
+            base.AddObject("UserRoles", userRole);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the sysdiagrams EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTosysdiagrams(sysdiagram sysdiagram)
+        {
+            base.AddObject("sysdiagrams", sysdiagram);
+        }
 
         #endregion
 
@@ -100,6 +276,980 @@ namespace BitCoinsWebApp.DAL.Entites
     #endregion
 
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BitCoinsModel", Name="Document")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Document : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Document object.
+        /// </summary>
+        /// <param name="documentID">Initial value of the DocumentID property.</param>
+        /// <param name="documentName">Initial value of the DocumentName property.</param>
+        /// <param name="documentBinary">Initial value of the DocumentBinary property.</param>
+        /// <param name="createDate">Initial value of the CreateDate property.</param>
+        public static Document CreateDocument(global::System.Int32 documentID, global::System.String documentName, global::System.Byte[] documentBinary, global::System.DateTime createDate)
+        {
+            Document document = new Document();
+            document.DocumentID = documentID;
+            document.DocumentName = documentName;
+            document.DocumentBinary = documentBinary;
+            document.CreateDate = createDate;
+            return document;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 DocumentID
+        {
+            get
+            {
+                return _DocumentID;
+            }
+            set
+            {
+                if (_DocumentID != value)
+                {
+                    OnDocumentIDChanging(value);
+                    ReportPropertyChanging("DocumentID");
+                    _DocumentID = StructuralObject.SetValidValue(value, "DocumentID");
+                    ReportPropertyChanged("DocumentID");
+                    OnDocumentIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _DocumentID;
+        partial void OnDocumentIDChanging(global::System.Int32 value);
+        partial void OnDocumentIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String DocumentName
+        {
+            get
+            {
+                return _DocumentName;
+            }
+            set
+            {
+                OnDocumentNameChanging(value);
+                ReportPropertyChanging("DocumentName");
+                _DocumentName = StructuralObject.SetValidValue(value, false, "DocumentName");
+                ReportPropertyChanged("DocumentName");
+                OnDocumentNameChanged();
+            }
+        }
+        private global::System.String _DocumentName;
+        partial void OnDocumentNameChanging(global::System.String value);
+        partial void OnDocumentNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Byte[] DocumentBinary
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_DocumentBinary);
+            }
+            set
+            {
+                OnDocumentBinaryChanging(value);
+                ReportPropertyChanging("DocumentBinary");
+                _DocumentBinary = StructuralObject.SetValidValue(value, false, "DocumentBinary");
+                ReportPropertyChanged("DocumentBinary");
+                OnDocumentBinaryChanged();
+            }
+        }
+        private global::System.Byte[] _DocumentBinary;
+        partial void OnDocumentBinaryChanging(global::System.Byte[] value);
+        partial void OnDocumentBinaryChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreateDate
+        {
+            get
+            {
+                return _CreateDate;
+            }
+            set
+            {
+                OnCreateDateChanging(value);
+                ReportPropertyChanging("CreateDate");
+                _CreateDate = StructuralObject.SetValidValue(value, "CreateDate");
+                ReportPropertyChanged("CreateDate");
+                OnCreateDateChanged();
+            }
+        }
+        private global::System.DateTime _CreateDate;
+        partial void OnCreateDateChanging(global::System.DateTime value);
+        partial void OnCreateDateChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BitCoinsModel", Name="ImageUpload")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ImageUpload : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ImageUpload object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="imageName">Initial value of the ImageName property.</param>
+        /// <param name="imageBinary">Initial value of the ImageBinary property.</param>
+        /// <param name="createDate">Initial value of the CreateDate property.</param>
+        public static ImageUpload CreateImageUpload(global::System.Int32 id, global::System.String imageName, global::System.Byte[] imageBinary, global::System.DateTime createDate)
+        {
+            ImageUpload imageUpload = new ImageUpload();
+            imageUpload.ID = id;
+            imageUpload.ImageName = imageName;
+            imageUpload.ImageBinary = imageBinary;
+            imageUpload.CreateDate = createDate;
+            return imageUpload;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ImageName
+        {
+            get
+            {
+                return _ImageName;
+            }
+            set
+            {
+                OnImageNameChanging(value);
+                ReportPropertyChanging("ImageName");
+                _ImageName = StructuralObject.SetValidValue(value, false, "ImageName");
+                ReportPropertyChanged("ImageName");
+                OnImageNameChanged();
+            }
+        }
+        private global::System.String _ImageName;
+        partial void OnImageNameChanging(global::System.String value);
+        partial void OnImageNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Byte[] ImageBinary
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_ImageBinary);
+            }
+            set
+            {
+                OnImageBinaryChanging(value);
+                ReportPropertyChanging("ImageBinary");
+                _ImageBinary = StructuralObject.SetValidValue(value, false, "ImageBinary");
+                ReportPropertyChanged("ImageBinary");
+                OnImageBinaryChanged();
+            }
+        }
+        private global::System.Byte[] _ImageBinary;
+        partial void OnImageBinaryChanging(global::System.Byte[] value);
+        partial void OnImageBinaryChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreateDate
+        {
+            get
+            {
+                return _CreateDate;
+            }
+            set
+            {
+                OnCreateDateChanging(value);
+                ReportPropertyChanging("CreateDate");
+                _CreateDate = StructuralObject.SetValidValue(value, "CreateDate");
+                ReportPropertyChanged("CreateDate");
+                OnCreateDateChanged();
+            }
+        }
+        private global::System.DateTime _CreateDate;
+        partial void OnCreateDateChanging(global::System.DateTime value);
+        partial void OnCreateDateChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BitCoinsModel", Name="sysdiagram")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class sysdiagram : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new sysdiagram object.
+        /// </summary>
+        /// <param name="name">Initial value of the name property.</param>
+        /// <param name="principal_id">Initial value of the principal_id property.</param>
+        /// <param name="diagram_id">Initial value of the diagram_id property.</param>
+        public static sysdiagram Createsysdiagram(global::System.String name, global::System.Int32 principal_id, global::System.Int32 diagram_id)
+        {
+            sysdiagram sysdiagram = new sysdiagram();
+            sysdiagram.name = name;
+            sysdiagram.principal_id = principal_id;
+            sysdiagram.diagram_id = diagram_id;
+            return sysdiagram;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                OnnameChanging(value);
+                ReportPropertyChanging("name");
+                _name = StructuralObject.SetValidValue(value, false, "name");
+                ReportPropertyChanged("name");
+                OnnameChanged();
+            }
+        }
+        private global::System.String _name;
+        partial void OnnameChanging(global::System.String value);
+        partial void OnnameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 principal_id
+        {
+            get
+            {
+                return _principal_id;
+            }
+            set
+            {
+                Onprincipal_idChanging(value);
+                ReportPropertyChanging("principal_id");
+                _principal_id = StructuralObject.SetValidValue(value, "principal_id");
+                ReportPropertyChanged("principal_id");
+                Onprincipal_idChanged();
+            }
+        }
+        private global::System.Int32 _principal_id;
+        partial void Onprincipal_idChanging(global::System.Int32 value);
+        partial void Onprincipal_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 diagram_id
+        {
+            get
+            {
+                return _diagram_id;
+            }
+            set
+            {
+                if (_diagram_id != value)
+                {
+                    Ondiagram_idChanging(value);
+                    ReportPropertyChanging("diagram_id");
+                    _diagram_id = StructuralObject.SetValidValue(value, "diagram_id");
+                    ReportPropertyChanged("diagram_id");
+                    Ondiagram_idChanged();
+                }
+            }
+        }
+        private global::System.Int32 _diagram_id;
+        partial void Ondiagram_idChanging(global::System.Int32 value);
+        partial void Ondiagram_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> version
+        {
+            get
+            {
+                return _version;
+            }
+            set
+            {
+                OnversionChanging(value);
+                ReportPropertyChanging("version");
+                _version = StructuralObject.SetValidValue(value, "version");
+                ReportPropertyChanged("version");
+                OnversionChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _version;
+        partial void OnversionChanging(Nullable<global::System.Int32> value);
+        partial void OnversionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.Byte[] definition
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_definition);
+            }
+            set
+            {
+                OndefinitionChanging(value);
+                ReportPropertyChanging("definition");
+                _definition = StructuralObject.SetValidValue(value, true, "definition");
+                ReportPropertyChanged("definition");
+                OndefinitionChanged();
+            }
+        }
+        private global::System.Byte[] _definition;
+        partial void OndefinitionChanging(global::System.Byte[] value);
+        partial void OndefinitionChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BitCoinsModel", Name="Transfer")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Transfer : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Transfer object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="transferType">Initial value of the TransferType property.</param>
+        /// <param name="userID">Initial value of the UserID property.</param>
+        /// <param name="amount">Initial value of the Amount property.</param>
+        /// <param name="description">Initial value of the Description property.</param>
+        /// <param name="createDate">Initial value of the CreateDate property.</param>
+        public static Transfer CreateTransfer(global::System.Int32 id, global::System.Int32 transferType, global::System.Int32 userID, global::System.Double amount, global::System.String description, global::System.DateTime createDate)
+        {
+            Transfer transfer = new Transfer();
+            transfer.ID = id;
+            transfer.TransferType = transferType;
+            transfer.UserID = userID;
+            transfer.Amount = amount;
+            transfer.Description = description;
+            transfer.CreateDate = createDate;
+            return transfer;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TransferType
+        {
+            get
+            {
+                return _TransferType;
+            }
+            set
+            {
+                OnTransferTypeChanging(value);
+                ReportPropertyChanging("TransferType");
+                _TransferType = StructuralObject.SetValidValue(value, "TransferType");
+                ReportPropertyChanged("TransferType");
+                OnTransferTypeChanged();
+            }
+        }
+        private global::System.Int32 _TransferType;
+        partial void OnTransferTypeChanging(global::System.Int32 value);
+        partial void OnTransferTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserID
+        {
+            get
+            {
+                return _UserID;
+            }
+            set
+            {
+                OnUserIDChanging(value);
+                ReportPropertyChanging("UserID");
+                _UserID = StructuralObject.SetValidValue(value, "UserID");
+                ReportPropertyChanged("UserID");
+                OnUserIDChanged();
+            }
+        }
+        private global::System.Int32 _UserID;
+        partial void OnUserIDChanging(global::System.Int32 value);
+        partial void OnUserIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Double Amount
+        {
+            get
+            {
+                return _Amount;
+            }
+            set
+            {
+                OnAmountChanging(value);
+                ReportPropertyChanging("Amount");
+                _Amount = StructuralObject.SetValidValue(value, "Amount");
+                ReportPropertyChanged("Amount");
+                OnAmountChanged();
+            }
+        }
+        private global::System.Double _Amount;
+        partial void OnAmountChanging(global::System.Double value);
+        partial void OnAmountChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, false, "Description");
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreateDate
+        {
+            get
+            {
+                return _CreateDate;
+            }
+            set
+            {
+                OnCreateDateChanging(value);
+                ReportPropertyChanging("CreateDate");
+                _CreateDate = StructuralObject.SetValidValue(value, "CreateDate");
+                ReportPropertyChanged("CreateDate");
+                OnCreateDateChanged();
+            }
+        }
+        private global::System.DateTime _CreateDate;
+        partial void OnCreateDateChanging(global::System.DateTime value);
+        partial void OnCreateDateChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BitCoinsModel", "FK_Transfer_TransferType", "TransferType")]
+        public TransferType TransferType1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TransferType>("BitCoinsModel.FK_Transfer_TransferType", "TransferType").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TransferType>("BitCoinsModel.FK_Transfer_TransferType", "TransferType").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TransferType> TransferType1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TransferType>("BitCoinsModel.FK_Transfer_TransferType", "TransferType");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TransferType>("BitCoinsModel.FK_Transfer_TransferType", "TransferType", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BitCoinsModel", "FK_Transfer_UserAccount", "UserAccount")]
+        public UserAccount UserAccount
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserAccount>("BitCoinsModel.FK_Transfer_UserAccount", "UserAccount").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserAccount>("BitCoinsModel.FK_Transfer_UserAccount", "UserAccount").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<UserAccount> UserAccountReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserAccount>("BitCoinsModel.FK_Transfer_UserAccount", "UserAccount");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<UserAccount>("BitCoinsModel.FK_Transfer_UserAccount", "UserAccount", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BitCoinsModel", Name="TransferHistory")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TransferHistory : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new TransferHistory object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        public static TransferHistory CreateTransferHistory(global::System.Int32 id)
+        {
+            TransferHistory transferHistory = new TransferHistory();
+            transferHistory.ID = id;
+            return transferHistory;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TransferName
+        {
+            get
+            {
+                return _TransferName;
+            }
+            set
+            {
+                OnTransferNameChanging(value);
+                ReportPropertyChanging("TransferName");
+                _TransferName = StructuralObject.SetValidValue(value, true, "TransferName");
+                ReportPropertyChanged("TransferName");
+                OnTransferNameChanged();
+            }
+        }
+        private global::System.String _TransferName;
+        partial void OnTransferNameChanging(global::System.String value);
+        partial void OnTransferNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> TransferType
+        {
+            get
+            {
+                return _TransferType;
+            }
+            set
+            {
+                OnTransferTypeChanging(value);
+                ReportPropertyChanging("TransferType");
+                _TransferType = StructuralObject.SetValidValue(value, "TransferType");
+                ReportPropertyChanged("TransferType");
+                OnTransferTypeChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _TransferType;
+        partial void OnTransferTypeChanging(Nullable<global::System.Int32> value);
+        partial void OnTransferTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> Amout
+        {
+            get
+            {
+                return _Amout;
+            }
+            set
+            {
+                OnAmoutChanging(value);
+                ReportPropertyChanging("Amout");
+                _Amout = StructuralObject.SetValidValue(value, "Amout");
+                ReportPropertyChanged("Amout");
+                OnAmoutChanged();
+            }
+        }
+        private Nullable<global::System.Double> _Amout;
+        partial void OnAmoutChanging(Nullable<global::System.Double> value);
+        partial void OnAmoutChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CreatDate
+        {
+            get
+            {
+                return _CreatDate;
+            }
+            set
+            {
+                OnCreatDateChanging(value);
+                ReportPropertyChanging("CreatDate");
+                _CreatDate = StructuralObject.SetValidValue(value, "CreatDate");
+                ReportPropertyChanged("CreatDate");
+                OnCreatDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CreatDate;
+        partial void OnCreatDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnCreatDateChanged();
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BitCoinsModel", Name="TransferType")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TransferType : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new TransferType object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="transferType1">Initial value of the TransferType1 property.</param>
+        public static TransferType CreateTransferType(global::System.Int32 id, global::System.Int32 transferType1)
+        {
+            TransferType transferType = new TransferType();
+            transferType.ID = id;
+            transferType.TransferType1 = transferType1;
+            return transferType;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TransferType1
+        {
+            get
+            {
+                return _TransferType1;
+            }
+            set
+            {
+                OnTransferType1Changing(value);
+                ReportPropertyChanging("TransferType1");
+                _TransferType1 = StructuralObject.SetValidValue(value, "TransferType1");
+                ReportPropertyChanged("TransferType1");
+                OnTransferType1Changed();
+            }
+        }
+        private global::System.Int32 _TransferType1;
+        partial void OnTransferType1Changing(global::System.Int32 value);
+        partial void OnTransferType1Changed();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true, "Description");
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BitCoinsModel", "FK_Transfer_TransferType", "Transfer")]
+        public EntityCollection<Transfer> Transfers
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Transfer>("BitCoinsModel.FK_Transfer_TransferType", "Transfer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Transfer>("BitCoinsModel.FK_Transfer_TransferType", "Transfer", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -474,6 +1624,298 @@ namespace BitCoinsWebApp.DAL.Entites
         private global::System.String _Phone;
         partial void OnPhoneChanging(global::System.String value);
         partial void OnPhoneChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Double> Amount
+        {
+            get
+            {
+                return _Amount;
+            }
+            set
+            {
+                OnAmountChanging(value);
+                ReportPropertyChanging("Amount");
+                _Amount = StructuralObject.SetValidValue(value, "Amount");
+                ReportPropertyChanged("Amount");
+                OnAmountChanged();
+            }
+        }
+        private Nullable<global::System.Double> _Amount;
+        partial void OnAmountChanging(Nullable<global::System.Double> value);
+        partial void OnAmountChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ImageProfile
+        {
+            get
+            {
+                return _ImageProfile;
+            }
+            set
+            {
+                OnImageProfileChanging(value);
+                ReportPropertyChanging("ImageProfile");
+                _ImageProfile = StructuralObject.SetValidValue(value, "ImageProfile");
+                ReportPropertyChanged("ImageProfile");
+                OnImageProfileChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ImageProfile;
+        partial void OnImageProfileChanging(Nullable<global::System.Int32> value);
+        partial void OnImageProfileChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FacebookLink
+        {
+            get
+            {
+                return _FacebookLink;
+            }
+            set
+            {
+                OnFacebookLinkChanging(value);
+                ReportPropertyChanging("FacebookLink");
+                _FacebookLink = StructuralObject.SetValidValue(value, true, "FacebookLink");
+                ReportPropertyChanged("FacebookLink");
+                OnFacebookLinkChanged();
+            }
+        }
+        private global::System.String _FacebookLink;
+        partial void OnFacebookLinkChanging(global::System.String value);
+        partial void OnFacebookLinkChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SkypeID
+        {
+            get
+            {
+                return _SkypeID;
+            }
+            set
+            {
+                OnSkypeIDChanging(value);
+                ReportPropertyChanging("SkypeID");
+                _SkypeID = StructuralObject.SetValidValue(value, true, "SkypeID");
+                ReportPropertyChanged("SkypeID");
+                OnSkypeIDChanged();
+            }
+        }
+        private global::System.String _SkypeID;
+        partial void OnSkypeIDChanging(global::System.String value);
+        partial void OnSkypeIDChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BitCoinsModel", "FK_Transfer_UserAccount", "Transfer")]
+        public EntityCollection<Transfer> Transfers
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Transfer>("BitCoinsModel.FK_Transfer_UserAccount", "Transfer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Transfer>("BitCoinsModel.FK_Transfer_UserAccount", "Transfer", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BitCoinsModel", "FK_UserAccount_UserRole", "UserRole")]
+        public UserRole UserRole
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserRole>("BitCoinsModel.FK_UserAccount_UserRole", "UserRole").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserRole>("BitCoinsModel.FK_UserAccount_UserRole", "UserRole").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<UserRole> UserRoleReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<UserRole>("BitCoinsModel.FK_UserAccount_UserRole", "UserRole");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<UserRole>("BitCoinsModel.FK_UserAccount_UserRole", "UserRole", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BitCoinsModel", Name="UserRole")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class UserRole : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new UserRole object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="levelUser">Initial value of the LevelUser property.</param>
+        public static UserRole CreateUserRole(global::System.Int32 id, global::System.Int32 levelUser)
+        {
+            UserRole userRole = new UserRole();
+            userRole.ID = id;
+            userRole.LevelUser = levelUser;
+            return userRole;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 LevelUser
+        {
+            get
+            {
+                return _LevelUser;
+            }
+            set
+            {
+                OnLevelUserChanging(value);
+                ReportPropertyChanging("LevelUser");
+                _LevelUser = StructuralObject.SetValidValue(value, "LevelUser");
+                ReportPropertyChanged("LevelUser");
+                OnLevelUserChanged();
+            }
+        }
+        private global::System.Int32 _LevelUser;
+        partial void OnLevelUserChanging(global::System.Int32 value);
+        partial void OnLevelUserChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true, "Description");
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BitCoinsModel", "FK_UserAccount_UserRole", "UserAccount")]
+        public EntityCollection<UserAccount> UserAccounts
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UserAccount>("BitCoinsModel.FK_UserAccount_UserRole", "UserAccount");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UserAccount>("BitCoinsModel.FK_UserAccount_UserRole", "UserAccount", value);
+                }
+            }
+        }
 
         #endregion
 

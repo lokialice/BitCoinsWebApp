@@ -10,12 +10,13 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using BitCoinsWebApp.Model;
 using BitCoinsWebApp.BLL;
+using log4net;
 
 namespace BitCoinsWebApp.Controllers
 {
     public class AccountController : BaseController
     {
-
+        private static readonly ILog log = LogManager.GetLogger(typeof(AccountController).Name);
         /// <summary>
         /// Logins the specified return URL.
         /// </summary>
@@ -41,12 +42,12 @@ namespace BitCoinsWebApp.Controllers
             if (user != null)
             {
                 Session["UserLogin"] = user.UserName;
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Manage");
             }
             else
             {
                 ViewBag.Error = "Fuck you";
-                return View("Index");
+                return View("Login");
             }
         }
 
