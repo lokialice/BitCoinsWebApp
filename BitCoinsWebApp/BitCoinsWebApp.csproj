@@ -171,6 +171,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -297,10 +298,12 @@
     <Content Include="Content\themes\manager\js\footable-init.js" />
     <Content Include="Content\themes\manager\js\jasny-bootstrap.js" />
     <Content Include="Content\themes\manager\js\jquery.nicescroll.js" />
+    <Content Include="Content\themes\manager\js\jquery.qrcode.js" />
     <Content Include="Content\themes\manager\js\jquery.slimscroll.js" />
     <Content Include="Content\themes\manager\js\jsgrid-init.js" />
     <Content Include="Content\themes\manager\js\mask.js" />
     <Content Include="Content\themes\manager\js\morris-data.js" />
+    <Content Include="Content\themes\manager\js\qrcode.js" />
     <Content Include="Content\themes\manager\js\toastr.js" />
     <Content Include="Content\themes\manager\js\validator.js" />
     <Content Include="Content\themes\manager\js\waves.js" />
@@ -2055,6 +2058,7 @@
     <Content Include="Content\Images\small-logo.png" />
     <Content Include="Content\Images\support-team.jpg" />
     <Content Include="Content\Images\who-we-are-img.png" />
+    <Content Include="MailFormats\RegisterSuccess.xml" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\counter\counter.js" />
     <Content Include="Scripts\custom.js" />
@@ -2930,6 +2934,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Error\404.cshtml" />
+    <Content Include="Views\Account\Balance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
