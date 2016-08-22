@@ -16,7 +16,7 @@ namespace BitCoinsWebApp.Utilities
             // check  sessions here
             if (HttpContext.Current.Session["UserLogin"] == null)
             {
-                filterContext.Result = new RedirectResult("~/Home/Index");
+                filterContext.Result = new RedirectResult("~/Account/Login");
                 return;
             }
             base.OnActionExecuting(filterContext);

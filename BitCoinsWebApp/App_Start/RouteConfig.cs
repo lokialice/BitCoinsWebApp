@@ -18,6 +18,16 @@ namespace BitCoinsWebApp
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+               name: "Register",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional }
+           );
+            routes.MapRoute(
+              name: "Balance",
+              url: "{controller}/{action}/{id}",
+              defaults: new { controller = "Account", action = "Balance", id = UrlParameter.Optional }
+          );
         }
     }
 }

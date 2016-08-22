@@ -8,12 +8,17 @@
         <EntityContainer Name="BitCoinsModelStoreContainer">
           <EntitySet Name="Document" EntityType="BitCoinsModel.Store.Document" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ImageUpload" EntityType="BitCoinsModel.Store.ImageUpload" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Post" EntityType="BitCoinsModel.Store.Post" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="sysdiagrams" EntityType="BitCoinsModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Transfer" EntityType="BitCoinsModel.Store.Transfer" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TransferHistory" EntityType="BitCoinsModel.Store.TransferHistory" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TransferType" EntityType="BitCoinsModel.Store.TransferType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserAccount" EntityType="BitCoinsModel.Store.UserAccount" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserRole" EntityType="BitCoinsModel.Store.UserRole" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Post_UserAccount" Association="BitCoinsModel.Store.FK_Post_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccount" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
           <AssociationSet Name="FK_Transfer_TransferType" Association="BitCoinsModel.Store.FK_Transfer_TransferType">
             <End Role="TransferType" EntitySet="TransferType" />
             <End Role="Transfer" EntitySet="Transfer" />
@@ -21,6 +26,10 @@
           <AssociationSet Name="FK_Transfer_UserAccount" Association="BitCoinsModel.Store.FK_Transfer_UserAccount">
             <End Role="UserAccount" EntitySet="UserAccount" />
             <End Role="Transfer" EntitySet="Transfer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccount_ImageUpload" Association="BitCoinsModel.Store.FK_UserAccount_ImageUpload">
+            <End Role="ImageUpload" EntitySet="ImageUpload" />
+            <End Role="UserAccount" EntitySet="UserAccount" />
           </AssociationSet>
           <AssociationSet Name="FK_UserAccount_UserRole" Association="BitCoinsModel.Store.FK_UserAccount_UserRole">
             <End Role="UserRole" EntitySet="UserRole" />
@@ -33,7 +42,7 @@
           </Key>
           <Property Name="DocumentID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="DocumentName" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="DocumentBinary" Type="varbinary(max)" Nullable="false" />
+          <Property Name="DocumentFile" Type="varchar(max)" Nullable="false" />
           <Property Name="CreateDate" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="ImageUpload">
@@ -42,8 +51,20 @@
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ImageName" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="ImageBinary" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ImageFile" Type="varchar(max)" Nullable="false" />
           <Property Name="CreateDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PostAuthor" Type="int" />
+          <Property Name="PostDate" Type="date" />
+          <Property Name="PostTittle" Type="text" />
+          <Property Name="PostExcerpt" Type="text" />
+          <Property Name="PostContent" Type="text" />
+          <Property Name="PostStatus" Type="bit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -94,6 +115,7 @@
           <Property Name="Email" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="Phone" Type="varchar" MaxLength="50" />
           <Property Name="Amount" Type="float" />
+          <Property Name="Description" Type="text" />
           <Property Name="ImageProfile" Type="int" />
           <Property Name="FacebookLink" Type="varchar" MaxLength="150" />
           <Property Name="SkypeID" Type="varchar" MaxLength="150" />
@@ -115,6 +137,18 @@
           <Property Name="LevelUser" Type="int" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_Post_UserAccount">
+          <End Role="UserAccount" Type="BitCoinsModel.Store.UserAccount" Multiplicity="0..1" />
+          <End Role="Post" Type="BitCoinsModel.Store.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="PostAuthor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Transfer_TransferType">
           <End Role="TransferType" Type="BitCoinsModel.Store.TransferType" Multiplicity="1" />
           <End Role="Transfer" Type="BitCoinsModel.Store.Transfer" Multiplicity="*" />
@@ -139,6 +173,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserAccount_ImageUpload">
+          <End Role="ImageUpload" Type="BitCoinsModel.Store.ImageUpload" Multiplicity="0..1" />
+          <End Role="UserAccount" Type="BitCoinsModel.Store.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ImageUpload">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="ImageProfile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserAccount_UserRole">
           <End Role="UserRole" Type="BitCoinsModel.Store.UserRole" Multiplicity="1" />
           <End Role="UserAccount" Type="BitCoinsModel.Store.UserAccount" Multiplicity="*" />
@@ -151,18 +197,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-      warning 6013: The table/view 'BitCoins.dbo.Post' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-      
-      <EntityType Name="Post">
-        <Property Name="ID" Type="int" />
-        <Property Name="PostAuthor" Type="int" />
-        <Property Name="PostDate" Type="date" />
-        <Property Name="PostTittle" Type="text" />
-        <Property Name="PostExcerpt" Type="text" />
-        <Property Name="PostContent" Type="text" />
-        <Property Name="PostStatus" Type="bit" />
-      </EntityType>-->
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -188,6 +222,15 @@
             <End Role="UserAccount" EntitySet="UserAccounts" />
           </AssociationSet>
           <EntitySet Name="sysdiagrams" EntityType="BitCoinsModel.sysdiagram" />
+          <AssociationSet Name="FK_UserAccount_ImageUpload" Association="BitCoinsModel.FK_UserAccount_ImageUpload">
+            <End Role="ImageUpload" EntitySet="ImageUploads" />
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+          </AssociationSet>
+          <EntitySet Name="Posts" EntityType="BitCoinsModel.Post" />
+          <AssociationSet Name="FK_Post_UserAccount" Association="BitCoinsModel.FK_Post_UserAccount">
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+            <End Role="Post" EntitySet="Posts" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="UserAccount">
           <Key>
@@ -213,6 +256,9 @@
           <Property Type="String" Name="SkypeID" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Transfers" Relationship="BitCoinsModel.FK_Transfer_UserAccount" FromRole="UserAccount" ToRole="Transfer" />
           <NavigationProperty Name="UserRole" Relationship="BitCoinsModel.FK_UserAccount_UserRole" FromRole="UserAccount" ToRole="UserRole" />
+          <NavigationProperty Name="ImageUpload" Relationship="BitCoinsModel.FK_UserAccount_ImageUpload" FromRole="UserAccount" ToRole="ImageUpload" />
+          <NavigationProperty Name="Posts" Relationship="BitCoinsModel.FK_Post_UserAccount" FromRole="UserAccount" ToRole="Post" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Document">
           <Key>
@@ -220,8 +266,8 @@
           </Key>
           <Property Type="Int32" Name="DocumentID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="DocumentName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Binary" Name="DocumentBinary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="0" />
+          <Property Type="String" Name="DocumentFile" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ImageUpload">
           <Key>
@@ -229,8 +275,9 @@
           </Key>
           <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="ImageName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Binary" Name="ImageBinary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="0" />
+          <Property Type="String" Name="ImageFile" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserAccounts" Relationship="BitCoinsModel.FK_UserAccount_ImageUpload" FromRole="ImageUpload" ToRole="UserAccount" />
         </EntityType>
         <EntityType Name="Transfer">
           <Key>
@@ -319,6 +366,43 @@
           <Property Type="Int32" Name="version" />
           <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <Association Name="FK_UserAccount_ImageUpload">
+          <End Type="BitCoinsModel.ImageUpload" Role="ImageUpload" Multiplicity="0..1" />
+          <End Type="BitCoinsModel.UserAccount" Role="UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ImageUpload">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="ImageProfile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="PostAuthor" />
+          <Property Type="DateTime" Name="PostDate" Precision="0" />
+          <Property Type="String" Name="PostTittle" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PostExcerpt" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PostContent" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="PostStatus" />
+          <NavigationProperty Name="UserAccount" Relationship="BitCoinsModel.FK_Post_UserAccount" FromRole="Post" ToRole="UserAccount" />
+        </EntityType>
+        <Association Name="FK_Post_UserAccount">
+          <End Type="BitCoinsModel.UserAccount" Role="UserAccount" Multiplicity="0..1" />
+          <End Type="BitCoinsModel.Post" Role="Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserAccount">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="PostAuthor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -328,6 +412,7 @@
           <EntitySetMapping Name="UserAccounts">
             <EntityTypeMapping TypeName="BitCoinsModel.UserAccount">
               <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="SkypeID" ColumnName="SkypeID" />
                 <ScalarProperty Name="FacebookLink" ColumnName="FacebookLink" />
                 <ScalarProperty Name="ImageProfile" ColumnName="ImageProfile" />
@@ -352,8 +437,8 @@
           <EntitySetMapping Name="Documents">
             <EntityTypeMapping TypeName="BitCoinsModel.Document">
               <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="DocumentFile" ColumnName="DocumentFile" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="DocumentBinary" ColumnName="DocumentBinary" />
                 <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
                 <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
               </MappingFragment>
@@ -362,8 +447,8 @@
           <EntitySetMapping Name="ImageUploads">
             <EntityTypeMapping TypeName="BitCoinsModel.ImageUpload">
               <MappingFragment StoreEntitySet="ImageUpload">
+                <ScalarProperty Name="ImageFile" ColumnName="ImageFile" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="ImageBinary" ColumnName="ImageBinary" />
                 <ScalarProperty Name="ImageName" ColumnName="ImageName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
@@ -421,6 +506,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="BitCoinsModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="PostStatus" ColumnName="PostStatus" />
+                <ScalarProperty Name="PostContent" ColumnName="PostContent" />
+                <ScalarProperty Name="PostExcerpt" ColumnName="PostExcerpt" />
+                <ScalarProperty Name="PostTittle" ColumnName="PostTittle" />
+                <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+                <ScalarProperty Name="PostAuthor" ColumnName="PostAuthor" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -442,7 +540,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram DiagramId="8bdfe05e7eea4a1aa1bfea3c4aa42a7b" Name="Diagram1" ZoomLevel="80">
+      <Diagram DiagramId="8bdfe05e7eea4a1aa1bfea3c4aa42a7b" Name="Diagram1" ZoomLevel="77">
         <EntityTypeShape EntityType="BitCoinsModel.UserAccount" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BitCoinsModel.Document" Width="1.5" PointX="3" PointY="0.625" />
         <EntityTypeShape EntityType="BitCoinsModel.ImageUpload" Width="1.5" PointX="4.75" PointY="0.625" />
@@ -454,6 +552,9 @@
         <AssociationConnector Association="BitCoinsModel.FK_Transfer_UserAccount" />
         <AssociationConnector Association="BitCoinsModel.FK_UserAccount_UserRole" />
         <EntityTypeShape EntityType="BitCoinsModel.sysdiagram" Width="1.5" PointX="4.2129667067029359" PointY="9.48172574186778" />
+        <AssociationConnector Association="BitCoinsModel.FK_UserAccount_ImageUpload" />
+        <EntityTypeShape EntityType="BitCoinsModel.Post" Width="1.5" PointX="2.2728672857735619" PointY="3.7365856039042518" />
+        <AssociationConnector Association="BitCoinsModel.FK_Post_UserAccount" />
       </Diagram>
     </Diagrams>
   </Designer>

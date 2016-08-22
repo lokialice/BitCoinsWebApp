@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model BitCoinsWebApp.Model.UserProfile
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -143,15 +144,15 @@
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown"><a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#">
-                    <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/varun.jpg")" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b> </a>
+                    <img src="@Url.Content(Model.ImageProfile)" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">@Model.Name</b> </a>
                     <ul class="dropdown-menu dropdown-user animated flipInY">
-                        <li><a href="#"><i class="ti-user"></i>My Profile</a></li>
-                        <li><a href="#"><i class="ti-wallet"></i>My Balance</a></li>
-                        <li><a href="#"><i class="ti-email"></i>Inbox</a></li>
+                        <li><a href="@Url.Action("Profile", "Account")"><i class="ti-user"></i> My Profile</a></li>
+                        <li><a href="@Url.Action("Balance", "Account")"><i class="ti-wallet"></i> My Balance</a></li>
+                        <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#"><i class="ti-settings"></i>Account Setting</a></li>
+                        <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#"><i class="fa fa-power-off"></i>Logout</a></li>
+                        <li><a href="@Url.Action("LogOut","Account")"><i class="fa fa-power-off"></i> Logout</a></li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
@@ -178,14 +179,14 @@
                     <!-- /input-group -->
                 </li>
                 <li class="user-pro"><a href="#" class="waves-effect">
-                    <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/varun.jpg")" alt="user-img" class="img-circle">
-                    <span class="hide-menu">Steve Gection<span class="fa arrow"></span></span></a>
+                    <img src="@Url.Content(Model.ImageProfile)" alt="user-img" class="img-circle">
+                    <span class="hide-menu">@Model.Name<span class="fa arrow"></span></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="javascript:void(0)"><i class="ti-user"></i>My Profile</a></li>
-                        <li><a href="javascript:void(0)"><i class="ti-wallet"></i>My Balance</a></li>
+                        <li><a href="@Url.Action("Profile", "Account")"><i class="ti-user"></i>My Profile</a></li>
+                        <li><a href="@Url.Action("Balance", "Account")"><i class="ti-wallet"></i>My Balance</a></li>
                         <li><a href="javascript:void(0)"><i class="ti-email"></i>Inbox</a></li>
                         <li><a href="javascript:void(0)"><i class="ti-settings"></i>Account Setting</a></li>
-                        <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i>Logout</a></li>
+                        <li><a href="@Url.Action("LogOut","Account")"><i class="fa fa-power-off"></i>Logout</a></li>
                     </ul>
                 </li>
                 <li class="nav-small-cap m-t-10">--- Main Menu</li>
@@ -346,6 +347,7 @@
     <script src="@Url.Content("~/Content/themes/manager/plugins/bower_components/toast-master/js/jquery.toast.js")"></script>
     <!--Style Switcher -->
     <script src="@Url.Content("~/Content/themes/manager/plugins/bower_components/styleswitcher/jQuery.style.switcher.js")"></script>
+    <!--QR JS-->   
+  
 </body>
 </html>
-@RenderSection("Scripts", required: false)

@@ -17,6 +17,12 @@ namespace BitCoinsWebApp.BLL
         /// <returns>User.</returns>
         UserProfile GetUser(int userId);
         /// <summary>
+        /// Gets the name of the user by user.
+        /// </summary>
+        /// <param name="userName">Name of the user.</param>
+        /// <returns>UserProfile.</returns>
+        UserProfile GetUserByUserName(string userName);
+        /// <summary>
         /// Logins the specified user name.
         /// </summary>
         /// <param name="userName">Name of the user.</param>

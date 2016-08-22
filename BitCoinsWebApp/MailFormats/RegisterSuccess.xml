@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MailFormats>
+  <MailFormat Id="Email">
+    <Subject>Register Success - Rotation Coins Professional Team</Subject>
+    <Body>
+      <![CDATA[ 
+
+     <h2>Rotation Coins Professional Team</h2>
+<table width="800" cellspacing="0" cellpadding="0" bgcolor="#ffffff" style="border:1px solid #bbbbbb;font-family:'Lucida Grande',Verdana,Arial,Helvetica,sans-serif">
+	<tr>
+		<td style="padding:20px">
+			<p>Welcome to Rotation Coins</p>
+            
+			<table cellspacing="0" cellpadding="0" style="font-family:'Lucida Grande',Verdana,Arial,Helvetica,sans-serif;border-collapse:collapse">
+        <tr>
+          <td>Username: 0?</td>
+        </tr>
+        <tr>
+          <td>Passowrd: 1?</td>
+        </tr>
+        <tr>
+						<td style="padding:5px 10px 5px">
+                                    <a target="_blank" style="color:#fff;text-decoration:none;font-weight:bold;font-size:13px" href="http://rotationcoins.net">Rotation Coins</a>
+								</td>
+							</tr>
+				<tr>
+					<td style="background-color:#65ab4b">
+						<table cellspacing="0" cellpadding="0" style="font-family:'Lucida Grande',Verdana,Arial,Helvetica,sans-serif;border-collapse:collapse">
+							<tr>
+								<td style="padding:5px 10px 5px">
+                                    <a target="_blank" style="color:#fff;text-decoration:none;font-weight:bold;font-size:13px" href="http://rotationcoins.net">Rotation Coins</a>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+            <p>Thank you,<br>Rotation Coins Professional Team</p>
+		</td>
+	</tr>
+</table>
+
+     ]]>
+    </Body>
+  </MailFormat>
+</MailFormats>

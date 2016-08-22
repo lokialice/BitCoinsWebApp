@@ -9,6 +9,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Web;
 
     public class UserService : IUserService
     {
@@ -45,13 +46,23 @@
 
 
         public bool Create(UserProfile user)
-        {              
-            return _repository.Create(user);
+        {
+            if (_repository.Create(user))
+            {
+                SendEmail sent = new SendEmail();
+                sent.SendMailRegister("Email", user.Email, new String[] { user.UserName ,user.Password});
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+            
         }
 
         public bool Update(UserProfile user)
         {
-            throw new NotImplementedException();
+            return _repository.Update(user);
         }
 
         public bool Delete(UserProfile user)
@@ -68,6 +79,12 @@
         public UserProfile CheckEmailExist(string email)
         {
             return _repository.CheckEmailExist(email);
+        }
+
+
+        public UserProfile GetUserByUserName(string userName)
+        {
+            return _repository.GetUserByUserName(userName);
         }
     }
 }
