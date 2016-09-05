@@ -48,7 +48,7 @@
         [HttpPost]
         public ActionResult Login(UserProfile userAccount)
         {
-            UserProfile user = _userService.Login(userAccount.UserName, userAccount.Password, true);
+            UserProfile user = _userService.Login(userAccount.UserName, userAccount.Password);
             if (user != null)
             {
                 Session["UserLogin"] = user.UserName;
@@ -86,7 +86,8 @@
             {
                 if (!String.IsNullOrEmpty(id))
                 {
-                    userAccount.IDParent = Convert.ToInt32(id);
+                    var userParent = _userService.GetUserByUserName(id);
+                    userAccount.IDParent = userParent.ID;
                     userAccount.Password = "12345678@Ab";
                 }
                 else 
@@ -94,15 +95,9 @@
                     userAccount.IDParent = ConfigurationManagerKey.IDParent;
                     userAccount.Password = "12345678@Ab";
                 }
-                var user = _userService.Create(userAccount);
-                if (user)
-                {
-                    return View("Login");
-                }
-                else
-                {
-                    return View("Index");
-                }
+                var user = _userService.Create(userAccount);              
+                return View("Login");
+                           
             }
             else
             {
@@ -157,18 +152,7 @@
             FormsAuthentication.SignOut();
             Session.Remove("UserLogin");
             return RedirectToAction("Index", "Home");
-        }
-
-        /// <summary>
-        /// Balances this instance.
-        /// </summary>
-        /// <returns>ActionResult.</returns>
-        [SessionExpire]
-        public ActionResult Balance(string id) 
-        {
-            return View("Balance",UserCurrent);
-        }
-
+        }       
         #endregion
 
     }

@@ -8,26 +8,38 @@
     using System.Web.Mvc;
 
     [DataContract]
-    public class Transfer
+    public class Transactions
     {
-        public Transfer() 
+        public Transactions() 
         {
-        
+           
         }
 
         [Required]
         [DataMember]
         public int ID { get; set; }
         [DataMember]
+        public string OrderName { get; set; }
+        [DataMember]
         public int TransferType { get; set; }
         [DataMember]
-        public int UserID { get; set; }
+        public UserProfile FromUser { get; set; }
+        [DataMember]
+        public UserProfile ToUser { get; set; }
+        [DataMember]
+        public List<CurrencyType> CurrencyList { get; set; }
         [DataMember]
         public float Amount { get; set; }
         [DataMember]
         public string Description { get; set; }
         [DataMember]
         public DateTime CreateDate { get; set; }
-    
+        [DataMember]
+        public UserProfile UserCurrent { get; set; }
+        [DataMember]
+        public int CurrencyType { get; set; }
+        [DataMember]
+        public string ConfirmPassword { get; set; }
+       
     }
 }

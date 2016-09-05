@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
+    <link href="@Url.Content("~/Content/Images/favicon.png")" rel="shortcut icon" type="image/x-icon" />
     <title>@ViewBag.Title - A Finance Company</title>
     <!-- Bootstrap Core CSS -->
     <link href="@Url.Content("~/Content/themes/manager/bootstrap/dist/css/bootstrap.min.css")" rel="stylesheet" />
@@ -30,10 +30,7 @@
     <!-- color CSS -->
     <link href="@Url.Content("~/Content/themes/manager/css/colors/blue.css")" id="theme" rel="stylesheet">
 </head>
-<body>
-    <div class="preloader">
-        <div class="cssload-speeding-wheel"></div>
-    </div>
+<body>   
     <section id="wrapper" class="login-register">
         <div class="login-box">
             <div class="white-box">
@@ -57,6 +54,7 @@
                             <div class="checkbox checkbox-primary p-t-0">
                                 <input id="checkbox-signup" type="checkbox">
                                 <label for="checkbox-signup">I agree to all <a href="#">Terms</a></label>
+                                 <span class="help-block" id="checkbox-signupError" style="color: #a94442"></span>
                             </div>
                         </div>
                     </div>

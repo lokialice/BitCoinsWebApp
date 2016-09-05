@@ -12,8 +12,7 @@
 
     public class SendEmail
     {
-        private string FromAddress;
-        private string strToAddress;
+        private string FromAddress;        
         private string strSmtpClient;
         private string UserID;
         private string Password;

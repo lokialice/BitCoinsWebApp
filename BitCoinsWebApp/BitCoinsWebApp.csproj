@@ -172,8 +172,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\FundController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NetworkController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -298,12 +301,10 @@
     <Content Include="Content\themes\manager\js\footable-init.js" />
     <Content Include="Content\themes\manager\js\jasny-bootstrap.js" />
     <Content Include="Content\themes\manager\js\jquery.nicescroll.js" />
-    <Content Include="Content\themes\manager\js\jquery.qrcode.js" />
     <Content Include="Content\themes\manager\js\jquery.slimscroll.js" />
     <Content Include="Content\themes\manager\js\jsgrid-init.js" />
     <Content Include="Content\themes\manager\js\mask.js" />
     <Content Include="Content\themes\manager\js\morris-data.js" />
-    <Content Include="Content\themes\manager\js\qrcode.js" />
     <Content Include="Content\themes\manager\js\toastr.js" />
     <Content Include="Content\themes\manager\js\validator.js" />
     <Content Include="Content\themes\manager\js\waves.js" />
@@ -2917,16 +2918,8 @@
     <Content Include="Content\Images\orderedList8.png" />
     <Content Include="Content\Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
@@ -2935,7 +2928,13 @@
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Error\404.cshtml" />
-    <Content Include="Views\Account\Balance.cshtml" />
+    <Content Include="Views\Fund\Index.cshtml" />
+    <Content Include="Views\Fund\FundsHistory.cshtml" />
+    <Content Include="Views\Shared\_NavigationPartial.cshtml" />
+    <Content Include="Views\Shared\_LeftNavigation.cshtml" />
+    <Content Include="Views\Post\Index.cshtml" />
+    <Content Include="Views\Post\AddPost.cshtml" />
+    <Content Include="Views\Network\NetworkTree.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

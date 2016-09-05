@@ -1,0 +1,71 @@
+﻿@model BitCoinsWebApp.Model.PostNews
+@{
+    ViewBag.Title = "Post";
+    Layout = "~/Views/Shared/_LayoutManager.cshtml";
+}
+
+@Html.Partial("_NavigationPartial", Model.UserPost)
+@Html.Partial("_LeftNavigation", Model.UserPost)
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Post Manage</h4>
+            </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Post Manage</a></li>
+                    <li class="active">Post</li>
+                </ol>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <table id="myTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Post Excerpt</th>
+                                <th>Feature Image</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.GetAllListPostNews)
+                            {
+                                if (item.PostStatus)
+                                {
+                                <tr style="color: red">
+                                    <td>@item.PostTittle</td>
+                                    <td>@item.PostExcerpt</td>
+                                    <td>$@item.FeatureImage</td>                                   
+                                    <td>
+                                        <button type="button" class="btn btn-info btn-circle"><i class="fa fa-check"></i></button>
+                                    </td>
+                                </tr>                                       
+                                }
+                                else
+                                {
+                                <tr style="color: red">
+                                    <td>@item.PostTittle</td>
+                                    <td>@item.PostExcerpt</td>
+                                    <td>$@item.FeatureImage</td>                                    
+                                    <td>
+                                        <button type="button" class="btn btn-warning btn-circle"><i class="fa fa-times"></i></button>
+                                    </td>
+                                </tr>                                 
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

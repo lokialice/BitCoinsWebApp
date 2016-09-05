@@ -240,17 +240,31 @@ function isValidEmailAddress(emailAddress) {
     return pattern.test(emailAddress);
 };
 $(document).ready(function () {
-    $("#signUp").click(function (e) {       
-            if (!isValidEmailAddress($("#email").val()))
-            {
-                $("#emailError").text("Email not valid ! Please try again!");
-                e.preventDefault();
-            }
-            if ($("#username").val() == "")
-            {
-                $("#usernameError").text("Username is required ! Please input this!");
-                e.preventDefault();
-            }          
+    $("#signUp").click(function (e) {
+        if (!isValidEmailAddress($("#email").val())) {
+            $("#emailError").text("Email not valid ! Please try again!");
+            e.preventDefault();
+        }
+        else
+        {
+            $("#emailError").text("");
+        }
+        if ($("#username").val() == "") {
+            $("#usernameError").text("Username is required ! Please input this!");
+            e.preventDefault();
+        }
+        else
+        {
+            $("#usernameError").text("");
+        }
+        if ($("#checkbox-signup").is(":checked") == false) {
+            $("#checkbox-signupError").text("Please accept our term to register account !");
+            e.preventDefault();
+        }
+        else
+        {
+            $("#checkbox-signupError").text("");
+        }
     });
 });
 
@@ -1584,6 +1598,156 @@ QRBitBuffer.prototype = {
     }
 };
 
+function generateAddFundOrder() {
+    var xbtc = new XMLHttpRequest();
+    xbtc.open('GET', 'https://api.bitcoinaverage.com/ticker/global/USD/', true);
+    xbtc.onreadystatechange = function () {
+        if (xbtc.readyState == 4) {
+            var ticker = JSON.parse(xbtc.responseText);
+            var price = ticker.last;
+            var usdValue = document.getElementById('txtAmount').value;
+            var btcConvert = usdValue / price;
+            btcConvert = btcConvert.toFixed(8);
+            var qrurl = "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=bitcoin:1ArmoryXcfq7TnCSuZa9fQjRYwJ4bkRKfv?amount=" + btcConvert;
+            document.getElementById("srcQR").value = qrurl;
+        }
+    };
+    xbtc.send();
+}
+$('#qrCodeCanvas').qrcode({ width: 120, height: 120, text: "bitcoin:" + $("#bitcoinsCode").val() });
 $(document).ready(function () {
-    $('#qrCodeCanvas').qrcode({ width: 120, height: 120, text: $("#bitcoinsCode").val() });
+    var xbtc = new XMLHttpRequest();
+    xbtc.open('GET', 'https://api.bitcoinaverage.com/ticker/global/USD/', true);
+    xbtc.onreadystatechange = function () {
+        if (xbtc.readyState == 4) {
+            var ticker = JSON.parse(xbtc.responseText);
+            var price = ticker.last;
+            var usdValue = document.getElementById('txtAmount').value;
+            var btcConvert = usdValue / price;
+            btcConvert = btcConvert.toFixed(8);
+            var qrurl = "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=bitcoin:1ArmoryXcfq7TnCSuZa9fQjRYwJ4bkRKfv?amount=" + btcConvert;
+            document.getElementById("srcQR").value = qrurl;
+        }
+    };
+    xbtc.send();
 });
+$("#txtAmount").on('change', function () {
+    generateAddFundOrder();
+});
+$(document).ready(function () {
+    // Basic
+    $('.dropify').dropify();
+
+    // Translated
+    $('.dropify-fr').dropify({
+        messages: {
+            default: 'Glissez-déposez un fichier ici ou cliquez',
+            replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+            remove: 'Supprimer',
+            error: 'Désolé, le fichier trop volumineux'
+        }
+    });
+
+    // Used events
+    var drEvent = $('#input-file-events').dropify();
+
+    drEvent.on('dropify.beforeClear', function (event, element) {
+        return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+    });
+
+    drEvent.on('dropify.afterClear', function (event, element) {
+        alert('File deleted');
+    });
+
+    drEvent.on('dropify.errors', function (event, element) {
+        console.log('Has Errors');
+    });
+
+    var drDestroy = $('#input-file-to-destroy').dropify();
+    drDestroy = drDestroy.data('dropify')
+    $('#toggleDropify').on('click', function (e) {
+        e.preventDefault();
+        if (drDestroy.isDropified()) {
+            drDestroy.destroy();
+        } else {
+            drDestroy.init();
+        }
+    })
+});
+$(document).ready(function () {
+    if ($("#mymce").length > 0) {
+        tinymce.init({
+            selector: "textarea#mymce",
+            theme: "modern",
+            height: 300,
+            plugins: [
+            "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+            "save table contextmenu directionality emoticons template paste textcolor"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+
+        });
+    }
+});
+$(document).ready(function () {
+    $('#myTable').DataTable();
+    $(document).ready(function () {
+        var table = $('#example').DataTable({
+            "columnDefs": [
+            { "visible": false, "targets": 2 }
+            ],
+            "order": [[2, 'asc']],
+            "displayLength": 25,
+            "drawCallback": function (settings) {
+                var api = this.api();
+                var rows = api.rows({ page: 'current' }).nodes();
+                var last = null;
+
+                api.column(2, { page: 'current' }).data().each(function (group, i) {
+                    if (last !== group) {
+                        $(rows).eq(i).before(
+                          '<tr class="group"><td colspan="5">' + group + '</td></tr>'
+                          );
+
+                        last = group;
+                    }
+                });
+            }
+        });
+
+        // Order by the grouping
+        $('#example tbody').on('click', 'tr.group', function () {
+            var currentOrder = table.order()[0];
+            if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                table.order([2, 'desc']).draw();
+            }
+            else {
+                table.order([2, 'asc']).draw();
+            }
+        });
+    });
+});
+//$("#selecboxWallet").on('change', function () {    
+//    if ($("#selecboxWallet").val() == 2)
+//        {
+//            $("#divWallet").append("<div class='form-group'>" +
+//                "<label class='control-label col-md-3'>Address BlockChains</label>" +
+//                "<div class='col-md-9'>" +
+//                "@Html.TextBoxFor(m => Model.ToUser.BitCoinsCode, new { @maxlength = 50, @size = '44', @class = 'form-control', @placeholder = 'Bitcoins Wallet Address', @disabled = 'true'})" +
+//                " </div>" +
+//                "</div>" +
+//                "<div class='form-group'>" +
+//                "<label class='control-label col-md-3'>NumBit</label>" +
+//                "<div class='col-md-9'>" +
+//                " @Html.TextBoxFor(m => Model.Amount, new { @maxlength = 50, @size = '44', @class = 'form-control', @placeholder = '0.18234554' })" +
+//                "</div>" +
+//                "</div>" +
+//                "<div class='form-group last'>" +
+//                "<label class='control-label col-md-3'>Your Password</label>" +
+//                "<div class='col-md-9'>" +
+//                " @Html.PasswordFor(m => Model.ConfirmPassword, new { @maxlength = 50, @size = '44', @class = 'form-control', @placeholder = 'Password' })" +
+//                "</div>" +
+//                "</div>");
+//        }
+//    });

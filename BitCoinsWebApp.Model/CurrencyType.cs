@@ -8,20 +8,19 @@
     using System.Web.Mvc;
 
     [DataContract]
-    public class TransferTypes
+    public class CurrencyType
     {
-        public TransferTypes() 
-        {
-        
-        }
+        #region construction
+        public CurrencyType() { }
+        #endregion
 
+        #region member
         [DataMember]
         public int ID { get; set; }
-        [DataMember]
-        public string TransferType { get; set; }
-        [DataMember]
-        public string Description { get; set; }
 
+        [DataMember]
+        public string CurrencyName { get; set; }
 
+        #endregion
     }
 }

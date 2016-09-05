@@ -55,7 +55,11 @@
         public string Description { get; set; }
         [DataMember]
         public int IDParent { get; set; }
-
+        [DataMember]
+        public string Token { get; set; }
+        public List<UserProfile> ListRef { get; set; }
+        [DataMember]
+        public int IDRole { get; set; }
     }
 
 }

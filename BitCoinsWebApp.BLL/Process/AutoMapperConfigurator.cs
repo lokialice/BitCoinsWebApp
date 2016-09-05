@@ -28,8 +28,17 @@
         {
             protected override void Configure()
             {
-                CreateMap<UserAccount, UserProfile>().ForMember(x=> x.ImageProfile,opt => opt.Ignore()).ReverseMap();
-                CreateMap<UserProfile, UserAccount>().ReverseMap();   
+                CreateMap<UserAccount, UserProfile>().ForMember(x=> x.ImageProfile,opt => opt.Ignore()).ForMember(x=> x.ListRef,opt => opt.Ignore()).ReverseMap();
+                CreateMap<UserProfile, UserAccount>().ReverseMap();
+                CreateMap<Currency, CurrencyType>().ReverseMap();
+                CreateMap<CurrencyType, Currency>().ReverseMap();
+                CreateMap<Transfer, Transactions>().ForMember(x => x.FromUser, opt => opt.Ignore()).ForMember(x => x.ToUser, opt => opt.Ignore()).ForMember(x => x.UserCurrent, opt => opt.Ignore()).ForMember(x => x.CurrencyList, opt => opt.Ignore()).ForMember(x => x.ConfirmPassword, opt => opt.Ignore()).ReverseMap();
+
+                CreateMap<Transactions, Transfer>().ReverseMap();
+                CreateMap<Post, PostNews>().ForMember(x => x.GetAllListPostNews, opt => opt.Ignore()).ForMember(x => x.UserPost, opt => opt.Ignore()).ReverseMap();
+
+                CreateMap<PostNews, Post>().ReverseMap();
+                
                     
             }
         }

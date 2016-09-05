@@ -1,6 +1,5 @@
 ﻿namespace BitCoinsWebApp.DAL.Repositories
-{
-    using BitCoinsWebApp.DAL.Entites;
+{   
     using BitCoinsWebApp.Model;
     using System;
     using System.Collections.Generic;
@@ -29,7 +28,7 @@
         /// <param name="password">The password.</param>
         /// <param name="isActive">if set to <c>true</c> [is active].</param>
         /// <returns>User.</returns>
-        UserProfile Login(string userName, string password, bool isActive);
+        UserProfile Login(string userName, string password);
         /// <summary>
         /// Creates the specified user.
         /// </summary>
@@ -61,6 +60,9 @@
         /// <param name="email">The email.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         UserProfile CheckEmailExist(string email);
+        int GetTotalRefID(UserProfile user);
+        float GetAccountBalance(UserProfile user);
+        List<UserProfile> GetRefByUsername(string username);        
 
     }
 }

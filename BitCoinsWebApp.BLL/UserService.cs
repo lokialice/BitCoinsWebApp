@@ -38,19 +38,19 @@
         /// <param name="password">The password.</param>
         /// <param name="isActive">if set to <c>true</c> [is active].</param>
         /// <returns>User.</returns>
-        public UserProfile Login(string userName, string password, bool isActive)
+        public UserProfile Login(string userName, string password)
         {
             password = SHA1.Encode(password);
-            return _repository.Login(userName, password, isActive);
+            return _repository.Login(userName, password);
         }
-
 
         public bool Create(UserProfile user)
         {
+            user.Token = SHA1.RandomString(20);
             if (_repository.Create(user))
             {
                 SendEmail sent = new SendEmail();
-                sent.SendMailRegister("Email", user.Email, new String[] { user.UserName ,user.Password});
+                sent.SendMailRegister("Email", user.Email, new String[] { user.UserName ,user.Password,user.Token});
                 return true;
             }
             else 
@@ -70,7 +70,6 @@
             throw new NotImplementedException();
         }
 
-
         public UserProfile CheckUserName(string username)
         {
             return _repository.CheckUserName(username);
@@ -81,10 +80,24 @@
             return _repository.CheckEmailExist(email);
         }
 
-
         public UserProfile GetUserByUserName(string userName)
         {
             return _repository.GetUserByUserName(userName);
+        }
+
+        public int GetTotalRefID(UserProfile user)
+        {
+            return _repository.GetTotalRefID(user);
+        }
+
+        public float GetAccountBalance(UserProfile user)
+        {
+            return _repository.GetAccountBalance(user);
+        }
+
+        public List<UserProfile> GetRefByUsername(string username)
+        {
+            return _repository.GetRefByUsername(username);
         }
     }
 }

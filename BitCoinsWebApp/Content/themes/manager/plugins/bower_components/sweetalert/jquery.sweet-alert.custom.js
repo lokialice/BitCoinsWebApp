@@ -1,4 +1,19 @@
-
+function generateAddFundOrder() {    
+    var xbtc = new XMLHttpRequest();
+    xbtc.open('GET', 'https://api.bitcoinaverage.com/ticker/global/USD/', true);
+    xbtc.onreadystatechange = function () {
+        if (xbtc.readyState == 4) {
+            var ticker = JSON.parse(xbtc.responseText);
+            var price = ticker.last;
+            var usdValue = document.getElementById('txtAmount').value;
+            var btcConvert = usdValue / price;
+            btcConvert = btcConvert.toFixed(8);
+            var qrurl = "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=bitcoin:1ArmoryXcfq7TnCSuZa9fQjRYwJ4bkRKfv?amount=" + btcConvert;
+            document.getElementById("srcQR").value = qrurl;
+        }
+    };
+    xbtc.send();    
+}
 !function($) {
     "use strict";
 
@@ -18,10 +33,16 @@
     });
 
     //Success Message
-    $('#sa-success').click(function(){
-        swal("Good job!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.", "success")
-    });
-
+    $('#btnGenerateQR').click(function () {
+        generateAddFundOrder();
+        var src = $("#srcQR").val();
+        swal({   
+            title: "Good Job!",               
+            text: "Please scan it on Blockchain to send your amount!",           
+            imageUrl: src,
+            html:true
+        });
+    });    
     //Warning Message
     $('#sa-warning').click(function(){
         swal({   

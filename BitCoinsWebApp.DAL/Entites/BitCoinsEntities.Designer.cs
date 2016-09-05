@@ -19,11 +19,14 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("BitCoinsModel", "FK_Transfer_TransferType", "TransferType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BitCoinsWebApp.DAL.Entites.TransferType), "Transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BitCoinsWebApp.DAL.Entites.Transfer), true)]
-[assembly: EdmRelationshipAttribute("BitCoinsModel", "FK_Transfer_UserAccount", "UserAccount", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BitCoinsWebApp.DAL.Entites.UserAccount), "Transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BitCoinsWebApp.DAL.Entites.Transfer), true)]
 [assembly: EdmRelationshipAttribute("BitCoinsModel", "FK_UserAccount_UserRole", "UserRole", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BitCoinsWebApp.DAL.Entites.UserRole), "UserAccount", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BitCoinsWebApp.DAL.Entites.UserAccount), true)]
 [assembly: EdmRelationshipAttribute("BitCoinsModel", "FK_UserAccount_ImageUpload", "ImageUpload", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(BitCoinsWebApp.DAL.Entites.ImageUpload), "UserAccount", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BitCoinsWebApp.DAL.Entites.UserAccount), true)]
-[assembly: EdmRelationshipAttribute("BitCoinsModel", "FK_Post_UserAccount", "UserAccount", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(BitCoinsWebApp.DAL.Entites.UserAccount), "Post", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BitCoinsWebApp.DAL.Entites.Post), true)]
+[assembly: EdmRelationshipAttribute("BitCoinsModel", "FK_Post_UserAccount", "UserAccount", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BitCoinsWebApp.DAL.Entites.UserAccount), "Post", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BitCoinsWebApp.DAL.Entites.Post), true)]
+[assembly: EdmRelationshipAttribute("BitCoinsModel", "FK_Transfer_Currency", "Currency", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BitCoinsWebApp.DAL.Entites.Currency), "Transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BitCoinsWebApp.DAL.Entites.Transfer), true)]
+[assembly: EdmRelationshipAttribute("BitCoinsModel", "FK_Transfer_TransferType", "TransferType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BitCoinsWebApp.DAL.Entites.TransferType), "Transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BitCoinsWebApp.DAL.Entites.Transfer), true)]
+[assembly: EdmRelationshipAttribute("BitCoinsModel", "FK_Transfer_UserAccount", "UserAccount", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BitCoinsWebApp.DAL.Entites.UserAccount), "Transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BitCoinsWebApp.DAL.Entites.Transfer), true)]
+[assembly: EdmRelationshipAttribute("BitCoinsModel", "FK_TransferHistory_Transfer", "Transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BitCoinsWebApp.DAL.Entites.Transfer), "TransferHistory", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BitCoinsWebApp.DAL.Entites.TransferHistory), true)]
+[assembly: EdmRelationshipAttribute("BitCoinsModel", "FK_TransferHistory_TransferType", "TransferType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(BitCoinsWebApp.DAL.Entites.TransferType), "TransferHistory", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(BitCoinsWebApp.DAL.Entites.TransferHistory), true)]
 
 #endregion
 
@@ -126,22 +129,6 @@ namespace BitCoinsWebApp.DAL.Entites
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Transfer> Transfers
-        {
-            get
-            {
-                if ((_Transfers == null))
-                {
-                    _Transfers = base.CreateObjectSet<Transfer>("Transfers");
-                }
-                return _Transfers;
-            }
-        }
-        private ObjectSet<Transfer> _Transfers;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<TransferHistory> TransferHistories
         {
             get
@@ -154,22 +141,6 @@ namespace BitCoinsWebApp.DAL.Entites
             }
         }
         private ObjectSet<TransferHistory> _TransferHistories;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<TransferType> TransferTypes
-        {
-            get
-            {
-                if ((_TransferTypes == null))
-                {
-                    _TransferTypes = base.CreateObjectSet<TransferType>("TransferTypes");
-                }
-                return _TransferTypes;
-            }
-        }
-        private ObjectSet<TransferType> _TransferTypes;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -218,6 +189,54 @@ namespace BitCoinsWebApp.DAL.Entites
             }
         }
         private ObjectSet<Post> _Posts;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Currency> Currencies
+        {
+            get
+            {
+                if ((_Currencies == null))
+                {
+                    _Currencies = base.CreateObjectSet<Currency>("Currencies");
+                }
+                return _Currencies;
+            }
+        }
+        private ObjectSet<Currency> _Currencies;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Transfer> Transfers
+        {
+            get
+            {
+                if ((_Transfers == null))
+                {
+                    _Transfers = base.CreateObjectSet<Transfer>("Transfers");
+                }
+                return _Transfers;
+            }
+        }
+        private ObjectSet<Transfer> _Transfers;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<TransferType> TransferTypes
+        {
+            get
+            {
+                if ((_TransferTypes == null))
+                {
+                    _TransferTypes = base.CreateObjectSet<TransferType>("TransferTypes");
+                }
+                return _TransferTypes;
+            }
+        }
+        private ObjectSet<TransferType> _TransferTypes;
 
         #endregion
 
@@ -248,27 +267,11 @@ namespace BitCoinsWebApp.DAL.Entites
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Transfers EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToTransfers(Transfer transfer)
-        {
-            base.AddObject("Transfers", transfer);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the TransferHistories EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToTransferHistories(TransferHistory transferHistory)
         {
             base.AddObject("TransferHistories", transferHistory);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the TransferTypes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToTransferTypes(TransferType transferType)
-        {
-            base.AddObject("TransferTypes", transferType);
         }
     
         /// <summary>
@@ -294,6 +297,30 @@ namespace BitCoinsWebApp.DAL.Entites
         {
             base.AddObject("Posts", post);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Currencies EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCurrencies(Currency currency)
+        {
+            base.AddObject("Currencies", currency);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Transfers EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTransfers(Transfer transfer)
+        {
+            base.AddObject("Transfers", transfer);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the TransferTypes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTransferTypes(TransferType transferType)
+        {
+            base.AddObject("TransferTypes", transferType);
+        }
 
         #endregion
 
@@ -302,6 +329,114 @@ namespace BitCoinsWebApp.DAL.Entites
     #endregion
 
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BitCoinsModel", Name="Currency")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Currency : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Currency object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="currencyName">Initial value of the CurrencyName property.</param>
+        public static Currency CreateCurrency(global::System.Int32 id, global::System.String currencyName)
+        {
+            Currency currency = new Currency();
+            currency.ID = id;
+            currency.CurrencyName = currencyName;
+            return currency;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value, "ID");
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String CurrencyName
+        {
+            get
+            {
+                return _CurrencyName;
+            }
+            set
+            {
+                OnCurrencyNameChanging(value);
+                ReportPropertyChanging("CurrencyName");
+                _CurrencyName = StructuralObject.SetValidValue(value, false, "CurrencyName");
+                ReportPropertyChanged("CurrencyName");
+                OnCurrencyNameChanged();
+            }
+        }
+        private global::System.String _CurrencyName;
+        partial void OnCurrencyNameChanging(global::System.String value);
+        partial void OnCurrencyNameChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BitCoinsModel", "FK_Transfer_Currency", "Transfer")]
+        public EntityCollection<Transfer> Transfers
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Transfer>("BitCoinsModel.FK_Transfer_Currency", "Transfer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Transfer>("BitCoinsModel.FK_Transfer_Currency", "Transfer", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -611,10 +746,18 @@ namespace BitCoinsWebApp.DAL.Entites
         /// Create a new Post object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
-        public static Post CreatePost(global::System.Int32 id)
+        /// <param name="postAuthor">Initial value of the PostAuthor property.</param>
+        /// <param name="postDate">Initial value of the PostDate property.</param>
+        /// <param name="postTittle">Initial value of the PostTittle property.</param>
+        /// <param name="postContent">Initial value of the PostContent property.</param>
+        public static Post CreatePost(global::System.Int32 id, global::System.Int32 postAuthor, global::System.DateTime postDate, global::System.String postTittle, global::System.String postContent)
         {
             Post post = new Post();
             post.ID = id;
+            post.PostAuthor = postAuthor;
+            post.PostDate = postDate;
+            post.PostTittle = postTittle;
+            post.PostContent = postContent;
             return post;
         }
 
@@ -652,9 +795,9 @@ namespace BitCoinsWebApp.DAL.Entites
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> PostAuthor
+        public global::System.Int32 PostAuthor
         {
             get
             {
@@ -669,16 +812,16 @@ namespace BitCoinsWebApp.DAL.Entites
                 OnPostAuthorChanged();
             }
         }
-        private Nullable<global::System.Int32> _PostAuthor;
-        partial void OnPostAuthorChanging(Nullable<global::System.Int32> value);
+        private global::System.Int32 _PostAuthor;
+        partial void OnPostAuthorChanging(global::System.Int32 value);
         partial void OnPostAuthorChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> PostDate
+        public global::System.DateTime PostDate
         {
             get
             {
@@ -693,14 +836,14 @@ namespace BitCoinsWebApp.DAL.Entites
                 OnPostDateChanged();
             }
         }
-        private Nullable<global::System.DateTime> _PostDate;
-        partial void OnPostDateChanging(Nullable<global::System.DateTime> value);
+        private global::System.DateTime _PostDate;
+        partial void OnPostDateChanging(global::System.DateTime value);
         partial void OnPostDateChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String PostTittle
         {
@@ -712,7 +855,7 @@ namespace BitCoinsWebApp.DAL.Entites
             {
                 OnPostTittleChanging(value);
                 ReportPropertyChanging("PostTittle");
-                _PostTittle = StructuralObject.SetValidValue(value, true, "PostTittle");
+                _PostTittle = StructuralObject.SetValidValue(value, false, "PostTittle");
                 ReportPropertyChanged("PostTittle");
                 OnPostTittleChanged();
             }
@@ -748,7 +891,7 @@ namespace BitCoinsWebApp.DAL.Entites
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String PostContent
         {
@@ -760,7 +903,7 @@ namespace BitCoinsWebApp.DAL.Entites
             {
                 OnPostContentChanging(value);
                 ReportPropertyChanging("PostContent");
-                _PostContent = StructuralObject.SetValidValue(value, true, "PostContent");
+                _PostContent = StructuralObject.SetValidValue(value, false, "PostContent");
                 ReportPropertyChanged("PostContent");
                 OnPostContentChanged();
             }
@@ -792,6 +935,30 @@ namespace BitCoinsWebApp.DAL.Entites
         private Nullable<global::System.Boolean> _PostStatus;
         partial void OnPostStatusChanging(Nullable<global::System.Boolean> value);
         partial void OnPostStatusChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FeatureImage
+        {
+            get
+            {
+                return _FeatureImage;
+            }
+            set
+            {
+                OnFeatureImageChanging(value);
+                ReportPropertyChanging("FeatureImage");
+                _FeatureImage = StructuralObject.SetValidValue(value, true, "FeatureImage");
+                ReportPropertyChanged("FeatureImage");
+                OnFeatureImageChanged();
+            }
+        }
+        private global::System.String _FeatureImage;
+        partial void OnFeatureImageChanging(global::System.String value);
+        partial void OnFeatureImageChanged();
 
         #endregion
 
@@ -1009,19 +1176,25 @@ namespace BitCoinsWebApp.DAL.Entites
         /// Create a new Transfer object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="orderName">Initial value of the OrderName property.</param>
         /// <param name="transferType">Initial value of the TransferType property.</param>
-        /// <param name="userID">Initial value of the UserID property.</param>
+        /// <param name="fromUserID">Initial value of the FromUserID property.</param>
+        /// <param name="toUserID">Initial value of the ToUserID property.</param>
         /// <param name="amount">Initial value of the Amount property.</param>
         /// <param name="description">Initial value of the Description property.</param>
+        /// <param name="currencyType">Initial value of the CurrencyType property.</param>
         /// <param name="createDate">Initial value of the CreateDate property.</param>
-        public static Transfer CreateTransfer(global::System.Int32 id, global::System.Int32 transferType, global::System.Int32 userID, global::System.Double amount, global::System.String description, global::System.DateTime createDate)
+        public static Transfer CreateTransfer(global::System.Int32 id, global::System.String orderName, global::System.Int32 transferType, global::System.Int32 fromUserID, global::System.Int32 toUserID, global::System.Double amount, global::System.String description, global::System.Int32 currencyType, global::System.DateTime createDate)
         {
             Transfer transfer = new Transfer();
             transfer.ID = id;
+            transfer.OrderName = orderName;
             transfer.TransferType = transferType;
-            transfer.UserID = userID;
+            transfer.FromUserID = fromUserID;
+            transfer.ToUserID = toUserID;
             transfer.Amount = amount;
             transfer.Description = description;
+            transfer.CurrencyType = currencyType;
             transfer.CreateDate = createDate;
             return transfer;
         }
@@ -1062,6 +1235,30 @@ namespace BitCoinsWebApp.DAL.Entites
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
+        public global::System.String OrderName
+        {
+            get
+            {
+                return _OrderName;
+            }
+            set
+            {
+                OnOrderNameChanging(value);
+                ReportPropertyChanging("OrderName");
+                _OrderName = StructuralObject.SetValidValue(value, false, "OrderName");
+                ReportPropertyChanged("OrderName");
+                OnOrderNameChanged();
+            }
+        }
+        private global::System.String _OrderName;
+        partial void OnOrderNameChanging(global::System.String value);
+        partial void OnOrderNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
         public global::System.Int32 TransferType
         {
             get
@@ -1086,24 +1283,48 @@ namespace BitCoinsWebApp.DAL.Entites
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 UserID
+        public global::System.Int32 FromUserID
         {
             get
             {
-                return _UserID;
+                return _FromUserID;
             }
             set
             {
-                OnUserIDChanging(value);
-                ReportPropertyChanging("UserID");
-                _UserID = StructuralObject.SetValidValue(value, "UserID");
-                ReportPropertyChanged("UserID");
-                OnUserIDChanged();
+                OnFromUserIDChanging(value);
+                ReportPropertyChanging("FromUserID");
+                _FromUserID = StructuralObject.SetValidValue(value, "FromUserID");
+                ReportPropertyChanged("FromUserID");
+                OnFromUserIDChanged();
             }
         }
-        private global::System.Int32 _UserID;
-        partial void OnUserIDChanging(global::System.Int32 value);
-        partial void OnUserIDChanged();
+        private global::System.Int32 _FromUserID;
+        partial void OnFromUserIDChanging(global::System.Int32 value);
+        partial void OnFromUserIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ToUserID
+        {
+            get
+            {
+                return _ToUserID;
+            }
+            set
+            {
+                OnToUserIDChanging(value);
+                ReportPropertyChanging("ToUserID");
+                _ToUserID = StructuralObject.SetValidValue(value, "ToUserID");
+                ReportPropertyChanged("ToUserID");
+                OnToUserIDChanged();
+            }
+        }
+        private global::System.Int32 _ToUserID;
+        partial void OnToUserIDChanging(global::System.Int32 value);
+        partial void OnToUserIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1158,6 +1379,30 @@ namespace BitCoinsWebApp.DAL.Entites
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
+        public global::System.Int32 CurrencyType
+        {
+            get
+            {
+                return _CurrencyType;
+            }
+            set
+            {
+                OnCurrencyTypeChanging(value);
+                ReportPropertyChanging("CurrencyType");
+                _CurrencyType = StructuralObject.SetValidValue(value, "CurrencyType");
+                ReportPropertyChanged("CurrencyType");
+                OnCurrencyTypeChanged();
+            }
+        }
+        private global::System.Int32 _CurrencyType;
+        partial void OnCurrencyTypeChanging(global::System.Int32 value);
+        partial void OnCurrencyTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
         public global::System.DateTime CreateDate
         {
             get
@@ -1180,6 +1425,44 @@ namespace BitCoinsWebApp.DAL.Entites
         #endregion
 
         #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BitCoinsModel", "FK_Transfer_Currency", "Currency")]
+        public Currency Currency
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Currency>("BitCoinsModel.FK_Transfer_Currency", "Currency").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Currency>("BitCoinsModel.FK_Transfer_Currency", "Currency").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Currency> CurrencyReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Currency>("BitCoinsModel.FK_Transfer_Currency", "Currency");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Currency>("BitCoinsModel.FK_Transfer_Currency", "Currency", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1256,6 +1539,28 @@ namespace BitCoinsWebApp.DAL.Entites
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BitCoinsModel", "FK_TransferHistory_Transfer", "TransferHistory")]
+        public EntityCollection<TransferHistory> TransferHistories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TransferHistory>("BitCoinsModel.FK_TransferHistory_Transfer", "TransferHistory");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TransferHistory>("BitCoinsModel.FK_TransferHistory_Transfer", "TransferHistory", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -1275,10 +1580,18 @@ namespace BitCoinsWebApp.DAL.Entites
         /// Create a new TransferHistory object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
-        public static TransferHistory CreateTransferHistory(global::System.Int32 id)
+        /// <param name="transferName">Initial value of the TransferName property.</param>
+        /// <param name="transferType">Initial value of the TransferType property.</param>
+        /// <param name="amout">Initial value of the Amout property.</param>
+        /// <param name="transferID">Initial value of the TransferID property.</param>
+        public static TransferHistory CreateTransferHistory(global::System.Int32 id, global::System.String transferName, global::System.Int32 transferType, global::System.Double amout, global::System.Int32 transferID)
         {
             TransferHistory transferHistory = new TransferHistory();
             transferHistory.ID = id;
+            transferHistory.TransferName = transferName;
+            transferHistory.TransferType = transferType;
+            transferHistory.Amout = amout;
+            transferHistory.TransferID = transferID;
             return transferHistory;
         }
 
@@ -1316,7 +1629,7 @@ namespace BitCoinsWebApp.DAL.Entites
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String TransferName
         {
@@ -1328,7 +1641,7 @@ namespace BitCoinsWebApp.DAL.Entites
             {
                 OnTransferNameChanging(value);
                 ReportPropertyChanging("TransferName");
-                _TransferName = StructuralObject.SetValidValue(value, true, "TransferName");
+                _TransferName = StructuralObject.SetValidValue(value, false, "TransferName");
                 ReportPropertyChanged("TransferName");
                 OnTransferNameChanged();
             }
@@ -1340,9 +1653,9 @@ namespace BitCoinsWebApp.DAL.Entites
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> TransferType
+        public global::System.Int32 TransferType
         {
             get
             {
@@ -1357,16 +1670,16 @@ namespace BitCoinsWebApp.DAL.Entites
                 OnTransferTypeChanged();
             }
         }
-        private Nullable<global::System.Int32> _TransferType;
-        partial void OnTransferTypeChanging(Nullable<global::System.Int32> value);
+        private global::System.Int32 _TransferType;
+        partial void OnTransferTypeChanging(global::System.Int32 value);
         partial void OnTransferTypeChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Double> Amout
+        public global::System.Double Amout
         {
             get
             {
@@ -1381,8 +1694,8 @@ namespace BitCoinsWebApp.DAL.Entites
                 OnAmoutChanged();
             }
         }
-        private Nullable<global::System.Double> _Amout;
-        partial void OnAmoutChanging(Nullable<global::System.Double> value);
+        private global::System.Double _Amout;
+        partial void OnAmoutChanging(global::System.Double value);
         partial void OnAmoutChanged();
     
         /// <summary>
@@ -1408,6 +1721,110 @@ namespace BitCoinsWebApp.DAL.Entites
         private Nullable<global::System.DateTime> _CreatDate;
         partial void OnCreatDateChanging(Nullable<global::System.DateTime> value);
         partial void OnCreatDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TransferID
+        {
+            get
+            {
+                return _TransferID;
+            }
+            set
+            {
+                OnTransferIDChanging(value);
+                ReportPropertyChanging("TransferID");
+                _TransferID = StructuralObject.SetValidValue(value, "TransferID");
+                ReportPropertyChanged("TransferID");
+                OnTransferIDChanged();
+            }
+        }
+        private global::System.Int32 _TransferID;
+        partial void OnTransferIDChanging(global::System.Int32 value);
+        partial void OnTransferIDChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BitCoinsModel", "FK_TransferHistory_Transfer", "Transfer")]
+        public Transfer Transfer
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Transfer>("BitCoinsModel.FK_TransferHistory_Transfer", "Transfer").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Transfer>("BitCoinsModel.FK_TransferHistory_Transfer", "Transfer").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Transfer> TransferReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Transfer>("BitCoinsModel.FK_TransferHistory_Transfer", "Transfer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Transfer>("BitCoinsModel.FK_TransferHistory_Transfer", "Transfer", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BitCoinsModel", "FK_TransferHistory_TransferType", "TransferType")]
+        public TransferType TransferType1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TransferType>("BitCoinsModel.FK_TransferHistory_TransferType", "TransferType").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TransferType>("BitCoinsModel.FK_TransferHistory_TransferType", "TransferType").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TransferType> TransferType1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TransferType>("BitCoinsModel.FK_TransferHistory_TransferType", "TransferType");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TransferType>("BitCoinsModel.FK_TransferHistory_TransferType", "TransferType", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -1428,7 +1845,7 @@ namespace BitCoinsWebApp.DAL.Entites
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="transferType1">Initial value of the TransferType1 property.</param>
-        public static TransferType CreateTransferType(global::System.Int32 id, global::System.Int32 transferType1)
+        public static TransferType CreateTransferType(global::System.Int32 id, global::System.String transferType1)
         {
             TransferType transferType = new TransferType();
             transferType.ID = id;
@@ -1472,7 +1889,7 @@ namespace BitCoinsWebApp.DAL.Entites
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 TransferType1
+        public global::System.String TransferType1
         {
             get
             {
@@ -1482,13 +1899,13 @@ namespace BitCoinsWebApp.DAL.Entites
             {
                 OnTransferType1Changing(value);
                 ReportPropertyChanging("TransferType1");
-                _TransferType1 = StructuralObject.SetValidValue(value, "TransferType1");
+                _TransferType1 = StructuralObject.SetValidValue(value, false, "TransferType1");
                 ReportPropertyChanged("TransferType1");
                 OnTransferType1Changed();
             }
         }
-        private global::System.Int32 _TransferType1;
-        partial void OnTransferType1Changing(global::System.Int32 value);
+        private global::System.String _TransferType1;
+        partial void OnTransferType1Changing(global::System.String value);
         partial void OnTransferType1Changed();
     
         /// <summary>
@@ -1537,6 +1954,28 @@ namespace BitCoinsWebApp.DAL.Entites
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Transfer>("BitCoinsModel.FK_Transfer_TransferType", "Transfer", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BitCoinsModel", "FK_TransferHistory_TransferType", "TransferHistory")]
+        public EntityCollection<TransferHistory> TransferHistories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TransferHistory>("BitCoinsModel.FK_TransferHistory_TransferType", "TransferHistory");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TransferHistory>("BitCoinsModel.FK_TransferHistory_TransferType", "TransferHistory", value);
                 }
             }
         }
@@ -2038,32 +2477,34 @@ namespace BitCoinsWebApp.DAL.Entites
         private global::System.String _Description;
         partial void OnDescriptionChanging(global::System.String value);
         partial void OnDescriptionChanged();
-
-        #endregion
-
-        #region Navigation Properties
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("BitCoinsModel", "FK_Transfer_UserAccount", "Transfer")]
-        public EntityCollection<Transfer> Transfers
+        public global::System.String Token
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Transfer>("BitCoinsModel.FK_Transfer_UserAccount", "Transfer");
+                return _Token;
             }
             set
             {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Transfer>("BitCoinsModel.FK_Transfer_UserAccount", "Transfer", value);
-                }
+                OnTokenChanging(value);
+                ReportPropertyChanging("Token");
+                _Token = StructuralObject.SetValidValue(value, true, "Token");
+                ReportPropertyChanged("Token");
+                OnTokenChanged();
             }
         }
+        private global::System.String _Token;
+        partial void OnTokenChanging(global::System.String value);
+        partial void OnTokenChanged();
+
+        #endregion
+
+        #region Navigation Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2159,6 +2600,28 @@ namespace BitCoinsWebApp.DAL.Entites
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Post>("BitCoinsModel.FK_Post_UserAccount", "Post", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BitCoinsModel", "FK_Transfer_UserAccount", "Transfer")]
+        public EntityCollection<Transfer> Transfers
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Transfer>("BitCoinsModel.FK_Transfer_UserAccount", "Transfer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Transfer>("BitCoinsModel.FK_Transfer_UserAccount", "Transfer", value);
                 }
             }
         }

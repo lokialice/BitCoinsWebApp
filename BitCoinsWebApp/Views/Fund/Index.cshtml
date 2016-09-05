@@ -1,0 +1,83 @@
+﻿@model BitCoinsWebApp.Model.Transactions
+@{
+    ViewBag.Title = "Add Fund";
+    Layout = "~/Views/Shared/_LayoutManager.cshtml";    
+}
+@Html.Partial("_NavigationPartial", Model.FromUser)
+@Html.Partial("_LeftNavigation", Model.FromUser)
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Add Fund</h4>
+            </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Fund</a></li>
+                    <li class="active">Add Funds</li>
+                </ol>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Select Your Payment Method</div>
+                    <div class="panel-wrapper collapse in" aria-expanded="true">
+                        <div class="panel-body">
+                            @using (Html.BeginForm("AddFunds", "Fund", FormMethod.Post, new { @id = "fundForm", @class = "form-horizontal form-bordered" }))
+                            {                    
+                                <div class="form-body" id="divWallet">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Wallet</label>
+                                        <div class="col-md-9">
+                                            @Html.DropDownListFor(m => Model.CurrencyType, new SelectList(Model.CurrencyList,
+                                            "ID", "CurrencyName"),
+                                            new { @class = "form-control", @id = "selecboxWallet"})
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Address BlockChains</label>
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(m => Model.ToUser.BitCoinsCode, new { @maxlength = 50, @size = "44", @class = "form-control", @placeholder = "Bitcoins Wallet Address", @disabled = "true" })
+                                            <span class="help-block" style="color: #a94442">@ViewBag.CheckFundInMonth</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">USD</label>
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(m => Model.Amount, new { @maxlength = 50, @size = "44", @class = "form-control", @placeholder = "$105",@id = "txtAmount" })
+                                             <span class="help-block" style="color: #a94442">@ViewBag.AmountError</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group last">
+                                        <label class="control-label col-md-3">Your Password</label>
+                                        <div class="col-md-9">
+                                            @Html.PasswordFor(m => Model.ConfirmPassword, new { @maxlength = 50, @size = "44", @class = "form-control", @placeholder = "Password" })
+                                            <span class="help-block" style="color: #a94442">@ViewBag.PasswordError</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-offset-3 col-md-9">
+                                                    <input type="hidden" id="srcQR" />
+                                                    <button type="submit" class="btn btn-success" id="btnSubmitAddFunds"><i class="fa fa-check"></i>Submit</button>
+                                                    <button type="button" class="btn btn-default" id="btnGenerateQR" onclick="return">Generate QR</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+﻿@model BitCoinsWebApp.Model.PostNews
+@{
+    ViewBag.Title = "Add Post";
+    Layout = "~/Views/Shared/_LayoutManager.cshtml";
+}
+
+@Html.Partial("_NavigationPartial", Model.UserPost)
+@Html.Partial("_LeftNavigation", Model.UserPost)
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Post</h4>
+            </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Post</a></li>
+                    <li class="active">Add Post</li>
+                </ol>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Post Article
+                    </div>
+                    <div class="panel-wrapper collapse in" aria-expanded="true">
+                        <div class="panel-body">
+                            @using (Html.BeginForm("AddFunds", "Fund", FormMethod.Post, new { @id = "postArticleForm", @class = "form-horizontal form-bordered" }))
+                            {                    
+                                <div class="form-body" id="divWallet">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Post Title</label>
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(m => Model.PostTitle, new { @maxlength = 50, @size = "44", @class = "form-control", @placeholder = "Title" })
+                                            <span class="help-block" style="color: #a94442"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Description</label>
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(m => Model.PostExcerpt, new { @maxlength = 50, @size = "44", @class = "form-control", @placeholder = "Description" })
+                                            <span class="help-block" style="color: #a94442"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Post Content</label>
+                                        <div class="col-md-9">
+                                            <textarea id="mymce" name="area"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group last">
+                                        <label class="control-label col-md-3">Feature Image</label>
+                                        <div class="col-md-9">
+                                            <input type="file" id="input-file-now" class="dropify" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-offset-3 col-md-9">
+                                                    <input type="hidden" id="srcQR" />
+                                                    <button type="submit" class="btn btn-success"><i class="fa fa-check"></i>Submit</button>
+                                                    <button type="button" class="btn btn-default">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

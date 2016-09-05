@@ -21,9 +21,12 @@
         #region method
         [HttpGet]
         public ActionResult Index()
-        {          
-            return View(UserCurrent);
+        {
+            ViewBag.AccountBalance = "$" + ManageModel.AccountBalance;
+            ViewBag.ProInterestWallet = "$" + ManageModel.ProInterestWallet;
+            return View(ManageModel);
         }
+
         #endregion
 
 

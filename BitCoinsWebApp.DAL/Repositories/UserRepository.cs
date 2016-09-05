@@ -56,19 +56,19 @@
 
         }
 
-        public UserDTO Login(string userName, string password, bool isActive)
+        public UserDTO Login(string userName, string password)
         {
             try
             {
                 UserAccount userAccount = _pce.UserAccounts.
                     FirstOrDefault(m => m.UserName.Equals(userName) &&
-                        m.Password.Equals(password) && m.IsActive == true);
+                        m.Password.Equals(password));
                 if (userAccount == null)
                 {
                     return null;
                 }
-                Mapper.CreateMap<UserAccount, UserProfile>();
-                UserProfile mappedUser = mappedUser = Mapper.Map<UserAccount, UserProfile>(userAccount);
+                Mapper.CreateMap<UserAccount, UserDTO>();
+                UserDTO mappedUser = mappedUser = Mapper.Map<UserAccount, UserDTO>(userAccount);
                 return mappedUser;
             }
             catch (Exception ex)
@@ -87,6 +87,7 @@
                 mappedUser.Password = SHA1.Encode("12345678@Ab");
                 mappedUser.IDRole =  Convert.ToInt32(UserLevel.Standard);
                 mappedUser.ImageProfile = 1;
+                mappedUser.Token = user.Token;
                 _pce.AddToUserAccounts(mappedUser);
                 _pce.SaveChanges();
                 return true;
@@ -129,7 +130,6 @@
             throw new NotImplementedException();
         }
 
-
         public UserProfile CheckUserName(string username)
         {
             Mapper.CreateMap<UserAccount, UserProfile>();
@@ -145,7 +145,6 @@
             UserProfile mappedUser = Mapper.Map<UserAccount, UserProfile>(user);
             return mappedUser;
         }
-
 
         public UserProfile GetUserByUserName(string userName)
         {
@@ -168,7 +167,83 @@
                 return null;
             }
         }
+
+        public int GetTotalRefID(UserDTO user)
+        {
+            try
+            {
+                return _pce.UserAccounts.Where(p => p.IDParent == user.ID && p.IsActive == true).Count();
+            }
+            catch (Exception ex) 
+            {
+                logger.Error(ex.ToString());
+                return 0;
+            }
+        }
+
+        public float GetAccountBalance(UserDTO user)
+        {
+            try
+            {
+                var totalRef = GetTotalRefID(user);
+                var amountCurrent = user.Amount;
+                var totalAmount = 0.0;
+                if (totalRef == 0 && amountCurrent > 0)
+                {
+                    totalAmount = amountCurrent - 5;
+                }
+                else
+                {
+                    if (totalRef == 1)
+                    {
+                        totalAmount = 130;
+                    }
+                    else
+                    {
+                        if (totalRef >= 2)
+                        {
+                            totalAmount = amountCurrent + (10 * totalRef);
+                        }
+                    }
+
+                }
+                return (float)totalAmount;
+            }
+            catch (Exception ex) 
+            {
+                logger.Error(ex.ToString());
+                return (float)0;
+            }
+        }
+
+        public List<UserDTO> GetRefByUsername(string username)
+        {
+            try
+            {
+                List<UserAccount> listRef = new List<UserAccount>();
+                UserDTO user = GetUserByUserName(username);
+                listRef = _pce.UserAccounts.Where(p=> p.IDParent == user.ID).ToList();
+
+                if (listRef == null && listRef.Count() == 0)
+                {
+                    return null;
+                }
+                Mapper.CreateMap<UserAccount, UserDTO>();
+                List<UserDTO> listRefOfUserName = Mapper.Map<List<UserAccount>, List<UserDTO>>(listRef);
+                logger.Info("Complete GetRefByUsername");
+                return listRefOfUserName;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.ToString());
+                return null;
+            }
+        }
         #endregion
 
+
+
+
+      
     }
 }

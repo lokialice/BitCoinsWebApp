@@ -1,0 +1,64 @@
+﻿@model BitCoinsWebApp.Model.UserProfile
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse slimscrollsidebar">
+        <ul class="nav" id="side-menu">
+            <li class="sidebar-search hidden-sm hidden-md hidden-lg">
+                <!-- input-group -->
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+                <!-- /input-group -->
+            </li>
+            <li class="user-pro"><a href="@Url.Action("Profile", "Account")" class="waves-effect">
+                <img src="@Url.Content(Model.ImageProfile)" alt="user-img" class="img-circle">
+                <span class="hide-menu">@Model.Name<span class="fa arrow"></span></span></a>
+            </li>
+            <li class="nav-small-cap m-t-10">--- Main Menu</li>
+            <li><a href="@Url.Action("Index", "Manage")" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i><span class="hide-menu">Dashboard <span class="fa arrow"></span></span></a>
+            </li>
+            <li><a href="#" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Funds <span class="fa arrow"></span></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="@Url.Action("Index", "Fund")">Add Funds</a></li>
+                    <li><a href="inbox-detail.html">Add Funds History</a></li>
+                </ul>
+            </li>
+            <li><a href="@Url.Action("Index", "Network")" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Networking</span></a>
+            </li>
+            <li><a href="#" class="waves-effect"><i data-icon="&#xe006;" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Rotation Coins<span class="fa arrow"></span></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="flot.html">Order Ticket</a> </li>
+                    <li><a href="morris-chart.html">History Order Ticket</a></li>
+                </ul>
+            </li>     
+            @if(Model.IDRole == 3){               
+            <li><a href="widgets.html" class="waves-effect"><i data-icon="P" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Settings<span class="fa arrow"></span></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="fontawesome.html">Manage Users<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li><a href="javascript:void(0)">Third Level Item</a> </li>
+                            <li><a href="javascript:void(0)">Third Level Item</a> </li>
+                        </ul>
+                    </li>
+                    <li><a href="simple-line.html">Post Manage<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li><a href="@Url.Action("Index", "Post")">All Post</a></li>
+                            <li><a href="javascript:void(0)">Third Level Item</a> </li>
+                        </ul>
+                    </li>
+                    <li><a href="linea-icon.html">Order<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li><a href="javascript:void(0)">Third Level Item</a> </li>
+                            <li><a href="javascript:void(0)">Third Level Item</a> </li>                           
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            }
+            <li><a href="@Url.Action("LogOut", "Account")" class="waves-effect"><i class="icon-logout fa-fw"></i><span class="hide-menu">Log out</span></a></li>
+        </ul>
+    </div>
+</div>
+
