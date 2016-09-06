@@ -14,5 +14,6 @@
         bool CheckConfirmPass(Transactions transfer);
         Transactions GetTransactionsLastest(UserProfile user);
         bool CheckAddFundInMonth(Transactions trans);
+        List<Transactions> GetAllTransactions();
     }
 }

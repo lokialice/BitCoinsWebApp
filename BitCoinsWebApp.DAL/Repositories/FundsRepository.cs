@@ -63,6 +63,7 @@
                 transfer.CreateDate = DateTime.Now;
                 transfer.TransferType = Convert.ToInt32(TransferTypes.Deposit);
                 transfer.Description = "Initialize Funds";
+                transfer.Status = false;
                 Transfer mappedTransder = Mapper.Map<TransferDTO, Transfer>(transfer);
                 mappedTransder.FromUserID = transfer.FromUser.ID;
                 mappedTransder.ToUserID = transfer.ToUser.ID;
@@ -125,7 +126,32 @@
             }
         }
 
+        public List<TransferDTO> GetAllTransactions()
+        {
+            try
+            {
+                List<Transfer> listTransactions = new List<Transfer>();
+                listTransactions = _pce.Transfers.OrderByDescending(p=>p.CreateDate).ToList();
+
+                if (listTransactions == null && listTransactions.Count() == 0)
+                {
+                    return null;
+                }
+                Mapper.CreateMap<Transfer, TransferDTO>();
+                List<TransferDTO> listTransfer = Mapper.Map<List<Transfer>, List<TransferDTO>>(listTransactions);
+                logger.Info("Complete GetAllTransactions");
+                return listTransfer;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.ToString());
+                return null;
+            }
+        }
         #endregion
+
+
+
 
         
     }

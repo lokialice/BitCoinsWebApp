@@ -22,10 +22,7 @@
         #endregion
 
         public ActionResult Index()
-        {
-            UserTransfer.CurrencyList = _fundService.GetAllCurrencyType();
-            UserTransfer.FromUser = UserCurrent;
-            UserTransfer.ToUser = _userService.GetUserByUserName("lokialice");
+        {         
             return View("Index", UserTransfer);
         }
 
@@ -66,6 +63,11 @@
                 ViewBag.PasswordError = "Password Confirm not correct! Please try again!";
             }
             return View("Index", UserTransfer);
+        }
+
+        public ActionResult FundHistory() 
+        {
+            return View("FundsHistory", UserTransfer);
         }
 
     }

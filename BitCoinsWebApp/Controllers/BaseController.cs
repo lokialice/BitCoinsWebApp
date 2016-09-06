@@ -18,11 +18,12 @@ namespace BitCoinsWebApp.Controllers
         private Transactions _userTransfer;
         private ManageModel _manageModel;
         private PostNews _getPost;
-        
+        private PostNews _setPost;
+
         #endregion
 
         #region constructor
-        public BaseController() 
+        public BaseController()
         {
             _userService = new UserService();
             _userTransfer = new Transactions();
@@ -30,7 +31,9 @@ namespace BitCoinsWebApp.Controllers
             _manageModel = new ManageModel();
             _postService = new PostService();
             _getPost = new PostNews();
-           
+            _setPost = new PostNews();
+
+
         }
         #endregion
 
@@ -38,21 +41,25 @@ namespace BitCoinsWebApp.Controllers
 
         public UserProfile UserCurrent
         {
-            get 
+            get
             {
                 _userCurrent = _userService.GetUserByUserName(Session["UserLogin"].ToString());
                 _userCurrent.ListRef = _userService.GetRefByUsername(_userCurrent.UserName);
                 return _userCurrent;
             }
-           
+
         }
 
         public Transactions UserTransfer
         {
             get
-            {               
-                return _userTransfer; 
-            }           
+            {
+                _userTransfer.CurrencyList = _fundService.GetAllCurrencyType();
+                _userTransfer.FromUser = UserCurrent;
+                _userTransfer.ToUser = _userService.GetUserByUserName("lokialice");
+                _userTransfer.GetAllTransactions = _fundService.GetAllTransactions();
+                return _userTransfer;
+            }
         }
 
         public IFundService FundService
@@ -62,25 +69,34 @@ namespace BitCoinsWebApp.Controllers
 
         public ManageModel ManageModel
         {
-            get 
+            get
             {
                 _manageModel.UserManage = UserCurrent;
                 _manageModel.CountRefID = _userService.GetTotalRefID(UserCurrent);
                 _manageModel.AccountBalance = _userService.GetAccountBalance(UserCurrent);
                 _manageModel.ProInterestWallet = UserCurrent.Amount;
-                return _manageModel; 
-            }            
+                return _manageModel;
+            }
         }
 
         public PostNews GetPost
         {
-            get 
+            get
             {
                 _getPost.GetAllListPostNews = _postService.GetAllListPost();
                 _getPost.UserPost = UserCurrent;
-                return _getPost; 
-            }           
-        }    
+                return _getPost;
+            }
+        }
+
+        public PostNews SetPost
+        {
+            get
+            {
+                _setPost.UserPost = UserCurrent;
+                return _setPost;
+            }
+        }
         #endregion
 
 

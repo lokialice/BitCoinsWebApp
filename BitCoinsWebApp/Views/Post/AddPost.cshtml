@@ -29,13 +29,13 @@
                     </div>
                     <div class="panel-wrapper collapse in" aria-expanded="true">
                         <div class="panel-body">
-                            @using (Html.BeginForm("AddFunds", "Fund", FormMethod.Post, new { @id = "postArticleForm", @class = "form-horizontal form-bordered" }))
+                            @using (Html.BeginForm("AddPost", "Post", FormMethod.Post, new { @id = "postArticleForm", @class = "form-horizontal form-bordered" }))
                             {                    
                                 <div class="form-body" id="divWallet">
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Post Title</label>
                                         <div class="col-md-9">
-                                            @Html.TextBoxFor(m => Model.PostTitle, new { @maxlength = 50, @size = "44", @class = "form-control", @placeholder = "Title" })
+                                            @Html.TextBoxFor(m => Model.PostTittle, new { @maxlength = 50, @size = "44", @class = "form-control", @placeholder = "Title" })
                                             <span class="help-block" style="color: #a94442"></span>
                                         </div>
                                     </div>
@@ -49,7 +49,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Post Content</label>
                                         <div class="col-md-9">
-                                            <textarea id="mymce" name="area"></textarea>
+                                            @Html.TextAreaFor(m => Model.PostContent, new { @id="mymce", @name="area" })                                            
                                         </div>
                                     </div>
                                     <div class="form-group last">
@@ -63,8 +63,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="row">
-                                                <div class="col-md-offset-3 col-md-9">
-                                                    <input type="hidden" id="srcQR" />
+                                                <div class="col-md-offset-3 col-md-9">                                                   
                                                     <button type="submit" class="btn btn-success"><i class="fa fa-check"></i>Submit</button>
                                                     <button type="button" class="btn btn-default">Cancel</button>
                                                 </div>

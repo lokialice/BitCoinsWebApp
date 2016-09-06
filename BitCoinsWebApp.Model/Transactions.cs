@@ -10,9 +10,9 @@
     [DataContract]
     public class Transactions
     {
-        public Transactions() 
+        public Transactions()
         {
-           
+
         }
 
         [Required]
@@ -40,6 +40,8 @@
         public int CurrencyType { get; set; }
         [DataMember]
         public string ConfirmPassword { get; set; }
-       
+        [DataMember]
+        public bool Status { get; set; }
+        public List<Transactions> GetAllTransactions { get; set; }
     }
 }

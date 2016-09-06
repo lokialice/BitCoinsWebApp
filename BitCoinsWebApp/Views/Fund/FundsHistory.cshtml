@@ -1,5 +1,63 @@
-﻿@{
-    ViewBag.Title = "FundsHistory";
+﻿@model BitCoinsWebApp.Model.Transactions
+@{
+    ViewBag.Title = "Funds History";
+    Layout = "~/Views/Shared/_LayoutManager.cshtml";
 }
 
-<h2>FundsHistory</h2>
+@Html.Partial("_NavigationPartial", Model.FromUser)
+@Html.Partial("_LeftNavigation", Model.FromUser)
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Fund History</h4>
+            </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Fund</a></li>
+                    <li class="active">Fund History</li>
+                </ol>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /row -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">                  
+                    <table id="myTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Order Name</th>
+                                <th>Amount</th>
+                                <th>Description</th>                                                                   
+                                <th>Active</th>                             
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in Model.GetAllTransactions){
+                                if(item.Status){
+                                    <tr style="color:red">
+                                        <td>@item.OrderName</td>
+                                        <td>$@item.Amount</td>
+                                        <td>$@item.Description</td>                                                                              
+                                        <td><button type="button" class="btn btn-info btn-circle"><i class="fa fa-check"></i> </button></td>                                                           
+                                    </tr>  
+                                }
+                                else
+                                {
+                                     <tr>
+                                        <td>@item.OrderName</td>
+                                        <td>$@item.Amount</td>
+                                        <td>$@item.Description</td>    
+                                        <td><button type="button" class="btn btn-warning btn-circle"><i class="fa fa-times"></i> </button></td>                                                           
+                                    </tr>  
+                                }
+                            }                          
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

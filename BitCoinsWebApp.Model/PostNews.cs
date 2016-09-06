@@ -28,6 +28,7 @@
         public string PostExcerpt { get; set; }
 
         [DataMember]
+        [AllowHtml]
         public string PostContent { get; set; }
 
         [DataMember]

@@ -49,5 +49,11 @@
         {
             return _repository.CheckAddFundInMonth(trans);
         }
+
+
+        public List<Transactions> GetAllTransactions()
+        {
+            return _repository.GetAllTransactions();
+        }
     }
 }

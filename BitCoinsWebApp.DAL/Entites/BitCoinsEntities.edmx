@@ -109,6 +109,7 @@
           <Property Name="Amount" Type="float" Nullable="false" />
           <Property Name="Description" Type="text" Nullable="false" />
           <Property Name="CurrencyType" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" />
           <Property Name="CreateDate" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="TransferHistory">
@@ -462,6 +463,7 @@
           <NavigationProperty Name="TransferType1" Relationship="BitCoinsModel.FK_Transfer_TransferType" FromRole="Transfer" ToRole="TransferType" />
           <NavigationProperty Name="UserAccount" Relationship="BitCoinsModel.FK_Transfer_UserAccount" FromRole="Transfer" ToRole="UserAccount" />
           <NavigationProperty Name="TransferHistories" Relationship="BitCoinsModel.FK_TransferHistory_Transfer" FromRole="Transfer" ToRole="TransferHistory" />
+          <Property Type="Boolean" Name="Status" />
         </EntityType>
         <EntityType Name="TransferType">
           <Key>
@@ -642,6 +644,7 @@
           <EntitySetMapping Name="Transfers">
             <EntityTypeMapping TypeName="BitCoinsModel.Transfer">
               <MappingFragment StoreEntitySet="Transfer">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="CurrencyType" ColumnName="CurrencyType" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
