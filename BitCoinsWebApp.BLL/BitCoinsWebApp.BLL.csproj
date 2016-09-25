@@ -49,6 +49,8 @@
   <ItemGroup>
     <Compile Include="FundService.cs" />
     <Compile Include="IFundService.cs" />
+    <Compile Include="IImageService.cs" />
+    <Compile Include="ImageService.cs" />
     <Compile Include="IPostService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="PostService.cs" />

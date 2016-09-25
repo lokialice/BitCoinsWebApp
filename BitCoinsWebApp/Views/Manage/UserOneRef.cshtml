@@ -1,0 +1,89 @@
+﻿@model BitCoinsWebApp.Model.UserProfile
+@{
+    ViewBag.Title = "User One Ref";
+    Layout = "~/Views/Shared/_LayoutManager.cshtml";
+}
+
+@Html.Partial("_NavigationPartial", Model)
+@Html.Partial("_LeftNavigation", Model)
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Manage User</h4>
+            </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Manage</a></li>
+                    <li class="active">User One Ref</li>
+                </ol>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /row -->
+        <form method="post">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="white-box">
+                        <table id="myTable" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>                                    
+                                    <th>Amount</th>
+                                    <th>Bitcoins Code</th>
+                                    <th>Balance Amount</th>                                   
+                                    <th>Active</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.ListUserOneRef)
+                                {
+                                    if (item.IsActive)
+                                    {
+                                    <tr style="color: red">
+                                        <td>@item.UserName</td>                                        
+                                        <td>$@item.Amount</td>
+                                        <td>@item.BitCoinsCode</td>
+                                        <td>$@item.BalanceAmount</td>                                       
+                                        <td>
+                                            <button type="submit" formaction="/Manage/ActiveUser/@item.ID" class="btn btn-info btn-circle"><i class="fa fa-check"></i></button>
+                                        </td>
+                                    </tr>  
+                                    }
+                                    else
+                                    {
+                                        if (item.Amount > 0 && item.IsActive == false)
+                                        {
+                                    <tr>
+                                        <td>@item.UserName</td>                                       
+                                        <td>$@item.Amount</td>
+                                        <td>@item.BitCoinsCode</td>
+                                        <td>$@item.BalanceAmount</td>                                       
+                                        <td>
+                                            <button type="submit" formaction="/Manage/ActiveUser/@item.ID" class="btn btn-warning btn-circle"><i class="fa fa-times"></i></button>
+                                        </td>
+                                    </tr>  
+                                        }
+                                        else
+                                        {
+                                    <tr>
+                                        <td>@item.UserName</td>                                        
+                                        <td>$@item.Amount</td>
+                                        <td>@item.BitCoinsCode</td>
+                                        <td>$@item.BalanceAmount</td>                                     
+                                        <td>
+                                            <button type="submit" formaction="/Manage/ActiveUser/@item.ID" class="btn btn-danger btn-circle"><i class="fa fa-times"></i></button>
+                                        </td>
+                                    </tr>  
+                                        }
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

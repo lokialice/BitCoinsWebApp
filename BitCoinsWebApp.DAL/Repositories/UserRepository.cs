@@ -69,7 +69,7 @@
                     return null;
                 }
                 Mapper.CreateMap<UserAccount, UserDTO>();
-                UserDTO mappedUser = mappedUser = Mapper.Map<UserAccount, UserDTO>(userAccount);
+                UserDTO mappedUser = Mapper.Map<UserAccount, UserDTO>(userAccount);
                 return mappedUser;
             }
             catch (Exception ex)
@@ -106,20 +106,47 @@
             try
             {
                 UserAccount user = _pce.UserAccounts.Where(m => m.ID == savedUser.ID).First();
-                user.Name = savedUser.Name;
-                user.Email = savedUser.Email;
-                user.Password = savedUser.Password;
-                user.Phone = savedUser.Phone;
-                user.Address = savedUser.Address;
+                if (!string.IsNullOrEmpty(savedUser.Name))
+                    user.Name = savedUser.Name;              
+                if (!string.IsNullOrEmpty(savedUser.Email))
+                    user.Email = savedUser.Email;
+                if (!string.IsNullOrEmpty(savedUser.Phone))
+                    user.Phone = savedUser.Phone;
+                if (!string.IsNullOrEmpty(savedUser.Address))
+                    user.Address = savedUser.Address;
                 user.Age = savedUser.Age;
-                user.BitCoinsCode = savedUser.BitCoinsCode;
-                user.Description = savedUser.Description;
-                user.FacebookLink = savedUser.FacebookLink;
-                user.SkypeID = savedUser.SkypeID;
-                user.Gender = savedUser.Gender;
+                if (!string.IsNullOrEmpty(savedUser.BitCoinsCode))
+                    user.BitCoinsCode = savedUser.BitCoinsCode;
+                if (!string.IsNullOrEmpty(savedUser.Description))
+                    user.Description = savedUser.Description;
+                if (!string.IsNullOrEmpty(savedUser.FacebookLink))
+                    user.FacebookLink = savedUser.FacebookLink;
+                if (!string.IsNullOrEmpty(savedUser.SkypeID))
+                    user.SkypeID = savedUser.SkypeID;
+                if (!string.IsNullOrEmpty(savedUser.Gender))
+                    user.Gender = savedUser.Gender;                
                 user.IsActive = savedUser.IsActive;
                 user.Amount = savedUser.Amount;
                 user.IDRole = savedUser.IDRole;
+                if (savedUser.ImageURL != null) 
+                {
+                    user.ImageProfile = savedUser.ImageURL.ID;
+                }               
+                _pce.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.ToString());
+                return false;
+            }
+        }
+        public bool ChangePassword(UserDTO savedUser)
+        {
+            try
+            {
+                UserAccount user = _pce.UserAccounts.Where(m => m.ID == savedUser.ID).First();
+                user.Password = savedUser.Password;
                 _pce.SaveChanges();
                 return true;
             }
@@ -163,7 +190,9 @@
                 }
                 Mapper.CreateMap<UserAccount, UserProfile>();
                 UserProfile mappedUser = Mapper.Map<UserAccount, UserProfile>(userAccount);
-                mappedUser.ImageProfile = userAccount.ImageUpload.ImageFile;
+                Mapper.CreateMap<ImageUpload, ImageFileUpload>();
+                ImageFileUpload mappedImage = Mapper.Map<ImageUpload, ImageFileUpload>(userAccount.ImageUpload);
+                mappedUser.ImageURL = mappedImage;
                 return mappedUser;
             }
             catch (Exception ex)
@@ -177,8 +206,21 @@
         {
             try
             {
-                List<UserDTO> listRef = GetRefByUsername(user.UserName);
-                int count = listRef.Where(p => p.IsActive == true).Count();
+                _fundRepository = new FundsRepository(_connectionString);                
+                int count = 0;
+                int countRef = 0;
+                int countParent = 0;
+                List<UserProfile> userRef = new List<UserProfile>();
+                userRef = GetRefByUsername(user.UserName);
+                foreach (var item in userRef)
+                {
+                    countRef = _fundRepository.GetAllTransactionsFromUser(item).Count;
+                    countParent = _fundRepository.GetAllTransactionsFromUser(user).Count;
+                    if (countRef != 0 && countParent != 0 && countParent == countRef || countRef > countParent)
+                    {
+                        count++;
+                    }
+                }
                 return count;
 
             }
@@ -233,13 +275,12 @@
             }
         }
 
-        public List<UserDTO> GetAllUserLevel1(string username)
+        public List<UserDTO> GetAllUserLevel1()
         {
             try
             {
                 List<UserAccount> listRef = new List<UserAccount>();
                 var level = Convert.ToInt32(UserLevel.Standard);
-                UserDTO user = GetUserByUserName(username);
                 listRef = _pce.UserAccounts.Where(p => p.IDRole == level && p.IsActive == false).OrderByDescending(u => u.CreateDate).ToList();
 
                 if (listRef == null && listRef.Count() == 0)
@@ -262,13 +303,12 @@
             }
         }
 
-        public List<UserDTO> GetAllUserLevel2(string username)
+        public List<UserDTO> GetAllUserLevel2()
         {
             try
             {
                 List<UserAccount> listRef = new List<UserAccount>();
                 var level = Convert.ToInt32(UserLevel.Gold);
-                UserDTO user = GetUserByUserName(username);
                 listRef = _pce.UserAccounts.Where(p => p.IDRole == level && p.IsActive == true).OrderByDescending(u => u.CreateDate).ToList();
 
                 if (listRef == null && listRef.Count() == 0)
@@ -310,10 +350,12 @@
                 }
                 if (Update(user))
                 {
+                    logger.Info("Complete ActiveUser");
                     return true;
                 }
                 else
                 {
+                    logger.Info("Complete ActiveUser");
                     return false;
                 }
             }
@@ -347,6 +389,7 @@
                         Update(item);
                     }
                 }
+                logger.Info("Complete DefaultUser");
                 return true;
             }
             catch (Exception ex)
@@ -361,27 +404,14 @@
             try
             {
                 _fundRepository = new FundsRepository(_connectionString);
-                int totalRef = 0;
+                int totalRef = GetTotalRefID(user);
                 int totalAmount = 0;
-                int countRef = 0;
-                int countParent = 0;
                 UserDTO users = GetUserByUserName(user.UserName);
                 if (users == null)
                 {
                     return 0;
                 }
-                List<UserProfile> userRef = new List<UserProfile>();
-                userRef = GetRefByUsername(user.UserName);
-                foreach (var item in userRef) 
-                {
-                    countRef = _fundRepository.GetAllTransactionsFromUser(item).Count;
-                    countParent = _fundRepository.GetAllTransactionsFromUser(user).Count;
-                    if (countRef != 0 && countParent != 0 && countParent == countRef) 
-                    {
-                        totalRef++;
-                    }
-                }
-                
+
                 totalAmount = 10 * totalRef;
                 if (totalRef % 2 == 0)
                 {
@@ -402,7 +432,83 @@
                 return 0;
             }
         }
-        #endregion
 
+        public List<UserDTO> GetAllUserOneRef()
+        {
+            try
+            {
+                List<UserAccount> listRef = new List<UserAccount>();
+                var listUser = new List<UserAccount>();
+                var level = Convert.ToInt32(UserLevel.Standard);
+                listUser = _pce.UserAccounts.OrderByDescending(u => u.CreateDate).ToList();
+
+                foreach (var item in listUser)
+                {
+                    int count = GetRefByUsername(item.UserName).Count;
+                    if (count == 1)
+                    {
+                        listRef.Add(item);
+                    }
+                }
+
+                if (listRef == null && listRef.Count() == 0)
+                {
+                    return null;
+                }
+                Mapper.CreateMap<UserAccount, UserDTO>();
+                List<UserDTO> listRefOfUserName = Mapper.Map<List<UserAccount>, List<UserDTO>>(listRef);
+                foreach (var item in listRefOfUserName)
+                {
+                    item.BalanceAmount = (int)GetAccountBalance(item);
+                }
+                logger.Info("Complete GetAllUserLevel1");
+                return listRefOfUserName;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.ToString());
+                return null;
+            }
+        }
+
+        public List<UserDTO> GetAllUserTwoRef()
+        {
+            try
+            {
+                List<UserAccount> listRef = new List<UserAccount>();
+                var listUser = new List<UserAccount>();
+                var level = Convert.ToInt32(UserLevel.Standard);
+                listUser = _pce.UserAccounts.OrderByDescending(u => u.CreateDate).ToList();
+
+                foreach (var item in listUser)
+                {
+                    int count = GetRefByUsername(item.UserName).Count;
+                    if (count == 2)
+                    {
+                        listRef.Add(item);
+                    }
+                }
+
+                if (listRef == null && listRef.Count() == 0)
+                {
+                    return null;
+                }
+                Mapper.CreateMap<UserAccount, UserDTO>();
+                List<UserDTO> listRefOfUserName = Mapper.Map<List<UserAccount>, List<UserDTO>>(listRef);
+                foreach (var item in listRefOfUserName)
+                {
+                    item.BalanceAmount = (int)GetAccountBalance(item);
+                }
+                logger.Info("Complete GetAllUserLevel1");
+                return listRefOfUserName;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.ToString());
+                return null;
+            }
+
+        }
+        #endregion
     }
 }

@@ -3132,6 +3132,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Shared\_HeaderPartial.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
+    <Content Include="Views\Manage\UserOneRef.cshtml" />
+    <Content Include="Views\Manage\UserTwoRef.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

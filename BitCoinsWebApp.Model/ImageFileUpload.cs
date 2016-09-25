@@ -8,9 +8,9 @@
     using System.Web.Mvc;
 
     [DataContract]
-    public class ImageUpload
+    public class ImageFileUpload
     {
-        public ImageUpload() 
+        public ImageFileUpload() 
         {
         
         }

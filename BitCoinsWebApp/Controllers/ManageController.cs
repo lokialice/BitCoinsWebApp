@@ -48,8 +48,16 @@
             _userService.DefaultUser(id);
             return View("Manage", UserCurrent);
         }
+        
+        public ActionResult UserOneRef()
+        {
+            return View("UserOneRef", UserCurrent);
+        }
 
-
+        public ActionResult UserTwoRef()
+        {
+            return View("UserTwoRef", UserCurrent);
+        }
         #endregion
 
 

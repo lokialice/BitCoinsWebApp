@@ -45,7 +45,7 @@
     <Compile Include="ConfigurationManagerKey.cs" />
     <Compile Include="CurrencyType.cs" />
     <Compile Include="Document.cs" />
-    <Compile Include="ImageUpload.cs" />
+    <Compile Include="ImageFileUpload.cs" />
     <Compile Include="ManageModel.cs" />
     <Compile Include="PostNews.cs" />
     <Compile Include="Pricing.cs" />

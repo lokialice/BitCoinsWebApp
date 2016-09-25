@@ -14,6 +14,7 @@
     using BitCoinsWebApp.BLL;
     using log4net;
     using BitCoinsWebApp.Utilities;
+    using System.IO;
 
     public class AccountController : BaseController
     {
@@ -39,7 +40,6 @@
             return View();
         }
 
-
         /// <summary>
         /// Logins the specified user account.
         /// </summary>
@@ -47,7 +47,7 @@
         /// <returns>ActionResult.</returns>
         [HttpPost]
         public ActionResult Login(UserProfile userAccount)
-        {            
+        {
             UserProfile user = _userService.Login(userAccount.UserName, userAccount.Password);
             if (user != null)
             {
@@ -72,7 +72,6 @@
             return View();
         }
 
-
         /// <summary>
         /// Registers the specified user account.
         /// </summary>
@@ -87,15 +86,15 @@
                 if (!String.IsNullOrEmpty(id))
                 {
                     var userParent = _userService.GetUserByUserName(id);
-                    userAccount.IDParent = userParent.ID;                    
+                    userAccount.IDParent = userParent.ID;
                 }
-                else 
+                else
                 {
-                    userAccount.IDParent = ConfigurationManagerKey.IDParent;                    
+                    userAccount.IDParent = ConfigurationManagerKey.IDParent;
                 }
-                var user = _userService.Create(userAccount);              
+                var user = _userService.Create(userAccount);
                 return View("Login");
-                           
+
             }
             else
             {
@@ -134,13 +133,57 @@
         /// <returns>ActionResult.</returns>
         [HttpPost]
         [SessionExpire]
-        public ActionResult UpdateProfile(UserProfile userAccounts)
+        public ActionResult UpdateProfile(UserProfile userAccounts, HttpPostedFileBase uploadFile)
         {
-            userAccounts.ID = UserCurrent.ID;
-            userAccounts.Password = SHA1.Encode(userAccounts.Password);
-            _userService.Update(userAccounts);
+            if (uploadFile!=null && uploadFile.ContentLength > 0)
+            {
+                int MaxContentLength = 1024 * 1024 * 3; //3 MB
+                string[] AllowedFileExtensions = new string[] { ".jpg", ".gif", ".png" };
+
+                if (!AllowedFileExtensions.Contains(uploadFile.FileName.Substring(uploadFile.FileName.LastIndexOf('.'))))
+                {
+                    ViewBag.Message = "Please file of type: " + string.Join(", ", AllowedFileExtensions);
+                    return View("Manage", UserCurrent);
+                }
+
+                else if (uploadFile.ContentLength > MaxContentLength)
+                {
+                    ViewBag.Message = "Your file is too large, maximum allowed size is: " + MaxContentLength + " MB";
+                    return View("Manage", UserCurrent);
+                }
+                else
+                {
+                    //TO:DO
+                    var fileName = Path.GetFileName(uploadFile.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
+                    uploadFile.SaveAs(path);
+                    ImageFileUpload img = new ImageFileUpload();
+                    img.ImageFile = "~/Content/Images/" + fileName;
+                    img.ImageName = fileName;
+                    _imageService.Create(img);
+                    userAccounts.ID = UserCurrent.ID;
+                    userAccounts.ImageURL = _imageService.GetLasttestImg();
+                    userAccounts.IsActive = UserCurrent.IsActive;
+                    userAccounts.Amount = UserCurrent.Amount;
+                    userAccounts.IDRole = UserCurrent.IDRole;
+                    userAccounts.Age = UserCurrent.Age;
+                    _userService.Update(userAccounts);                    
+                    ModelState.Clear();
+                    ViewBag.Message = "File uploaded successfully";
+                }
+            }
+            else
+            {
+                userAccounts.ID = UserCurrent.ID;                
+                userAccounts.IsActive = UserCurrent.IsActive;
+                userAccounts.Amount = UserCurrent.Amount;
+                userAccounts.IDRole = UserCurrent.IDRole;
+                userAccounts.Age = UserCurrent.Age;                
+                _userService.Update(userAccounts);
+            }
+
             return View("Manage", UserCurrent);
-        }       
+        }
 
         /// <summary>
         /// Logs the out.
@@ -151,7 +194,38 @@
             FormsAuthentication.SignOut();
             Session.Remove("UserLogin");
             return RedirectToAction("Index", "Home");
-        }       
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(UserProfile userAccounts)
+        {
+            if (!userAccounts.Password.Equals(SHA1.Decrypt(UserCurrent.Password)))
+            {
+                ViewBag.ErrorOldPassword = "Password invalid! Please try again!";
+                return View("Manage", UserCurrent);
+            }
+            else
+            {
+                if (!userAccounts.NewPassword.Equals(userAccounts.ConfirmPassword))
+                {
+                    ViewBag.ErrorConfirmPassword = "Password not match! Please try again! ";
+                    return View("Manage", UserCurrent);
+                }
+                else
+                {
+                    userAccounts.ID = UserCurrent.ID;
+                    userAccounts.Password = SHA1.Encode(userAccounts.NewPassword);
+                    if (_userService.ChangePassword(userAccounts))
+                    {
+                        return RedirectToAction("LogOut", "Account");
+                    }
+                    else
+                    {
+                        return View("Manage", UserCurrent);
+                    }
+                }
+            }
+        }
         #endregion
 
     }

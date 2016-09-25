@@ -28,7 +28,7 @@
                         <div class="overlay-box">
                             <div class="user-content">
                                 <a href="javascript:void(0)">
-                                    <img src="@Url.Content(Model.ImageProfile)" class="thumb-lg img-circle" alt="img"></a>
+                                    <img src="@Url.Content(Model.ImageURL.ImageFile)" class="thumb-lg img-circle" alt="img"></a>
                                 <h4 class="text-white">@Model.UserName</h4>
                                 <h5 class="text-white">@Model.Email</h5>                              
                                 <h5 class="text-white"> Ref:<a href="@Url.Action("Register", "Account", new { id = Model.UserName})" style="color:red">@Url.Action("Register", "Account", new { id = Model.UserName})</a></h5>
@@ -53,6 +53,7 @@
                     <ul class="nav nav-tabs tabs customtab">
                         <li class="active tab"><a href="#profile" data-toggle="tab"><span class="visible-xs"><i class="fa fa-home"></i></span><span class="hidden-xs">Profile</span> </a></li>
                         <li class="tab"><a href="#settings" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="fa fa-cog"></i></span><span class="hidden-xs">Settings</span> </a></li>
+                        <li class="tab"><a href="#changePass" data-toggle="tab" aria-expanded="false"><span class="visible-xs"><i class="fa fa-cog"></i></span><span class="hidden-xs">Change Password</span> </a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="profile">
@@ -82,7 +83,7 @@
                             <p class="m-t-30">@Model.Description</p>
                         </div>
                         <div class="tab-pane" id="settings">
-                            @using (Html.BeginForm("UpdateProfile", "Account", FormMethod.Post, new { @id = "settingsForm", @class = "form-horizontal form-material" }))
+                            @using (Html.BeginForm("UpdateProfile", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @id = "settingsForm", @class = "form-horizontal form-material" }))
                             {                         
                                 <div class="form-group">
                                     <label class="col-md-12">Full Name</label>
@@ -95,13 +96,7 @@
                                     <div class="col-md-12">
                                         @Html.TextBoxFor(m => Model.Email, new { @maxlength = 50, @size = "44", @class = "form-control form-control-line", @placeholder = "johnathan@admin.com" })
                                     </div>
-                                </div>       
-                                <div class="form-group">
-                                    <label class="col-md-12">Password</label>
-                                    <div class="col-md-12">
-                                        @Html.PasswordFor(m => Model.Password, new { @maxlength = 50,@required="true", @size = "44", @class = "form-control form-control-line", @placeholder = "Password" })
-                                    </div>
-                                </div>                 
+                                </div>                                                        
                                 <div class="form-group">
                                     <label class="col-md-12">Phone No</label>
                                     <div class="col-md-12">
@@ -153,10 +148,46 @@
                                     <div class="col-md-12">
                                         @Html.TextBoxFor(m => Model.BitCoinsCode, new { @id = "bitcoinsCode", @maxlength = 50, @size = "44", @class = "form-control form-control-line", @disabled = "true", @placeholder = "1AwD6J7ba45mSLTNLabrSWBU5xs9p1Fk1w" })
                                     </div>
-                                </div>                                        
+                                </div> 
+                                <div class="form-group last">
+                                        <label class="col-md-12">Image Profile</label>
+                                        <div class="col-md-12">                                                                                  
+                                            <input type="file" id="input-file-now" name="uploadFile" class="dropify" />
+                                            <span class="help-block" style="color: #a94442">@ViewBag.Message</span>
+                                        </div>
+                                    </div>                                       
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <button class="btn btn-success" type="submit">Update Profile</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="tab-pane" id="changePass">
+                            @using (Html.BeginForm("ChangePassword", "Account", FormMethod.Post, new { @id = "changePasswordForm", @class = "form-horizontal form-material" }))
+                            {                         
+                                <div class="form-group">
+                                    <label class="col-md-12">Old Password</label>
+                                    <div class="col-md-12">
+                                        @Html.PasswordFor(m => Model.Password, new { @maxlength = 50, @size = "44", @class = "form-control form-control-line" })
+                                        <span class="help-block" style="color: #a94442">@ViewBag.ErrorOldPassword</span> 
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">New Password</label>
+                                    <div class="col-md-12">
+                                        @Html.PasswordFor(m => Model.NewPassword, new { @maxlength = 50, @required = "true", @size = "44", @class = "form-control form-control-line"})
+                                    </div>
+                                </div>       
+                                <div class="form-group">
+                                    <label class="col-md-12">Confirm Password</label>
+                                    <div class="col-md-12">
+                                        @Html.PasswordFor(m => Model.ConfirmPassword, new { @maxlength = 50, @required = "true", @size = "44", @class = "form-control form-control-line"})
+                                        <span class="help-block" style="color: #a94442">@ViewBag.ErrorConfirmPassword</span> 
+                                    </div>
+                                </div>                                                                                                                                                                                                                                                                                                                                                    <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <button class="btn btn-success" type="submit">Change Password</button>
                                     </div>
                                 </div>
                             }
@@ -165,80 +196,6 @@
                 </div>
             </div>
         </div>
-        <!-- /.row -->
-        <!-- .right-sidebar -->
-        <div class="right-sidebar">
-            <div class="slimscrollright">
-                <div class="rpanel-title">Service Panel <span><i class="ti-close right-side-toggle"></i></span></div>
-                <div class="r-panel-body">
-                    <ul>
-                        <li><b>Layout Options</b></li>
-                        <li>
-                            <div class="checkbox checkbox-info">
-                                <input id="checkbox1" type="checkbox" class="fxhdr">
-                                <label for="checkbox1">Fix Header </label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="checkbox checkbox-warning">
-                                <input id="checkbox2" type="checkbox" checked="" class="fxsdr">
-                                <label for="checkbox2">Fix Sidebar </label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="checkbox checkbox-success">
-                                <input id="checkbox4" type="checkbox" class="open-close">
-                                <label for="checkbox4">Toggle Sidebar </label>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul id="themecolors" class="m-t-20">
-                        <li><b>With Light sidebar</b></li>
-                        <li><a href="javascript:void(0)" theme="default" class="default-theme">1</a></li>
-                        <li><a href="javascript:void(0)" theme="green" class="green-theme">2</a></li>
-                        <li><a href="javascript:void(0)" theme="gray" class="yellow-theme">3</a></li>
-                        <li><a href="javascript:void(0)" theme="blue" class="blue-theme working">4</a></li>
-                        <li><a href="javascript:void(0)" theme="purple" class="purple-theme">5</a></li>
-                        <li><a href="javascript:void(0)" theme="megna" class="megna-theme">6</a></li>
-                        <li><b>With Dark sidebar</b></li>
-                        <br />
-                        <li><a href="javascript:void(0)" theme="default-dark" class="default-dark-theme">7</a></li>
-                        <li><a href="javascript:void(0)" theme="green-dark" class="green-dark-theme">8</a></li>
-                        <li><a href="javascript:void(0)" theme="gray-dark" class="yellow-dark-theme">9</a></li>
-
-                        <li><a href="javascript:void(0)" theme="blue-dark" class="blue-dark-theme">10</a></li>
-                        <li><a href="javascript:void(0)" theme="purple-dark" class="purple-dark-theme">11</a></li>
-                        <li><a href="javascript:void(0)" theme="megna-dark" class="megna-dark-theme">12</a></li>
-                    </ul>
-                    <ul class="m-t-20 chatonline">
-                        <li><b>Chat option</b></li>
-                        <li><a href="javascript:void(0)">
-                            <img src="../plugins/images/users/varun.jpg" alt="user-img" class="img-circle">
-                            <span>Varun Dhavan <small class="text-success">online</small></span></a></li>
-                        <li><a href="javascript:void(0)">
-                            <img src="../plugins/images/users/genu.jpg" alt="user-img" class="img-circle">
-                            <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a></li>
-                        <li><a href="javascript:void(0)">
-                            <img src="../plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle">
-                            <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a></li>
-                        <li><a href="javascript:void(0)">
-                            <img src="../plugins/images/users/arijit.jpg" alt="user-img" class="img-circle">
-                            <span>Arijit Sinh <small class="text-muted">Offline</small></span></a></li>
-                        <li><a href="javascript:void(0)">
-                            <img src="../plugins/images/users/govinda.jpg" alt="user-img" class="img-circle">
-                            <span>Govinda Star <small class="text-success">online</small></span></a></li>
-                        <li><a href="javascript:void(0)">
-                            <img src="../plugins/images/users/hritik.jpg" alt="user-img" class="img-circle">
-                            <span>John Abraham<small class="text-success">online</small></span></a></li>
-                        <li><a href="javascript:void(0)">
-                            <img src="../plugins/images/users/john.jpg" alt="user-img" class="img-circle">
-                            <span>Hritik Roshan<small class="text-success">online</small></span></a></li>
-                        <li><a href="javascript:void(0)">
-                            <img src="../plugins/images/users/pawandeep.jpg" alt="user-img" class="img-circle">
-                            <span>Pwandeep rajan <small class="text-success">online</small></span></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <!-- /.row -->       
     </div>
 </div>

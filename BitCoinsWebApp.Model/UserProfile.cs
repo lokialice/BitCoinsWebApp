@@ -20,7 +20,11 @@
         [DataMember]
         public string UserName { get; set; }
         [DataMember]
-        public string Password { get; set; }      
+        public string Password { get; set; }     
+        [DataMember]
+        public string NewPassword { get; set; }
+        [DataMember]
+        public string ConfirmPassword { get; set; }         
         [RegularExpression(@"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-‌​]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$",
             ErrorMessage = "The Email Address field is not a valid e-mail address.")]
         [DataMember]
@@ -46,7 +50,7 @@
         [DataMember]
         public float Amount { get; set; }
         [DataMember]
-        public string ImageProfile { get; set; }
+        public ImageFileUpload ImageURL { get; set; }
         [DataMember]
         public string FacebookLink { get; set; }
         [DataMember]
@@ -67,6 +71,9 @@
         public int BalanceAmount { get; set; }
         [DataMember]
         public DateTime CreateDate { get; set; }
+        public List<UserProfile> ListUserOneRef { get; set; }
+        public List<UserProfile> ListUserTwoRef { get; set; }
+        
     }
 
 }

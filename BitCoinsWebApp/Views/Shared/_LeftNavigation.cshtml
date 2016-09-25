@@ -13,7 +13,7 @@
                 <!-- /input-group -->
             </li>
             <li class="user-pro"><a href="@Url.Action("Profile", "Account")" class="waves-effect">
-                <img src="@Url.Content(Model.ImageProfile)" alt="user-img" class="img-circle">
+                <img src="@Url.Content(Model.ImageURL.ImageFile)" alt="user-img" class="img-circle">
                 <span class="hide-menu">@Model.Name</span></a>
             </li>
             <li class="nav-small-cap m-t-10">--- Main Menu</li>
@@ -38,6 +38,8 @@
                             <ul class="nav nav-third-level">
                                 <li><a href="@Url.Action("UserLevel1", "Manage")">User Level Standard</a> </li>
                                 <li><a href="@Url.Action("UserLevel2", "Manage")">User Level Gold</a> </li>
+                                <li><a href="@Url.Action("UserOneRef", "Manage")">User One Reference</a> </li>
+                                <li><a href="@Url.Action("UserTwoRef", "Manage")">User Two Reference</a> </li>
                             </ul>
                         </li>
                         <li><a href="@Url.Action("Index", "Post")">Post Manage</a>

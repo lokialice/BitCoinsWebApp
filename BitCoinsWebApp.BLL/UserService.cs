@@ -13,14 +13,20 @@
 
     public class UserService : IUserService
     {
+        #region member
         private readonly IUserRepository _repository;
         private readonly string _connectionString;
+        #endregion 
 
+        #region constructor
         public UserService()
         {
             _connectionString = ConfigurationManager.ConnectionStrings["BitWebAppEntities"].ConnectionString;
             _repository = new UserRepository(_connectionString);
         }
+        #endregion
+
+        #region method
         /// <summary>
         /// Gets the user.
         /// </summary>
@@ -104,14 +110,14 @@
             return _repository.GetRefByUsername(username);
         }
 
-        public List<UserProfile> GetAllUserLevel1(string username)
+        public List<UserProfile> GetAllUserLevel1()
         {
-            return _repository.GetAllUserLevel1(username);
+            return _repository.GetAllUserLevel1();
         }
 
-        public List<UserProfile> GetAllUserLevel2(string username)
+        public List<UserProfile> GetAllUserLevel2()
         {
-            return _repository.GetAllUserLevel2(username);
+            return _repository.GetAllUserLevel2();
         }
 
         public bool ActiveUser(string id)
@@ -124,10 +130,25 @@
             return _repository.DefaultUser(id);
         }
 
-
         public int GetMoneyInterest(UserProfile user)
         {
             return _repository.GetMoneyInterest(user);
         }
+
+        public List<UserProfile> GetAllUserOneRef()
+        {
+            return _repository.GetAllUserOneRef();
+        }
+
+        public List<UserProfile> GetAllUserTwoRef()
+        {
+            return _repository.GetAllUserTwoRef();
+        }
+        public bool ChangePassword(UserProfile user)
+        {
+            return _repository.ChangePassword(user);
+        }
+        #endregion
+
     }
 }

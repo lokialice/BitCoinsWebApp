@@ -35,7 +35,7 @@
                 else if (uploadFile.ContentLength > 0)
                 {
                     int MaxContentLength = 1024 * 1024 * 3; //3 MB
-                    string[] AllowedFileExtensions = new string[] { ".jpg", ".gif", ".png", ".pdf" };
+                    string[] AllowedFileExtensions = new string[] { ".jpg", ".gif", ".png" };
 
                     if (!AllowedFileExtensions.Contains(uploadFile.FileName.Substring(uploadFile.FileName.LastIndexOf('.'))))
                     {

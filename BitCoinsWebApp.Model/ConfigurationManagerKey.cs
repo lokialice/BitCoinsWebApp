@@ -16,5 +16,6 @@ namespace BitCoinsWebApp.Model
         public static readonly string SMTPPort = "587";
         public static readonly string SSL = "YES";
         public static readonly int IDParent = 3;
+        public static readonly string UserDefault = "lokialice";
     }
 }

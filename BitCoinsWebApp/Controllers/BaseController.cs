@@ -14,6 +14,7 @@ namespace BitCoinsWebApp.Controllers
         protected readonly IUserService _userService;
         protected readonly IFundService _fundService;
         protected readonly IPostService _postService;
+        protected readonly IImageService _imageService;
         private UserProfile _userCurrent;
         private Transactions _userTransfer;
         private Transactions _allTransfer;
@@ -29,6 +30,7 @@ namespace BitCoinsWebApp.Controllers
             _userService = new UserService();
             _userTransfer = new Transactions();
             _fundService = new FundService();
+            _imageService = new ImageService();
             _manageModel = new ManageModel();
             _postService = new PostService();
             _getPost = new PostNews();
@@ -47,8 +49,10 @@ namespace BitCoinsWebApp.Controllers
                 _userCurrent = _userService.GetUserByUserName(Session["UserLogin"].ToString());
                 if (_userCurrent.IDRole == 3)
                 {
-                    _userCurrent.ListUserLevel1 = _userService.GetAllUserLevel1(Session["UserLogin"].ToString());
-                    _userCurrent.ListUserLevel2 = _userService.GetAllUserLevel2(Session["UserLogin"].ToString());
+                    _userCurrent.ListUserLevel1 = _userService.GetAllUserLevel1();
+                    _userCurrent.ListUserLevel2 = _userService.GetAllUserLevel2();
+                    _userCurrent.ListUserOneRef = _userService.GetAllUserOneRef();
+                    _userCurrent.ListUserTwoRef = _userService.GetAllUserTwoRef();
                 }
                 _userCurrent.ListRef = _userService.GetRefByUsername(_userCurrent.UserName);
                 return _userCurrent;
@@ -62,7 +66,7 @@ namespace BitCoinsWebApp.Controllers
             {
                 _userTransfer.CurrencyList = _fundService.GetAllCurrencyType();
                 _userTransfer.FromUser = UserCurrent;
-                _userTransfer.ToUser = _userService.GetUserByUserName("lokialice");
+                _userTransfer.ToUser = _userService.GetUserByUserName(ConfigurationManagerKey.UserDefault);
                 _userTransfer.GetAllTransactions = _fundService.GetAllTransactionsFromUser(UserCurrent);
                 return _userTransfer;
             }

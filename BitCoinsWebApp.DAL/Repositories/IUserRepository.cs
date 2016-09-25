@@ -63,11 +63,14 @@
         int GetTotalRefID(UserProfile user);
         float GetAccountBalance(UserProfile user);
         List<UserProfile> GetRefByUsername(string username);
-        List<UserProfile> GetAllUserLevel1(string username);
-        List<UserProfile> GetAllUserLevel2(string username);
+        List<UserProfile> GetAllUserLevel1();
+        List<UserProfile> GetAllUserLevel2();
         bool ActiveUser(string id);
         bool DefaultUser(string id);
         int GetMoneyInterest(UserProfile user);
+        List<UserProfile> GetAllUserOneRef();
+        List<UserProfile> GetAllUserTwoRef();
+        bool ChangePassword(UserProfile user);
 
     }
 }
