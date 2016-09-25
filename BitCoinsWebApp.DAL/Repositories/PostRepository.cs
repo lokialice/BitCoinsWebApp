@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BitCoinsWebApp.Model;
-using PostDTO = BitCoinsWebApp.Model.PostNews;
-using BitCoinsWebApp.DAL.Entites;
-using log4net;
-using AutoMapper;
-
-namespace BitCoinsWebApp.DAL.Repositories
+﻿namespace BitCoinsWebApp.DAL.Repositories
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using BitCoinsWebApp.Model;
+    using PostDTO = BitCoinsWebApp.Model.PostNews;
+    using BitCoinsWebApp.DAL.Entites;
+    using log4net;
+    using AutoMapper;
+    using System.Web;
+
     public class PostRepository : IPostRepository
     {
         #region member
@@ -27,12 +28,13 @@ namespace BitCoinsWebApp.DAL.Repositories
         }
         #endregion
 
+        #region method
         public List<PostNews> GetAllListPost()
         {
             try
             {
                 List<Post> listPost = new List<Post>();
-                listPost = _pce.Posts.ToList();
+                listPost = _pce.Posts.OrderByDescending(p=> p.PostDate).ToList();
 
                 if (listPost == null && listPost.Count() == 0)
                 {
@@ -49,5 +51,27 @@ namespace BitCoinsWebApp.DAL.Repositories
                 return null;
             }
         }
+
+        public bool CreatePost(PostNews post, string filePath)
+        {
+            try
+            {
+                Mapper.CreateMap<PostDTO, Post>();
+                Post mappedPost = Mapper.Map<PostDTO, Post>(post);
+                mappedPost.FeatureImage = filePath;
+                mappedPost.PostDate = DateTime.Now;
+                mappedPost.PostStatus = true;
+                mappedPost.PostAuthor = post.UserPost.ID;
+                _pce.AddToPosts(mappedPost);
+                _pce.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.ToString());
+                return false;
+            }
+        }
+        #endregion
     }
 }

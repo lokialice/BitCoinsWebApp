@@ -1,0 +1,84 @@
+/*
+ *
+ *    [Table of contents]
+ *
+ *    [&. Content / #key]
+ *    [Let press Ctrl + f and type of paste the key, then press Enter to search the content ]
+ *
+ *    Summary:
+ *
+ *    0. VARIABLE LESS
+ *        - 0.1. Color
+ *        - 0.2. Font
+ *    1. MIXINS
+
+
+/*
+=============================
+====    VARIABLE LESS    ====
+=============================
+*/
+
+/*
+----------  0.1. Color  ----------
+*/
+
+/*
+----------  0.2. Font  ----------
+*/
+
+/*
+=============================
+===   END VARIABLE LESS   ===
+=============================
+*/
+
+/*
+=============================
+====        MIXINS       ====
+=============================
+*/
+
+/*
+=============================
+===       END MIXINS      ===
+=============================
+*/
+
+@media screen and (min-width: 1600px) {
+    /*
+    ==============================
+    =           SECTION          =
+    ==============================
+    */
+
+    .wrapper-banner-why {
+        position: relative;
+    }
+    .wrapper-banner-why .wrapper-img {
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        left: 40px;
+
+        display: block;
+
+        max-width: 35%;
+    }
+    .who.who-banner {
+        background-position: 100% 0;
+    }
+    .homepage-01 .content-wrapper .subtitle,
+    .homepage-02 .content-wrapper .subtitle,
+    .homepage-03 .content-wrapper .subtitle {
+        font-size: 24px;
+    }
+    .homepage-01 .content-wrapper .title,
+    .homepage-02 .content-wrapper .title,
+    .homepage-03 .content-wrapper .title {
+        font-size: 60px;
+    }
+    /*
+    =====  End of SECTION  ======
+    */
+}

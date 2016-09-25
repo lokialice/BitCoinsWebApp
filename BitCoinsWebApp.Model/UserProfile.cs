@@ -58,8 +58,15 @@
         [DataMember]
         public string Token { get; set; }
         public List<UserProfile> ListRef { get; set; }
+        public List<UserProfile> ListUserLevel1 { get; set; }
+        public List<UserProfile> ListUserLevel2 { get; set; }
         [DataMember]
         public int IDRole { get; set; }
+        [DataMember]
+        public bool DefaultUser { get; set; }
+        public int BalanceAmount { get; set; }
+        [DataMember]
+        public DateTime CreateDate { get; set; }
     }
 
 }

@@ -1,0 +1,11 @@
+@media screen and (max-width: 1600px) {
+    .stats-02 .stats-man {
+        left: 2%;
+    }
+    .service .piggy-man {
+        right: 72%;
+    }
+    .achievement {
+        background-size: contain;
+    }
+}

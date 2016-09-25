@@ -63,7 +63,6 @@
     <Compile Include="SendEmail.cs" />
     <Compile Include="SessionExpireAttribute.cs" />
     <Compile Include="SHA1.cs" />
-    <Compile Include="Weather.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

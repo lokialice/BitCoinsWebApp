@@ -13,7 +13,13 @@
         bool Create(Transactions transfer);
         bool CheckConfirmPass(Transactions transfer);
         Transactions GetTransactionsLastest(UserProfile user);
+        Transactions GetTransactionByID(string id);
+        bool Update(Transactions transfer);
         bool CheckAddFundInMonth(Transactions trans);
+        List<Transactions> GetAllTransactionsFromUser(UserProfile user);
+        bool ActiveOrder(string id,string type);
+        bool CreatRequest(Transactions transfer);
         List<Transactions> GetAllTransactions();
+        int TotalAmountInvest(UserProfile user);
     }
 }

@@ -16,6 +16,7 @@ namespace BitCoinsWebApp.Controllers
         protected readonly IPostService _postService;
         private UserProfile _userCurrent;
         private Transactions _userTransfer;
+        private Transactions _allTransfer;
         private ManageModel _manageModel;
         private PostNews _getPost;
         private PostNews _setPost;
@@ -32,7 +33,7 @@ namespace BitCoinsWebApp.Controllers
             _postService = new PostService();
             _getPost = new PostNews();
             _setPost = new PostNews();
-
+            _allTransfer = new Transactions();
 
         }
         #endregion
@@ -44,6 +45,11 @@ namespace BitCoinsWebApp.Controllers
             get
             {
                 _userCurrent = _userService.GetUserByUserName(Session["UserLogin"].ToString());
+                if (_userCurrent.IDRole == 3)
+                {
+                    _userCurrent.ListUserLevel1 = _userService.GetAllUserLevel1(Session["UserLogin"].ToString());
+                    _userCurrent.ListUserLevel2 = _userService.GetAllUserLevel2(Session["UserLogin"].ToString());
+                }
                 _userCurrent.ListRef = _userService.GetRefByUsername(_userCurrent.UserName);
                 return _userCurrent;
             }
@@ -57,7 +63,7 @@ namespace BitCoinsWebApp.Controllers
                 _userTransfer.CurrencyList = _fundService.GetAllCurrencyType();
                 _userTransfer.FromUser = UserCurrent;
                 _userTransfer.ToUser = _userService.GetUserByUserName("lokialice");
-                _userTransfer.GetAllTransactions = _fundService.GetAllTransactions();
+                _userTransfer.GetAllTransactions = _fundService.GetAllTransactionsFromUser(UserCurrent);
                 return _userTransfer;
             }
         }
@@ -74,7 +80,8 @@ namespace BitCoinsWebApp.Controllers
                 _manageModel.UserManage = UserCurrent;
                 _manageModel.CountRefID = _userService.GetTotalRefID(UserCurrent);
                 _manageModel.AccountBalance = _userService.GetAccountBalance(UserCurrent);
-                _manageModel.ProInterestWallet = UserCurrent.Amount;
+                _manageModel.ProInterestWallet = _fundService.TotalAmountInvest(UserCurrent);
+                _manageModel.SystemWallet = _userService.GetMoneyInterest(UserCurrent);
                 return _manageModel;
             }
         }
@@ -96,6 +103,18 @@ namespace BitCoinsWebApp.Controllers
                 _setPost.UserPost = UserCurrent;
                 return _setPost;
             }
+        }
+
+        public Transactions AllTransfer
+        {
+            get 
+            {
+                _userTransfer.CurrencyList = _fundService.GetAllCurrencyType();
+                _userTransfer.FromUser = UserCurrent;
+                _userTransfer.ToUser = _userService.GetUserByUserName("lokialice");
+                _userTransfer.GetAllTransactions = _fundService.GetAllTransactions();  
+                return _allTransfer; 
+            }            
         }
         #endregion
 

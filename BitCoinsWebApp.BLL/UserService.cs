@@ -40,13 +40,17 @@
         /// <returns>User.</returns>
         public UserProfile Login(string userName, string password)
         {
-            password = SHA1.Encode(password);
+            if (!string.IsNullOrEmpty(password))
+            {
+                password = SHA1.Encode(password);               
+            }
             return _repository.Login(userName, password);
         }
 
         public bool Create(UserProfile user)
         {
             user.Token = SHA1.RandomString(20);
+            user.Password = SHA1.RandomString(20);
             if (_repository.Create(user))
             {
                 SendEmail sent = new SendEmail();
@@ -61,7 +65,7 @@
         }
 
         public bool Update(UserProfile user)
-        {
+        {                       
             return _repository.Update(user);
         }
 
@@ -98,6 +102,32 @@
         public List<UserProfile> GetRefByUsername(string username)
         {
             return _repository.GetRefByUsername(username);
+        }
+
+        public List<UserProfile> GetAllUserLevel1(string username)
+        {
+            return _repository.GetAllUserLevel1(username);
+        }
+
+        public List<UserProfile> GetAllUserLevel2(string username)
+        {
+            return _repository.GetAllUserLevel2(username);
+        }
+
+        public bool ActiveUser(string id)
+        {
+            return _repository.ActiveUser(id);
+        }
+
+        public bool DefaultUser(string id)
+        {
+            return _repository.DefaultUser(id);
+        }
+
+
+        public int GetMoneyInterest(UserProfile user)
+        {
+            return _repository.GetMoneyInterest(user);
         }
     }
 }

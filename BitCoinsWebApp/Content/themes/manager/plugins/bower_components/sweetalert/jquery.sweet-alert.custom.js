@@ -6,9 +6,10 @@ function generateAddFundOrder() {
             var ticker = JSON.parse(xbtc.responseText);
             var price = ticker.last;
             var usdValue = document.getElementById('txtAmount').value;
+            var code = document.getElementById('bitCoinsCode').value;
             var btcConvert = usdValue / price;
             btcConvert = btcConvert.toFixed(8);
-            var qrurl = "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=bitcoin:1ArmoryXcfq7TnCSuZa9fQjRYwJ4bkRKfv?amount=" + btcConvert;
+            var qrurl = "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=bitcoin:" + code + "?amount=" + btcConvert;
             document.getElementById("srcQR").value = qrurl;
         }
     };

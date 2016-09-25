@@ -48,7 +48,19 @@
                             @Html.TextBoxFor(m => Model.Email, new { @id = "email", @maxlength = 50, @size = "44", @class = "form-control", @placeholder = "Email" })
                             <span class="help-block" id="emailError" style="color: #a94442">@ViewBag.EmailError</span>
                         </div>
-                    </div>                                       
+                    </div> 
+                    <div class="form-group ">
+                        <div class="col-xs-12">
+                            @Html.TextBoxFor(m => Model.Phone, new { @id = "phone", @maxlength = 50, @size = "44", @class = "form-control", @placeholder = "Phone" })
+                            <span class="help-block" id="phoneError" style="color: #a94442"></span>
+                        </div>
+                    </div>        
+                    <div class="form-group ">
+                        <div class="col-xs-12">
+                            @Html.TextBoxFor(m => Model.BitCoinsCode, new { @id = "BitcoinCode", @maxlength = 50, @size = "44", @class = "form-control", @placeholder = "Bitcoin Code" })
+                            <span class="help-block" id="bitcoinError" style="color: #a94442"></span>
+                        </div>
+                    </div>                                              
                     <div class="form-group">
                         <div class="col-md-12">
                             <div class="checkbox checkbox-primary p-t-0">

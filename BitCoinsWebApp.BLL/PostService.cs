@@ -28,5 +28,10 @@ namespace BitCoinsWebApp.BLL
         {
             return _repository.GetAllListPost();
         }
+
+        public bool CreatePost(PostNews post, string filePath)
+        {
+            return _repository.CreatePost(post, filePath);
+        }
     }
 }

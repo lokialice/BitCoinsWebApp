@@ -1,0 +1,29 @@
+@media screen and (max-width: 1440px) {
+    .stats-02 .stats-man {
+        display: none;
+    }
+    .stats-02 .col-lg-10 {
+        width: 100%;
+    }
+    .stats-02 .col-lg-10.pull-right {
+        float: none !important;
+    }
+    .service .piggy-man {
+        display: none;
+    }
+    .service .col-lg-9 {
+        width: 100%;
+    }
+    .service .col-lg-9.pull-right {
+        float: none !important;
+    }
+    .wrapper-404 .title {
+        padding-top: 60px;
+        padding-bottom: 10px;
+    }
+    .wrapper-section-see .wrapper-see-img {
+        left: 30px;
+
+        width: 25%;
+    }
+}

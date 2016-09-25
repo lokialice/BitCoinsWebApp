@@ -47,7 +47,7 @@
         /// <returns>ActionResult.</returns>
         [HttpPost]
         public ActionResult Login(UserProfile userAccount)
-        {
+        {            
             UserProfile user = _userService.Login(userAccount.UserName, userAccount.Password);
             if (user != null)
             {
@@ -87,13 +87,11 @@
                 if (!String.IsNullOrEmpty(id))
                 {
                     var userParent = _userService.GetUserByUserName(id);
-                    userAccount.IDParent = userParent.ID;
-                    userAccount.Password = "12345678@Ab";
+                    userAccount.IDParent = userParent.ID;                    
                 }
                 else 
                 {
-                    userAccount.IDParent = ConfigurationManagerKey.IDParent;
-                    userAccount.Password = "12345678@Ab";
+                    userAccount.IDParent = ConfigurationManagerKey.IDParent;                    
                 }
                 var user = _userService.Create(userAccount);              
                 return View("Login");
@@ -139,9 +137,10 @@
         public ActionResult UpdateProfile(UserProfile userAccounts)
         {
             userAccounts.ID = UserCurrent.ID;
+            userAccounts.Password = SHA1.Encode(userAccounts.Password);
             _userService.Update(userAccounts);
             return View("Manage", UserCurrent);
-        }
+        }       
 
         /// <summary>
         /// Logs the out.

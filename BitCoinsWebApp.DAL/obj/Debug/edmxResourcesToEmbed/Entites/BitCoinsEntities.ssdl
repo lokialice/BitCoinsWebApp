@@ -1,8 +1,131 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BitCoinsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="BitCoinsModelStoreContainer">
+    <EntitySet Name="Currency" EntityType="BitCoinsModel.Store.Currency" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Document" EntityType="BitCoinsModel.Store.Document" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ImageUpload" EntityType="BitCoinsModel.Store.ImageUpload" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Post" EntityType="BitCoinsModel.Store.Post" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="BitCoinsModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Transfer" EntityType="BitCoinsModel.Store.Transfer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TransferHistory" EntityType="BitCoinsModel.Store.TransferHistory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TransferType" EntityType="BitCoinsModel.Store.TransferType" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserAccount" EntityType="BitCoinsModel.Store.UserAccount" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserRole" EntityType="BitCoinsModel.Store.UserRole" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Post_UserAccount" Association="BitCoinsModel.Store.FK_Post_UserAccount">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="Post" EntitySet="Post" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transfer_Currency" Association="BitCoinsModel.Store.FK_Transfer_Currency">
+      <End Role="Currency" EntitySet="Currency" />
+      <End Role="Transfer" EntitySet="Transfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transfer_TransferType" Association="BitCoinsModel.Store.FK_Transfer_TransferType">
+      <End Role="TransferType" EntitySet="TransferType" />
+      <End Role="Transfer" EntitySet="Transfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transfer_UserAccount" Association="BitCoinsModel.Store.FK_Transfer_UserAccount">
+      <End Role="UserAccount" EntitySet="UserAccount" />
+      <End Role="Transfer" EntitySet="Transfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransferHistory_Transfer" Association="BitCoinsModel.Store.FK_TransferHistory_Transfer">
+      <End Role="Transfer" EntitySet="Transfer" />
+      <End Role="TransferHistory" EntitySet="TransferHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransferHistory_TransferType" Association="BitCoinsModel.Store.FK_TransferHistory_TransferType">
+      <End Role="TransferType" EntitySet="TransferType" />
+      <End Role="TransferHistory" EntitySet="TransferHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAccount_ImageUpload" Association="BitCoinsModel.Store.FK_UserAccount_ImageUpload">
+      <End Role="ImageUpload" EntitySet="ImageUpload" />
+      <End Role="UserAccount" EntitySet="UserAccount" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAccount_UserRole" Association="BitCoinsModel.Store.FK_UserAccount_UserRole">
+      <End Role="UserRole" EntitySet="UserRole" />
+      <End Role="UserAccount" EntitySet="UserAccount" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CurrencyName" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Document">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+    </Key>
+    <Property Name="DocumentID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DocumentName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="DocumentFile" Type="varchar(max)" Nullable="false" />
+    <Property Name="CreateDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ImageUpload">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ImageName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ImageFile" Type="varchar(max)" Nullable="false" />
+    <Property Name="CreateDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PostAuthor" Type="int" Nullable="false" />
+    <Property Name="PostDate" Type="date" Nullable="false" />
+    <Property Name="PostTittle" Type="text" Nullable="false" />
+    <Property Name="PostExcerpt" Type="text" />
+    <Property Name="PostContent" Type="text" Nullable="false" />
+    <Property Name="FeatureImage" Type="text" />
+    <Property Name="PostStatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Transfer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="OrderName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="TransferType" Type="int" Nullable="false" />
+    <Property Name="FromUserID" Type="int" Nullable="false" />
+    <Property Name="ToUserID" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="Description" Type="text" Nullable="false" />
+    <Property Name="CurrencyType" Type="int" Nullable="false" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="CreateDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransferHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="TransferName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="TransferID" Type="int" Nullable="false" />
+    <Property Name="TransferType" Type="int" Nullable="false" />
+    <Property Name="Amout" Type="float" Nullable="false" />
+    <Property Name="CreatDate" Type="date" />
+  </EntityType>
+  <EntityType Name="TransferType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TransferType" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="UserAccount">
     <Key>
       <PropertyRef Name="ID" />
@@ -12,6 +135,11 @@
     <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="Email" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="Amount" Type="float" />
+    <Property Name="Description" Type="text" />
+    <Property Name="ImageProfile" Type="int" />
+    <Property Name="FacebookLink" Type="varchar" MaxLength="150" />
+    <Property Name="SkypeID" Type="varchar" MaxLength="150" />
     <Property Name="Name" Type="varchar" MaxLength="50" />
     <Property Name="Age" Type="int" />
     <Property Name="Gender" Type="varchar" MaxLength="25" />
@@ -21,5 +149,112 @@
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="IDRole" Type="int" Nullable="false" />
     <Property Name="IDParent" Type="int" />
+    <Property Name="Token" Type="text" />
+    <Property Name="DefaultUser" Type="bit" />
+    <Property Name="CreateDate" Type="date" />
   </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LevelUser" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Post_UserAccount">
+    <End Role="UserAccount" Type="BitCoinsModel.Store.UserAccount" Multiplicity="1" />
+    <End Role="Post" Type="BitCoinsModel.Store.Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="PostAuthor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transfer_Currency">
+    <End Role="Currency" Type="BitCoinsModel.Store.Currency" Multiplicity="1" />
+    <End Role="Transfer" Type="BitCoinsModel.Store.Transfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Transfer">
+        <PropertyRef Name="CurrencyType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transfer_TransferType">
+    <End Role="TransferType" Type="BitCoinsModel.Store.TransferType" Multiplicity="1" />
+    <End Role="Transfer" Type="BitCoinsModel.Store.Transfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransferType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Transfer">
+        <PropertyRef Name="TransferType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transfer_UserAccount">
+    <End Role="UserAccount" Type="BitCoinsModel.Store.UserAccount" Multiplicity="1" />
+    <End Role="Transfer" Type="BitCoinsModel.Store.Transfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccount">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Transfer">
+        <PropertyRef Name="FromUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransferHistory_Transfer">
+    <End Role="Transfer" Type="BitCoinsModel.Store.Transfer" Multiplicity="1" />
+    <End Role="TransferHistory" Type="BitCoinsModel.Store.TransferHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transfer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TransferHistory">
+        <PropertyRef Name="TransferID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransferHistory_TransferType">
+    <End Role="TransferType" Type="BitCoinsModel.Store.TransferType" Multiplicity="1" />
+    <End Role="TransferHistory" Type="BitCoinsModel.Store.TransferHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransferType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TransferHistory">
+        <PropertyRef Name="TransferType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAccount_ImageUpload">
+    <End Role="ImageUpload" Type="BitCoinsModel.Store.ImageUpload" Multiplicity="0..1" />
+    <End Role="UserAccount" Type="BitCoinsModel.Store.UserAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageUpload">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserAccount">
+        <PropertyRef Name="ImageProfile" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAccount_UserRole">
+    <End Role="UserRole" Type="BitCoinsModel.Store.UserRole" Multiplicity="1" />
+    <End Role="UserAccount" Type="BitCoinsModel.Store.UserAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRole">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserAccount">
+        <PropertyRef Name="IDRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

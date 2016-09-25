@@ -22,7 +22,7 @@
         #endregion
 
         public ActionResult Index()
-        {         
+        {
             return View("Index", UserTransfer);
         }
 
@@ -37,21 +37,7 @@
             {
                 if (transfer.Amount == 105)
                 {
-                    if (_fundService.GetTransactionsLastest(transfer.FromUser) != null)
-                    {
-                        if (_fundService.CheckAddFundInMonth(_fundService.GetTransactionsLastest(transfer.FromUser)))
-                        {
-                            _fundService.Create(transfer);
-                        }
-                        else
-                        {
-                            ViewBag.CheckFundInMonth = "Please waiting thirty days to add funds !";
-                        }
-                    }
-                    else 
-                    {
-                        _fundService.Create(transfer);
-                    }
+                           _fundService.Create(transfer);                                        
                 }
                 else
                 {
@@ -65,10 +51,46 @@
             return View("Index", UserTransfer);
         }
 
-        public ActionResult FundHistory() 
+        public ActionResult FundHistory()
         {
             return View("FundsHistory", UserTransfer);
         }
 
+        public ActionResult Order()
+        {
+            return View("Order", UserTransfer);
+        }
+
+        public ActionResult ActiveOrder(string id,string type)
+        {
+            _fundService.ActiveOrder(id,type);
+            return View("Order", UserTransfer);
+        }
+
+        public ActionResult RequestOrder()
+        {
+            return View("RequestOrder", UserTransfer);
+        }
+
+        public ActionResult CreateRequest(Transactions withdraw)
+        {
+            UserTransfer.CurrencyList = _fundService.GetAllCurrencyType();
+            UserTransfer.FromUser = UserCurrent;
+            UserTransfer.ToUser = _userService.GetUserByUserName("lokialice");
+            withdraw.FromUser = UserCurrent;
+            withdraw.ToUser = _userService.GetUserByUserName("lokialice");
+
+            if (_fundService.CheckConfirmPass(withdraw) == false)
+            {
+                ViewBag.ErrorConfirmPass = "Password incorrect! Please type again!";
+                return View("RequestOrder", UserTransfer);
+            }
+            else
+            {
+                _fundService.CreateRequest(withdraw);
+            }
+
+            return View("FundsHistory", UserTransfer);
+        }
     }
 }

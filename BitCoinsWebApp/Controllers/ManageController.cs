@@ -21,11 +21,34 @@
         #region method
         [HttpGet]
         public ActionResult Index()
-        {
-            ViewBag.AccountBalance = "$" + ManageModel.AccountBalance;
-            ViewBag.ProInterestWallet = "$" + ManageModel.ProInterestWallet;
+        {           
             return View(ManageModel);
         }
+
+        public ActionResult UserLevel1() 
+        {
+            return View("UserLevel1", UserCurrent);
+        }
+
+        public ActionResult UserLevel2()
+        {
+            return View("UserLevel2", UserCurrent);
+        }
+        
+        [HttpPost]
+        public ActionResult ActiveUser(string id) 
+        {
+            _userService.ActiveUser(id);
+            return View("UserLevel1",UserCurrent);
+        }
+
+        [HttpPost]
+        public ActionResult DefaultUser(string id)
+        {
+            _userService.DefaultUser(id);
+            return View("Manage", UserCurrent);
+        }
+
 
         #endregion
 

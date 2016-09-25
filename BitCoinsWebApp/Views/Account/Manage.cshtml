@@ -30,8 +30,8 @@
                                 <a href="javascript:void(0)">
                                     <img src="@Url.Content(Model.ImageProfile)" class="thumb-lg img-circle" alt="img"></a>
                                 <h4 class="text-white">@Model.UserName</h4>
-                                <h5 class="text-white">@Model.Email</h5>
-                                <h5 class="text-white">Ref:<a href="@Url.Action("Register", "Account", new { id = Model.UserName})" style="color:red">@Url.Action("Register", "Account", new { id = Model.UserName})</a></h5>
+                                <h5 class="text-white">@Model.Email</h5>                              
+                                <h5 class="text-white"> Ref:<a href="@Url.Action("Register", "Account", new { id = Model.UserName})" style="color:red">@Url.Action("Register", "Account", new { id = Model.UserName})</a></h5>
                             </div>
                         </div>
                     </div>
@@ -95,7 +95,13 @@
                                     <div class="col-md-12">
                                         @Html.TextBoxFor(m => Model.Email, new { @maxlength = 50, @size = "44", @class = "form-control form-control-line", @placeholder = "johnathan@admin.com" })
                                     </div>
-                                </div>                        
+                                </div>       
+                                <div class="form-group">
+                                    <label class="col-md-12">Password</label>
+                                    <div class="col-md-12">
+                                        @Html.PasswordFor(m => Model.Password, new { @maxlength = 50,@required="true", @size = "44", @class = "form-control form-control-line", @placeholder = "Password" })
+                                    </div>
+                                </div>                 
                                 <div class="form-group">
                                     <label class="col-md-12">Phone No</label>
                                     <div class="col-md-12">
@@ -145,7 +151,7 @@
                                 <div class="form-group">
                                     <label class="col-md-12">Bitcoins Code</label>
                                     <div class="col-md-12">
-                                        @Html.TextBoxFor(m => Model.BitCoinsCode, new { @id = "bitcoinsCode", @maxlength = 50, @size = "44", @class = "form-control form-control-line", @placeholder = "1AwD6J7ba45mSLTNLabrSWBU5xs9p1Fk1w" })
+                                        @Html.TextBoxFor(m => Model.BitCoinsCode, new { @id = "bitcoinsCode", @maxlength = 50, @size = "44", @class = "form-control form-control-line", @disabled = "true", @placeholder = "1AwD6J7ba45mSLTNLabrSWBU5xs9p1Fk1w" })
                                     </div>
                                 </div>                                        
                                 <div class="form-group">

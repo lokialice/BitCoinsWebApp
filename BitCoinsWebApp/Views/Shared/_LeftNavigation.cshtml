@@ -14,12 +14,12 @@
             </li>
             <li class="user-pro"><a href="@Url.Action("Profile", "Account")" class="waves-effect">
                 <img src="@Url.Content(Model.ImageProfile)" alt="user-img" class="img-circle">
-                <span class="hide-menu">@Model.Name<span class="fa arrow"></span></span></a>
+                <span class="hide-menu">@Model.Name</span></a>
             </li>
             <li class="nav-small-cap m-t-10">--- Main Menu</li>
-            <li><a href="@Url.Action("Index", "Manage")" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i><span class="hide-menu">Dashboard <span class="fa arrow"></span></span></a>
+            <li><a href="@Url.Action("Index", "Manage")" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i><span class="hide-menu">Dashboard</span></a>
             </li>
-            <li><a href="#" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Funds <span class="fa arrow"></span></span></a>
+            <li><a href="#" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Funds<span class="fa arrow"></span></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="@Url.Action("Index", "Fund")">Add Funds</a></li>
                     <li><a href="@Url.Action("FundHistory", "Fund")">Add Funds History</a></li>
@@ -27,30 +27,23 @@
             </li>
             <li><a href="@Url.Action("Index", "Network")" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Networking</span></a>
             </li>
-            <li><a href="#" class="waves-effect"><i data-icon="&#xe006;" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Rotation Coins<span class="fa arrow"></span></span></a>
-                <ul class="nav nav-second-level">
-                    <li><a href="#">Order Ticket</a> </li>
-                    <li><a href="#">History Order Ticket</a></li>
-                </ul>
+             <li><a href="@Url.Action("RequestOrder", "Fund")" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Order</span></a>
             </li>
+            
             @if (Model.IDRole == 3)
             {               
-                <li><a href="widgets.html" class="waves-effect"><i data-icon="P" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Settings<span class="fa arrow"></span></span></a>
+                <li><a href="#" class="waves-effect"><i data-icon="P" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Settings<span class="fa arrow"></span></span></a>
                     <ul class="nav nav-second-level">
                         <li><a href="#">Manage Users<span class="fa arrow"></span></a>
                             <ul class="nav nav-third-level">
-                                <li><a href="javascript:void(0)">Third Level Item</a> </li>
-                                <li><a href="javascript:void(0)">Third Level Item</a> </li>
+                                <li><a href="@Url.Action("UserLevel1", "Manage")">User Level Standard</a> </li>
+                                <li><a href="@Url.Action("UserLevel2", "Manage")">User Level Gold</a> </li>
                             </ul>
                         </li>
                         <li><a href="@Url.Action("Index", "Post")">Post Manage</a>
                         </li>
-                        <li><a href="#">Order<span class="fa arrow"></span></a>
-                            <ul class="nav nav-third-level">
-                                <li><a href="javascript:void(0)">Third Level Item</a> </li>
-                                <li><a href="javascript:void(0)">Third Level Item</a> </li>
-                            </ul>
-                        </li>
+                         <li><a href="@Url.Action("Order", "Fund")">Order Manage</a>
+                        </li>                                                
                     </ul>
                 </li>
             }

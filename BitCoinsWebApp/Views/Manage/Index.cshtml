@@ -19,146 +19,80 @@
             </div>
             <!-- /.col-lg-12 -->
         </div>
-        <!-- /.row -->
+        <!-- .row -->
         <div class="row">
-            <div class="col-md-12 col-lg-12 col-sm-12">
-                <div class="white-box">
-                    <div class="row row-in">
-                        <div class="col-lg-3 col-sm-6 row-in-br">
-                            <div class="col-in row">
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <i data-icon="E" class="linea-icon linea-basic"></i>
-                                    <h5 class="text-muted vb">Total Refererence ID</h5>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <h3 class="counter text-right m-t-15 text-danger">@Model.CountRefID</h3>
-                                </div>
-                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span> </div>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="col-lg-6 col-sm-12 col-xs-12">
+                <h4>Analytics Amount <a class="get-code" data-toggle="collapse" href="#pgr1" aria-expanded="true"><i class="fa fa-code" title="Get Code" data-toggle="tooltip"></i></a></h4>                
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6 col-xs-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Total Refererence ID</h3>
+                            <ul class="list-inline two-part">
+                                <li><i class="icon-people text-info"></i></li>
+                                 <li class="text-right"><span class="counter">@Model.CountRefID</span></li>                                                          
+                            </ul>
                         </div>
-                        <div class="col-lg-3 col-sm-6 row-in-br  b-r-none">
-                            <div class="col-in row">
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <i class="linea-icon linea-basic" data-icon="&#xe01b;"></i>
-                                    <h5 class="text-muted vb">Provincial Interest Wallet</h5>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-6">                                    
-                                    <h3 class="text-right m-t-15 text-megna">
-                                        $@Model.ProInterestWallet</h3>
-                                </div>
-                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-megna" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span> </div>
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-xs-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Provincial Interest Wallet</h3>
+                            <ul class="list-inline two-part">
+                                <li><i class="icon-folder text-purple"></i></li>
+                                 <li class="text-right">$<span class="counter">@Model.ProInterestWallet</span></li>                                                          
+                            </ul>
                         </div>
-                        <div class="col-lg-3 col-sm-6 row-in-br">
-                            <div class="col-in row">
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <i class="linea-icon linea-basic" data-icon="&#xe00b;"></i>
-                                    <h5 class="text-muted vb">System Wallet</h5>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-6">                                  
-                                    <h3 class="text-right m-t-15 text-primary">$157</h3>
-                                </div>
-                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span> </div>
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-xs-12">
+                        <div class="white-box">
+                            <h3 class="box-title">System Wallet</h3>
+                            <ul class="list-inline two-part">
+                                <li><i class="icon-folder-alt text-danger"></i></li>
+                                <li class="text-right">$<span class="counter">@Model.SystemWallet</span></li>                               
+                            </ul>
                         </div>
-                        <div class="col-lg-3 col-sm-6  b-0">
-                            <div class="col-in row">
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <i class="linea-icon linea-basic" data-icon="&#xe016;"></i>
-                                    <h5 class="text-muted vb">Account Balance</h5>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-6">                                   
-                                    <h3 class="text-right m-t-15 text-success">
-                                       $@Model.AccountBalance</h3>
-                                </div>
-                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span> </div>
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-xs-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Account Balance</h3>
+                            <ul class="list-inline two-part">
+                                <li><i class="ti-wallet text-success"></i></li>
+                                <li class="text-right">$<span class="counter">@Model.AccountBalance</span></li>                                                        
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--row -->
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-md-7 col-lg-9 col-sm-12 col-xs-12">
-                <div class="white-box">
-                    <h3 class="box-title">Yearly Sales</h3>
-                    <ul class="list-inline text-right">
-                        <li>
-                            <h5><i class="fa fa-circle m-r-5" style="color: #00bfc7;"></i>iPhone</h5>
-                        </li>
-                        <li>
-                            <h5><i class="fa fa-circle m-r-5" style="color: #fb9678;"></i>iPad</h5>
-                        </li>
-                        <li>
-                            <h5><i class="fa fa-circle m-r-5" style="color: #9675ce;"></i>iPod</h5>
-                        </li>
-                    </ul>
-                    <div id="morris-area-chart" style="height: 340px;"></div>
-                </div>
-            </div>
-            <div class="col-md-5 col-lg-3 col-sm-6 col-xs-12">
-                <div class="bg-theme-dark m-b-15">
-                    <div class="row weather p-20">
-                        <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 m-t-40">
-                            <h3>&nbsp;</h3>
-                            <h1>73<sup>°F</sup></h1>
-                            <p class="text-white">AHMEDABAD, INDIA</p>
-                        </div>
-                        <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6 text-right">
-                            <i class="wi wi-day-cloudy-high"></i>
-                            <br />
-                            <br />
-                            <b class="text-white">SUNNEY DAY</b>
-                            <p class="w-title-sub">April 14</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-5 col-lg-3 col-sm-6 col-xs-12">
-                <div class="bg-theme m-b-15">
-                    <div id="myCarouse2" class="carousel vcarousel slide p-20">
+            <div class="col-lg-6 col-sm-12 col-xs-12">
+                <h4>Carousel widget <a class="get-code" data-toggle="collapse" href="#pgr2" aria-expanded="true"><i class="fa fa-code" title="Get Code" data-toggle="tooltip"></i></a></h4>                
+                <div class="news-slide m-b-15">
+                    <div class="vcarousel slide">
                         <!-- Carousel items -->
-                        <div class="carousel-inner ">
+                        <div class="carousel-inner">
                             <div class="active item">
-                                <h3 class="text-white">My Acting blown <span class="font-bold">Your Mind</span> and you also laugh at the moment</h3>
-                                <div class="twi-user">
-                                    <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/hritik.jpg")" alt="user" class="img-circle img-responsive pull-left">
-                                    <h4 class="text-white m-b-0">Govinda</h4>
-                                    <p class="text-white">Actor</p>
+                                <div class="overlaybg">
+                                    <img src="@Url.Content("~/Content/themes/manager/plugins/images/news/slide1.jpg")" /></div>
+                                <div class="news-content">
+                                    <span class="label label-danger label-rounded">Primary</span>
+                                    <h2>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</h2>
+                                    <a href="#">Read More</a>
                                 </div>
                             </div>
                             <div class="item">
-                                <h3 class="text-white">My Acting blown <span class="font-bold">Your Mind</span> and you also laugh at the moment</h3>
-                                <div class="twi-user">
-                                    <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/genu.jpg")" alt="user" class="img-circle img-responsive pull-left">
-                                    <h4 class="text-white m-b-0">Govinda</h4>
-                                    <p class="text-white">Actor</p>
+                                <div class="overlaybg">
+                                    <img src="@Url.Content("~/Content/themes/manager/plugins/images/news/slide1.jpg")" /></div>
+                                <div class="news-content">
+                                    <span class="label label-primary label-rounded">Primary</span>
+                                    <h2>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</h2>
+                                    <a href="#">Read More</a>
                                 </div>
                             </div>
                             <div class="item">
-                                <h3 class="text-white">My Acting blown <span class="font-bold">Your Mind</span> and you also laugh at the moment</h3>
-                                <div class="twi-user">
-                                    <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/ritesh.jpg")" alt="user" class="img-circle img-responsive pull-left">
-                                    <h4 class="text-white m-b-0">Govinda</h4>
-                                    <p class="text-white">Actor</p>
+                                <div class="overlaybg">
+                                    <img src="@Url.Content("~/Content/themes/manager/plugins/images/news/slide1.jpg")" /></div>
+                                <div class="news-content">
+                                    <span class="label label-success label-rounded">Primary</span>
+                                    <h2>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</h2>
+                                    <a href="#">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -166,420 +100,232 @@
                 </div>
             </div>
         </div>
-        <!--row -->
+        <!-- /.row -->                          
+        <!-- .row -->
         <div class="row">
-            <div class="col-md-6 col-lg-6 col-sm-12">
-                <div class="white-box">
-                    <h3 class="box-title">Recent Comments</h3>
-                    <div class="comment-center">
-                        <div class="comment-body">
-                            <div class="user-img">
-                                <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/pawandeep.jpg")" alt="user" class="img-circle">
-                            </div>
-                            <div class="mail-contnet">
-                                <h5>Pavan kumar</h5>
-                                <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat.</span> <span class="label label-rounded label-info">PENDING</span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2016</span>
-                            </div>
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Slide show with owl Carousel</div>
+                    <div class="panel-wrapper p-b-10 collapse in">
+                        <div id="owl-demo" class="owl-carousel owl-theme">
+                            <div class="item">
+                                <img src="@Url.Content("~/Content/themes/manager/plugins/images/heading-bg/slide2.jpg")" alt="Owl Image"></div>
+                            <div class="item">
+                                <img src="@Url.Content("~/Content/themes/manager/plugins/images/heading-bg/slide3.jpg")" alt="Owl Image"></div>
+                            <div class="item">
+                                <img src="@Url.Content("~/Content/themes/manager/plugins/images/heading-bg/slide4.jpg")" alt="Owl Image"></div>
+                            <div class="item">
+                                <img src="@Url.Content("~/Content/themes/manager/plugins/images/heading-bg/slide6.jpg")" alt="Owl Image"></div>
+                            <div class="item">
+                                <img src="@Url.Content("~/Content/themes/manager/plugins/images/heading-bg/slide1.jpg")" alt="Owl Image"></div>
+                            <div class="item">
+                                <img src="@Url.Content("~/Content/themes/manager/plugins/images/heading-bg/slide3.jpg")" alt="Owl Image"></div>
                         </div>
-                        <div class="comment-body">
-                            <div class="user-img">
-                                <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/sonu.jpg")" alt="user" class="img-circle">
-                            </div>
-                            <div class="mail-contnet">
-                                <h5>Sonu Nigam</h5>
-                                <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat.</span><span class="label label-rounded label-success">APPROVED</span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2016</span>
-                            </div>
-                        </div>
-                        <div class="comment-body">
-                            <div class="user-img">
-                                <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/arijit.jpg")" alt="user" class="img-circle">
-                            </div>
-                            <div class="mail-contnet">
-                                <h5>Arijit Sinh</h5>
-                                <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat. </span><span class="label label-rounded label-danger">REJECTED</span><a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a> <a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2016</span>
-                            </div>
-                        </div>
-                        <div class="comment-body b-none">
-                            <div class="user-img">
-                                <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/pawandeep.jpg")" alt="user" class="img-circle">
-                            </div>
-                            <div class="mail-contnet">
-                                <h5>Pavan kumar</h5>
-                                <span class="mail-desc">Donec ac condimentum massa. Etiam pellentesque pretium lacus. Phasellus ultricies dictum suscipit. Aenean commodo dui pellentesque molestie feugiat.</span> <span class="label label-rounded label-info">PENDING</span> <a href="javacript:void(0)" class="action"><i class="ti-close text-danger"></i></a><a href="javacript:void(0)" class="action"><i class="ti-check text-success"></i></a><span class="time pull-right">April 14, 2016</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-sm-12">
-                <div class="white-box">
-                    <h3 class="box-title">Recent sales
-              <div class="col-md-3 col-sm-4 col-xs-6 pull-right">
-                  <select class="form-control pull-right row b-none">
-                      <option>March 2016</option>
-                      <option>April 2016</option>
-                      <option>May 2016</option>
-                      <option>June 2016</option>
-                      <option>July 2016</option>
-                  </select>
-              </div>
-                    </h3>
-                    <div class="row sales-report">
-                        <div class="col-md-6 col-sm-6 col-xs-6">
-                            <h2>March 2016</h2>
-                            <p>SALES REPORT</p>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-6 ">
-                            <h1 class="text-right text-success m-t-20">$3,690</h1>
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table ">
-                            <thead>
-                                <tr>
-
-                                    <th>NAME</th>
-                                    <th>STATUS</th>
-                                    <th>DATE</th>
-                                    <th>PRICE</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-
-                                    <td class="txt-oflo">Elite admin</td>
-                                    <td><span class="label label-megna label-rounded">SALE</span> </td>
-                                    <td class="txt-oflo">April 18</td>
-                                    <td><span class="text-success">$24</span></td>
-                                </tr>
-                                <tr>
-
-                                    <td class="txt-oflo">Real Homes</td>
-                                    <td><span class="label label-info label-rounded">EXTENDED</span></td>
-                                    <td class="txt-oflo">April 19</td>
-                                    <td><span class="text-info">$1250</span></td>
-                                </tr>
-                                <tr>
-
-                                    <td class="txt-oflo">Medical Pro</td>
-                                    <td><span class="label label-danger label-rounded">TAX</span></td>
-                                    <td class="txt-oflo">April 20</td>
-                                    <td><span class="text-danger">-$24</span></td>
-                                </tr>
-                                <tr>
-
-                                    <td class="txt-oflo">Hosting press</td>
-                                    <td><span class="label label-megna label-rounded">SALE</span></td>
-                                    <td class="txt-oflo">April 21</td>
-                                    <td><span class="text-success">$24</span></td>
-                                </tr>
-                                <tr>
-
-                                    <td class="txt-oflo">Helping Hands</td>
-                                    <td><span class="label label-success label-rounded">MEMBER</span></td>
-                                    <td class="txt-oflo">April 22</td>
-                                    <td><span class="text-success">$24</span></td>
-                                </tr>
-                                <tr>
-
-                                    <td class="txt-oflo">Digital Agency</td>
-                                    <td><span class="label label-megna label-rounded">SALE</span> </td>
-                                    <td class="txt-oflo">April 23</td>
-                                    <td><span class="text-danger">-$14</span></td>
-                                </tr>
-                                <tr>
-
-                                    <td class="txt-oflo">Helping Hands</td>
-                                    <td><span class="label label-success label-rounded">MEMBER</span></td>
-                                    <td class="txt-oflo">April 22</td>
-                                    <td><span class="text-success">$64</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <a href="#">Check all the sales</a>
                     </div>
                 </div>
             </div>
         </div>
         <!-- /.row -->
-        <!--row -->
+        <!-- .row -->
         <div class="row">
-            <div class="col-md-8 col-lg-9 col-sm-12 col-xs-12 pull-right">
+            <div class="col-md-3 col-xs-12 col-sm-6">
+                <img class="img-responsive" alt="user" src="@Url.Content("~/Content/themes/manager/plugins/images/big/img1.jpg")">
                 <div class="white-box">
-                    <h3 class="box-title">Sales Difference</h3>
-                    <ul class="list-inline text-right">
-                        <li>
-                            <h5><i class="fa fa-circle m-r-5" style="color: #00bfc7;"></i>Site A View</h5>
-                        </li>
-                        <li>
-                            <h5><i class="fa fa-circle m-r-5" style="color: #fdc006;"></i>Site B View</h5>
-                        </li>
-                    </ul>
-                    <div id="morris-area-chart2" style="height: 370px;"></div>
+                    <div class="text-muted"><span class="m-r-10">May 16</span> <a class="text-muted m-l-10" href="#"><i class="fa fa-heart-o"></i>38</a></div>
+                    <h3 class="m-t-20 m-b-20">Top 20 Models are on the ramp</h3>
+                    <p>Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                    <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
                 </div>
             </div>
-            <div class="col-md-4 col-lg-3 col-sm-6 col-xs-12">
-                <div class="white-box m-b-15">
-                    <h3 class="box-title">Sales Difference</h3>
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-6  m-t-30">
-                            <h1 class="text-info">$647</h1>
-                            <p class="text-muted">APRIL 2016</p>
-                            <b>(150 Sales)</b>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-6">
-                            <div id="sparkline2dash" class="text-center"></div>
-                        </div>
-                    </div>
+            <div class="col-md-3 col-xs-12 col-sm-6">
+                <img class="img-responsive" alt="user" src="@Url.Content("~/Content/themes/manager/plugins/images/big/img2.jpg")">
+                <div class="white-box">
+                    <div class="text-muted"><span class="m-r-10">May 16</span> <a class="text-muted m-l-10" href="#"><i class="fa fa-heart-o"></i>38</a></div>
+                    <h3 class="m-t-20 m-b-20">Top 20 Models are on the ramp</h3>
+                    <p>Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                    <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
                 </div>
             </div>
-            <div class="col-md-4 col-lg-3 col-sm-6 col-xs-12">
-                <div class="white-box bg-purple m-b-15">
-                    <h3 class="text-white box-title">VISIT STATASTICS</h3>
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-6  m-t-30">
-                            <h1 class="text-white">$347</h1>
-                            <p class="light_op_text">APRIL 2016</p>
-                            <b class="text-white">(150 Sales)</b>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-6">
-                            <div id="sales1" class="text-center"></div>
-                        </div>
-                    </div>
+            <div class="col-md-3 col-xs-12 col-sm-6">
+                <img class="img-responsive" alt="user" src="@Url.Content("~/Content/themes/manager/plugins/images/big/img3.jpg")">
+                <div class="white-box">
+                    <div class="text-muted"><span class="m-r-10">May 16</span> <a class="text-muted m-l-10" href="#"><i class="fa fa-heart-o"></i>38</a></div>
+                    <h3 class="m-t-20 m-b-20">Top 20 Models are on the ramp</h3>
+                    <p>Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                    <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12 col-sm-6">
+                <img class="img-responsive" alt="user" src="@Url.Content("~/Content/themes/manager/plugins/images/big/img4.jpg")">
+                <div class="white-box">
+                    <div class="text-muted"><span class="m-r-10">May 16</span> <a class="text-muted m-l-10" href="#"><i class="fa fa-heart-o"></i>38</a></div>
+                    <h3 class="m-t-20 m-b-20">Top 20 Models are on the ramp</h3>
+                    <p>Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper quam.</p>
+                    <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20">Read more</button>
                 </div>
             </div>
         </div>
+        <!-- /.row -->
         <!-- row -->
         <div class="row">
-            <div class="col-md-4 col-xs-12 col-sm-6">
+            <div class="col-md-4 col-sm-12 col-xs-12">
                 <div class="white-box">
-                    <h3 class="box-title">To Do List</h3>
-                    <ul class="list-task list-group" data-role="tasklist">
-                        <li class="list-group-item" data-role="task">
-                            <div class="checkbox checkbox-info">
-                                <input type="checkbox" id="inputSchedule" name="inputCheckboxesSchedule">
-                                <label for="inputSchedule"><span>Schedule meeting</span> </label>
+                    <h3 class="box-title">Weather</h3>
+                    <div class="weather-box">
+                        <div class="weather-top">
+                            <h2 class="pull-left">Monday
+                                <br>
+                                <small>7th May 2016</small></h2>
+                            <div class="today_crnt pull-right">
+                                <canvas class="sleet" width="44" height="44"></canvas>
+                                <span>32<sup>°F</sup></span>
                             </div>
-                        </li>
-                        <li class="list-group-item" data-role="task">
-                            <div class="checkbox checkbox-info">
-                                <input type="checkbox" id="inputCall" name="inputCheckboxesCall">
-                                <label for="inputCall"><span>Give Purchase report</span> <span class="label label-danger">Today</span> </label>
+                        </div>
+                        <div class="weather-info">
+                            <h5 class="font-bold">Weather info</h5>
+                            <div class="row">
+                                <div class="col-xs-6 p-r-10">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="pull-left">Wind</p>
+                                            <p class="pull-right font-bold">16km/h</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="pull-left">Sunrise</p>
+                                            <p class="pull-right font-bold">05:20</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="pull-left">Humanfeel</p>
+                                            <p class="pull-right font-bold">32 <sup>°F</sup></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 p-l-10">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="pull-left">Sunset</p>
+                                            <p class="pull-right font-bold">21:05</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p class="pull-left">Pressure </p>
+                                            <p class="pull-right font-bold">22 in</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </li>
-                        <li class="list-group-item" data-role="task">
-                            <div class="checkbox checkbox-info">
-                                <input type="checkbox" id="inputBook" name="inputCheckboxesBook">
-                                <label for="inputBook"><span>Book flight for holiday</span> </label>
-                            </div>
-                        </li>
-                        <li class="list-group-item" data-role="task">
-                            <div class="checkbox checkbox-info">
-                                <input type="checkbox" id="inputForward" name="inputCheckboxesForward">
-                                <label for="inputForward"><span>Forward all tasks</span> <span class="label label-warning">2 weeks</span> </label>
-                            </div>
-                        </li>
-                        <li class="list-group-item" data-role="task">
-                            <div class="checkbox checkbox-info">
-                                <input type="checkbox" id="inputRecieve" name="inputCheckboxesRecieve">
-                                <label for="inputRecieve"><span>Recieve shipment</span> </label>
-                            </div>
-                        </li>
-                        <li class="list-group-item" data-role="task">
-                            <div class="checkbox checkbox-info">
-                                <input type="checkbox" id="inputForward2" name="inputCheckboxesd">
-                                <label for="inputForward2"><span>Important tasks</span> <span class="label label-success">2 weeks</span> </label>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-4 col-xs-12 col-sm-6">
-                <div class="white-box">
-                    <h3 class="box-title">You have 5 new messages</h3>
-                    <div class="message-center">
-                        <a href="#">
-                            <div class="user-img">
-                                <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/pawandeep.jpg")" alt="user" class="img-circle">
-                                <span class="profile-status online pull-right"></span>
-                            </div>
-                            <div class="mail-contnet">
-                                <h5>Pavan kumar</h5>
-                                <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span>
-                            </div>
-                        </a><a href="#">
-                            <div class="user-img">
-                                <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/sonu.jpg")" alt="user" class="img-circle">
-                                <span class="profile-status busy pull-right"></span>
-                            </div>
-                            <div class="mail-contnet">
-                                <h5>Sonu Nigam</h5>
-                                <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span>
-                            </div>
-                        </a><a href="#">
-                            <div class="user-img">
-                                <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/arijit.jpg")" alt="user" class="img-circle">
-                                <span class="profile-status away pull-right"></span>
-                            </div>
-                            <div class="mail-contnet">
-                                <h5>Arijit Sinh</h5>
-                                <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span>
-                            </div>
-                        </a><a href="#">
-                            <div class="user-img">
-                                <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/genu.jpg")" alt="user" class="img-circle">
-                                <span class="profile-status online pull-right"></span>
-                            </div>
-                            <div class="mail-contnet">
-                                <h5>Genelia Deshmukh</h5>
-                                <span class="mail-desc">I love to do acting and dancing</span> <span class="time">9:08 AM</span>
-                            </div>
-                        </a><a href="#" class="b-none">
-                            <div class="user-img">
-                                <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/pawandeep.jpg")" alt="user" class="img-circle">
-                                <span class="profile-status offline pull-right"></span>
-                            </div>
-                            <div class="mail-contnet">
-                                <h5>Pavan kumar</h5>
-                                <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span>
-                            </div>
-                        </a>
+                        </div>
+                        <div class="weather-time">
+                            <ul class="list-unstyled weather-days row">
+                                <li class="col-xs-4 col-sm-2"><span>Tue</span>
+                                    <canvas class="sleet" width="30" height="30"></canvas>
+                                    <span>32<sup>°F</sup></span></li>
+                                <li class="col-xs-4 col-sm-2"><span>Wed</span>
+                                    <canvas class="clear-day" width="30" height="30"></canvas>
+                                    <span>34<sup>°F</sup></span></li>
+                                <li class="col-xs-4 col-sm-2"><span>Thu</span>
+                                    <canvas class="partly-cloudy-day" width="30" height="30"></canvas>
+                                    <span>35<sup>°F</sup></span></li>
+                                <li class="col-xs-4 col-sm-2"><span>Fri</span>
+                                    <canvas class="cloudy" width="30" height="30"></canvas>
+                                    <span>34<sup>°F</sup></span></li>
+                                <li class="col-xs-4 col-sm-2"><span>Sat</span>
+                                    <canvas class="snow" width="30" height="30"></canvas>
+                                    <span>30<sup>°F</sup></span></li>
+                                <li class="col-xs-4 col-sm-2"><span>Sun</span>
+                                    <canvas class="wind" width="30" height="30"></canvas>
+                                    <span>26<sup>°F</sup></span></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12">
                 <div class="white-box">
-                    <h3 class="box-title">Chat</h3>
-                    <div class="chat-box">
-                        <ul class="chat-list nicescroll" style="overflow: hidden;" tabindex="5005">
-                            <li>
-                                <div class="chat-image">
-                                    <img alt="male" src="@Url.Content("~/Content/themes/manager/plugins/images/users/sonu.jpg")" />
-                                </div>
-                                <div class="chat-body">
-                                    <div class="chat-text">
-                                        <h4>Sonu Nigam</h4>
-                                        <p>Hi, All! </p>
-                                        <b>10.00 am</b>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="odd">
-                                <div class="chat-image">
-                                    <img alt="Female" src="@Url.Content("~/Content/themes/manager/plugins/images/users/genu.jpg")">
-                                </div>
-                                <div class="chat-body">
-                                    <div class="chat-text">
-                                        <h4>Genelia</h4>
-                                        <p>Hi, How are you Sonu? ur next concert? </p>
-                                        <b>10.03 am</b>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="chat-image">
-                                    <img alt="male" src="@Url.Content("~/Content/themes/manager/plugins/images/users/ritesh.jpg")">
-                                </div>
-                                <div class="chat-body">
-                                    <div class="chat-text">
-                                        <h4>Ritesh</h4>
-                                        <p>Hi, Sonu and Genelia, </p>
-                                        <b>10.05 am</b>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Say something">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-success" type="button">Send</button>
-                                    </span>
-                                </div>
+                    <h3 class="box-title">User Activity</h3>
+                    <div class="steamline">
+                        <div class="sl-item">
+                            <div class="sl-left">
+                                <img class="img-circle" alt="user" src="@Url.Content("~/Content/themes/manager/plugins/images/users/genu.jpg")">
+                            </div>
+                            <div class="sl-right">
+                                <div><a href="#">Gohn Doe</a> <span class="sl-date">5 minutes ago</span></div>
+                                <p>Contrary to popular belief</p>
+                            </div>
+                        </div>
+                        <div class="sl-item">
+                            <div class="sl-left">
+                                <img class="img-circle" alt="user" src="@Url.Content("~/Content/themes/manager/plugins/images/users/ritesh.jpg")">
+                            </div>
+                            <div class="sl-right">
+                                <div><a href="#">Gohn Doe</a> <span class="sl-date">5 minutes ago</span></div>
+                                <p>Lorem Ipsum is simply dummy</p>
+                            </div>
+                        </div>
+                        <div class="sl-item">
+                            <div class="sl-left">
+                                <img class="img-circle" alt="user" src="@Url.Content("~/Content/themes/manager/plugins/images/users/sonu.jpg")">
+                            </div>
+                            <div class="sl-right">
+                                <div><a href="#">Gohn Doe</a> <span class="sl-date">5 minutes ago</span></div>
+                                <p>The standard chunk of ipsum </p>
+                            </div>
+                        </div>
+                        <div class="sl-item">
+                            <div class="sl-left">
+                                <img class="img-circle" alt="user" src="@Url.Content("~/Content/themes/manager/plugins/images/users/ritesh.jpg")">
+                            </div>
+                            <div class="sl-right">
+                                <div><a href="#">Gohn Doe</a> <span class="sl-date">5 minutes ago</span></div>
+                                <p>Contrary to popular belief</p>
+                            </div>
+                        </div>
+                        <div class="sl-item">
+                            <div class="sl-left">
+                                <img class="img-circle" alt="user" src="@Url.Content("~/Content/themes/manager/plugins/images/users/govinda.jpg")">
+                            </div>
+                            <div class="sl-right">
+                                <div><a href="#">Gohn Doe</a> <span class="sl-date">5 minutes ago</span></div>
+                                <p>The generated lorem ipsum</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- /.row -->
-        <!-- .right-sidebar -->
-        <div class="right-sidebar">
-            <div class="slimscrollright">
-                <div class="rpanel-title">Service Panel <span><i class="ti-close right-side-toggle"></i></span></div>
-                <div class="r-panel-body">
-                    <ul>
-                        <li><b>Layout Options</b></li>
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="white-box">
+                    <h3 class="box-title">Feeds</h3>
+                    <ul class="feeds">
                         <li>
-                            <div class="checkbox checkbox-info">
-                                <input id="checkbox1" type="checkbox" class="fxhdr">
-                                <label for="checkbox1">Fix Header </label>
-                            </div>
-                        </li>
+                            <div class="bg-info"><i class="fa fa-bell-o text-white"></i></div>
+                            You have 4 pending tasks. <span class="text-muted">Just Now</span></li>
                         <li>
-                            <div class="checkbox checkbox-warning">
-                                <input id="checkbox2" type="checkbox" class="fxsdr">
-                                <label for="checkbox2">Fix Sidebar </label>
-                            </div>
-                        </li>
+                            <div class="bg-success"><i class="ti-server text-white"></i></div>
+                            Server #1 overloaded.<span class="text-muted">2 Hours ago</span></li>
                         <li>
-                            <div class="checkbox checkbox-success">
-                                <input id="checkbox4" type="checkbox" class="open-close">
-                                <label for="checkbox4">Toggle Sidebar </label>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul id="themecolors" class="m-t-20">
-                        <li><b>With Light sidebar</b></li>
-                        <li><a href="javascript:void(0)" theme="default" class="default-theme">1</a></li>
-                        <li><a href="javascript:void(0)" theme="green" class="green-theme">2</a></li>
-                        <li><a href="javascript:void(0)" theme="gray" class="yellow-theme">3</a></li>
-                        <li><a href="javascript:void(0)" theme="blue" class="blue-theme working">4</a></li>
-                        <li><a href="javascript:void(0)" theme="purple" class="purple-theme">5</a></li>
-                        <li><a href="javascript:void(0)" theme="megna" class="megna-theme">6</a></li>
-                        <li><b>With Dark sidebar</b></li>
-                        <br />
-                        <li><a href="javascript:void(0)" theme="default-dark" class="default-dark-theme">7</a></li>
-                        <li><a href="javascript:void(0)" theme="green-dark" class="green-dark-theme">8</a></li>
-                        <li><a href="javascript:void(0)" theme="gray-dark" class="yellow-dark-theme">9</a></li>
-
-                        <li><a href="javascript:void(0)" theme="blue-dark" class="blue-dark-theme">10</a></li>
-                        <li><a href="javascript:void(0)" theme="purple-dark" class="purple-dark-theme">11</a></li>
-                        <li><a href="javascript:void(0)" theme="megna-dark" class="megna-dark-theme">12</a></li>
-                    </ul>
-                    <ul class="m-t-20 chatonline">
-                        <li><b>Chat option</b></li>
-                        <li><a href="javascript:void(0)">
-                            <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/varun.jpg")" alt="user-img" class="img-circle">
-                            <span>Varun Dhavan <small class="text-success">online</small></span></a></li>
-                        <li><a href="javascript:void(0)">
-                            <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/genu.jpg")" alt="user-img" class="img-circle">
-                            <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a></li>
-                        <li><a href="javascript:void(0)">
-                            <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/ritesh.jpg")" alt="user-img" class="img-circle">
-                            <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a></li>
-                        <li><a href="javascript:void(0)">
-                            <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/arijit.jpg")" alt="user-img" class="img-circle">
-                            <span>Arijit Sinh <small class="text-muted">Offline</small></span></a></li>
-                        <li><a href="javascript:void(0)">
-                            <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/govinda.jpg")" alt="user-img" class="img-circle">
-                            <span>Govinda Star <small class="text-success">online</small></span></a></li>
-                        <li><a href="javascript:void(0)">
-                            <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/hritik.jpg")" alt="user-img" class="img-circle">
-                            <span>John Abraham<small class="text-success">online</small></span></a></li>
-                        <li><a href="javascript:void(0)">
-                            <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/john.jpg")" alt="user-img" class="img-circle">
-                            <span>Hritik Roshan<small class="text-success">online</small></span></a></li>
-                        <li><a href="javascript:void(0)">
-                            <img src="@Url.Content("~/Content/themes/manager/plugins/images/users/pawandeep.jpg")" alt="user-img" class="img-circle">
-                            <span>Pwandeep rajan <small class="text-success">online</small></span></a></li>
+                            <div class="bg-warning"><i class="ti-shopping-cart text-white"></i></div>
+                            New order received.<span class="text-muted">31 May</span></li>
+                        <li>
+                            <div class="bg-danger"><i class="ti-user text-white"></i></div>
+                            New user registered.<span class="text-muted">30 May</span></li>
+                        <li>
+                            <div class="bg-inverse"><i class="fa fa-bell-o text-white"></i></div>
+                            New Version just arrived. <span class="text-muted">27 May</span></li>
+                        <li>
+                            <div class="bg-purple"><i class="ti-settings text-white"></i></div>
+                            You have 4 pending tasks. <span class="text-muted">27 May</span></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <!-- /.right-sidebar -->
+        <!-- /row -->                   
     </div>
     <!-- /.container-fluid -->
+   <footer class="footer text-center">2016 &copy; Elite Admin brought to you by VNDEV.xyz </footer>
+    <audio id="my_audio" src="@Url.Content("~/Content/audio/tiktok.MP3")"></audio>
 </div>
-<footer class="footer text-center">2016 &copy; Elite Admin brought to you by VNDEV.xyz </footer>

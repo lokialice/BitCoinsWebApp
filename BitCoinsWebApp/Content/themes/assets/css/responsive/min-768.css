@@ -1,0 +1,52 @@
+/*
+ *
+ *    [Table of contents]
+ *
+ *    [&. Content / #key]
+ *    [Let press Ctrl + f and type of paste the key, then press Enter to search the content ]
+ *
+ *    Summary:
+ *
+ *    0. VARIABLE LESS
+ *        - 0.1. Color
+ *        - 0.2. Font
+ *    1. MIXINS
+
+
+/*
+=============================
+====    VARIABLE LESS    ====
+=============================
+*/
+
+/*
+----------  0.1. Color  ----------
+*/
+
+/*
+----------  0.2. Font  ----------
+*/
+
+/*
+=============================
+===   END VARIABLE LESS   ===
+=============================
+*/
+
+/*
+=============================
+====        MIXINS       ====
+=============================
+*/
+
+/*
+=============================
+===       END MIXINS      ===
+=============================
+*/
+
+@media screen and (min-width: 768px) {
+    .newsletter .banner-right {
+        padding-left: 8.33333333%;
+    }
+}

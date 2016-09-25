@@ -1,0 +1,39 @@
+@media screen and (max-width: 1800px) {
+    .stats-02 .stats-man {
+        left: 2%;
+
+        width: 21%;
+    }
+    .service .piggy-man {
+        right: 70%;
+    }
+    /*        page-team        */
+
+    .wrapper-section-see .wrapper-see-img {
+        position: absolute;
+        bottom: 0;
+        left: 90px;
+
+        width: 23%;
+
+        content: '';
+    }
+    /*        404        */
+
+    .wrapper-404 {
+        text-align: center;
+    }
+    .wrapper-404 .title {
+        font-size: 50px;
+        font-weight: 600;
+
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 80px;
+        padding-bottom: 20px;
+
+        text-transform: uppercase;
+
+        color: #555555;
+    }
+}

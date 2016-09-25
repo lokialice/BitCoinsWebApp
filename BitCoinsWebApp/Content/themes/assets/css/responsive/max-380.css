@@ -1,0 +1,75 @@
+@media screen and (max-width: 380px) {
+    /*
+    ==============================
+    =           HEADER           =
+    ==============================
+    */
+
+    .header-topbar .btn-wrapper .button {
+        width: 125px;
+    }
+    /*
+    =====  End of HEADER  ======
+    */
+
+    /*
+    ====================================
+    =            GLOBAL STYLE          =
+    ====================================
+    */
+
+    /*
+    ----------  0.2. Section Title  ----------
+    */
+
+    .title-wrapper .subtitle {
+        font-size: 2.71429rem;
+
+        letter-spacing: 2px;
+    }
+    .title-wrapper .title {
+        font-size: 1.28571rem;
+    }
+    /*
+    =====  End of GLOBAL STYLE  ======
+    */
+
+    /*
+    ----------  3.1 Homepage Banner  ----------
+    */
+
+    .homepage-01 .content-wrapper .subtitle,
+    .homepage-02 .content-wrapper .subtitle,
+    .homepage-03 .content-wrapper .subtitle {
+        font-size: 1.07143rem;
+        line-height: 20px;
+
+        margin-bottom: 0;
+    }
+    .homepage-01 .content-wrapper .title,
+    .homepage-02 .content-wrapper .title,
+    .homepage-03 .content-wrapper .title {
+        font-size: 24px;
+
+        margin-top: 5px;
+    }
+    .homepage-01 .content-wrapper .text,
+    .homepage-02 .content-wrapper .text,
+    .homepage-03 .content-wrapper .text {
+        font-size: 14px;
+    }
+    .homepage-01 .content-wrapper .button,
+    .homepage-02 .content-wrapper .button,
+    .homepage-03 .content-wrapper .button {
+        width: 120px;
+    }
+    /*
+    ==============================
+    =           SECTION          =
+    ==============================
+    */
+
+    /*
+    =====  End of SECTION  ======
+    */
+}

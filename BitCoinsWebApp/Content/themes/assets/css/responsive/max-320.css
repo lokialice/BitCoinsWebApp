@@ -1,0 +1,46 @@
+@media screen and (max-width: 320px) {
+    /*       SERVICE     */
+
+    .wrapper-serve .main-text .wp-text {
+        padding-left: 10px;
+    }
+    /*       404     */
+
+    .wraper-btn .btn-main {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .wrapper-404 .title {
+        padding-top: 70px;
+        padding-bottom: 20px;
+    }
+    .pagination-wrapper li:last-child .pagi-link,
+    .pagination-wrapper li:first-child .pagi-link {
+        padding: 9px;
+    }
+    .portfolio .nav-tabs > .port-item,
+    .portfolio-alt .nav-tabs > .port-item,
+    .portfolio .nav-tabs > .port-item.active,
+    .portfolio-alt .nav-tabs > .port-item.active {
+        margin: 25px 10px 25px 0;
+    }
+    .portfolio ul.nav-tabs > li.port-item,
+    .portfolio-alt ul.nav-tabs > li.port-item,
+    .portfolio ul.nav-tabs > li.port-item.active,
+    .portfolio-alt ul.nav-tabs > li.port-item.active {
+        margin: 25px 10px 25px 0;
+    }
+    .who-alt .btn-dark {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .who-banner .content-wrapper .btn-main {
+        margin-bottom: 20px;
+    }
+    .warpper-plan .col-xs-6 {
+        width: 97%;
+    }
+    .warpper-plan .content-plan {
+        margin: 0 5px 10px 5px;
+    }
+}

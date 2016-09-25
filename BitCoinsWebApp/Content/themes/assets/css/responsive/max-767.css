@@ -1,0 +1,308 @@
+/*
+ *
+ *    [Table of contents]
+ *
+ *    [&. Content / #key]
+ *    [Let press Ctrl + f and type of paste the key, then press Enter to search the content ]
+ *
+ *    Summary:
+ *
+ *    0. VARIABLE LESS
+ *        - 0.1. Color
+ *        - 0.2. Font
+ *    1. MIXINS
+
+
+/*
+=============================
+====    VARIABLE LESS    ====
+=============================
+*/
+
+/*
+----------  0.1. Color  ----------
+*/
+
+/*
+----------  0.2. Font  ----------
+*/
+
+/*
+=============================
+===   END VARIABLE LESS   ===
+=============================
+*/
+
+/*
+=============================
+====        MIXINS       ====
+=============================
+*/
+
+/*
+=============================
+===       END MIXINS      ===
+=============================
+*/
+
+@media screen and (max-width: 767px) {
+    /*
+    ==============================
+    =           SECTION          =
+    ==============================
+    */
+
+    .homepage-01 .page-banner,
+    .homepage-03 .page-banner {
+        min-height: 650px;
+    }
+    .homepage-02 .page-banner {
+        min-height: 550px;
+    }
+    .achievement .banner,
+    .achievement-dark .banner,
+    .achievement-light .banner {
+        display: block;
+
+        width: auto;
+    }
+    .achievement .banner-left,
+    .achievement-dark .banner-left,
+    .achievement-light .banner-left,
+    .achievement .banner-right,
+    .achievement-dark .banner-right,
+    .achievement-light .banner-right {
+        display: block;
+    }
+    .achievement .dummy-cell,
+    .achievement-dark .dummy-cell,
+    .achievement-light .dummy-cell {
+        display: none;
+    }
+    .achievement .banner-right {
+        background-color: #f9f9f9;
+    }
+    .achievement-light .banner-right {
+        background-color: #93c23d;
+    }
+    .achievement-dark .banner-left:before {
+        position: absolute;
+        right: 15px;
+        bottom: 0;
+        left: 15px;
+
+        height: 1px;
+
+        content: '';
+
+        background-color: #262629;
+    }
+    .achievement-dark .banner-main-left:before {
+        content: '';
+    }
+    .stats-02 .all-stats-wrapper {
+        font-size: 0;
+    }
+    .stats-02 .stat {
+        width: 50%;
+    }
+    .newsletter {
+        background: none;
+    }
+    .newsletter .banner-middle,
+    .newsletter .banner-right {
+        display: block;
+    }
+    .newsletter .banner-middle {
+        width: 100%;
+    }
+    .newsletter .banner-main-middle .banner-middle-title,
+    .newsletter .banner-main-middle .text,
+    .newsletter .banner-main-middle .service {
+        margin-bottom: 20px;
+    }
+    .newsletter .banner-main-middle .banner-middle-title {
+        font-size: 1.78571rem;
+    }
+    .newsletter .banner-right .banner-right-title {
+        font-size: 1.78571rem;
+    }
+    .stats-02 .all-stats-wrapper {
+        font-size: 0;
+    }
+    .stats-02 .stat {
+        width: 50%;
+        margin-bottom: 30px;
+    }
+    .stats-02 .stat:nth-child(3),
+    .stats-02 .stat:nth-child(4) {
+        margin-bottom: 0;
+    }
+    .stats .col-xs-3 {
+        width: 50%;
+    }
+    .stats .col-xs-3:nth-child(1),
+    .stats .col-xs-3:nth-child(2) {
+        margin-bottom: 30px;
+    }
+    .stats .title {
+        font-size: 75px;
+    }
+    /*
+    =====  End of SECTION  ======
+    */
+
+    /*
+    ============================
+    =           PAGE           =
+    ============================
+    */
+
+    /*
+    ----------  home page  ----------
+    */
+
+    .testimonial .content,
+    .testimonial-dark .content {
+        padding: 60px 40px 60px 260px;
+    }
+    .finance .signature {
+        width: 40%;
+        margin: 0 0 10px 0;
+    }
+    .service-02-intro {
+        height: auto;
+    }
+    .who .green-arrow-list {
+        margin-bottom: 35px;
+    }
+    .about-us .logo {
+        margin-bottom: 30px;
+    }
+    .footer-main h4.title {
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+    .twitter .content:last-child {
+        margin-bottom: 0;
+    }
+    .about-us .text {
+        margin-bottom: 20px;
+    }
+    /*
+    ----------  2.1. Service  ----------
+    */
+
+    .service .col-md-4 .service-intro {
+        margin-bottom: 30px;
+    }
+    .service .col-md-4:nth-last-child(-n+3) .service-intro {
+        margin-bottom: 30px;
+    }
+    .service .col-md-4:nth-last-child(-n+2) .service-intro {
+        margin-bottom: 0;
+    }
+    .service-02 .col-md-4 .service-02-intro {
+        margin-bottom: 30px;
+    }
+    .service-02 .col-md-4:nth-last-child(-n+3) .service-02-intro {
+        margin-bottom: 30px;
+    }
+    .service-02 .col-md-4:nth-last-child(-n+2) .service-02-intro {
+        margin-bottom: 0;
+    }
+    .service-03 .col-md-4 .service-03-intro {
+        margin-bottom: 30px;
+    }
+    .service-03 .col-md-4:nth-last-child(-n+3) .service-03-intro {
+        margin-bottom: 30px;
+    }
+    .service-03 .col-md-4:nth-last-child(-n+2) .service-03-intro {
+        margin-bottom: 0;
+    }
+    .main-our-service .text {
+        padding: 0 30px 20px 30px;
+    }
+    .main-plan .title {
+        margin-bottom: 20px;
+    }
+    .main-plan .icon {
+        margin-bottom: 20px;
+    }
+    .main-plan .text {
+        margin-bottom: 20px;
+    }
+    .main-plan .number {
+        margin-bottom: 20px;
+    }
+    .main-ceo-text .quote {
+        margin-bottom: 20px;
+    }
+    .ceo .ceo-img {
+        width: 50%;
+    }
+    .banner-ceo .ceo-img .img {
+        width: 15%;
+    }
+    .wrapper-serve .main-text {
+        height: auto;
+    }
+    .chart-md {
+        margin-top: 50px;
+    }
+    /*
+    ----------  2.2. Project Single  ----------
+    */
+
+    .wrapper-gallery .inner {
+        right: 3px;
+        bottom: 3px;
+    }
+    /*
+    ----------  2.3. Blog  ----------
+    */
+
+    .main-blog-right .title-text {
+        white-space: normal;
+    }
+    .main-blog-right .content-text {
+        white-space: normal;
+    }
+    /*
+    ----------  2.4. Contact  ----------
+    */
+
+    .wrapper-places .main-title {
+        position: absolute;
+        top: 10px;
+
+        width: auto;
+    }
+    .wrapper-places .main-content {
+        padding-left: 70px;
+    }
+    .wrapper-places.style-2 {
+        display: inline-block;
+        float: none;
+    }
+    /*         ABOUT             */
+
+    .wrapper-banner-why .why-icon:before {
+        height: 0;
+    }
+    .wrapper-timeline .content-timeline {
+        padding-left: 80px;
+    }
+    .timeline-text {
+        padding-left: 0;
+    }
+    .timeline-text:before {
+        left: -40px;
+    }
+    .achievement.achievement-banner {
+        background-size: 84%;
+    }
+    /*
+    =====  End of PAGE  ======
+    */
+}

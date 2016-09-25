@@ -155,6 +155,8 @@
           <Property Name="IDRole" Type="int" Nullable="false" />
           <Property Name="IDParent" Type="int" />
           <Property Name="Token" Type="text" />
+          <Property Name="DefaultUser" Type="bit" />
+          <Property Name="CreateDate" Type="date" />
         </EntityType>
         <EntityType Name="UserRole">
           <Key>
@@ -336,6 +338,8 @@
           <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Transfers" Relationship="BitCoinsModel.FK_Transfer_UserAccount" FromRole="UserAccount" ToRole="Transfer" />
           <Property Type="String" Name="Token" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="DefaultUser" />
+          <Property Type="DateTime" Name="CreateDate" Precision="0" />
         </EntityType>
         <EntityType Name="Document">
           <Key>
@@ -544,6 +548,8 @@
           <EntitySetMapping Name="UserAccounts">
             <EntityTypeMapping TypeName="BitCoinsModel.UserAccount">
               <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="DefaultUser" ColumnName="DefaultUser" />
                 <ScalarProperty Name="Token" ColumnName="Token" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="SkypeID" ColumnName="SkypeID" />
@@ -687,7 +693,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram DiagramId="8bdfe05e7eea4a1aa1bfea3c4aa42a7b" Name="Diagram1" ZoomLevel="70">
+      <Diagram DiagramId="8bdfe05e7eea4a1aa1bfea3c4aa42a7b" Name="Diagram1" ZoomLevel="67">
         <EntityTypeShape EntityType="BitCoinsModel.UserAccount" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BitCoinsModel.Document" Width="1.5" PointX="3" PointY="0.625" />
         <EntityTypeShape EntityType="BitCoinsModel.ImageUpload" Width="1.5" PointX="4.75" PointY="0.625" />

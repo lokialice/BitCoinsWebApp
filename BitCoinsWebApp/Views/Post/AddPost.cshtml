@@ -29,7 +29,7 @@
                     </div>
                     <div class="panel-wrapper collapse in" aria-expanded="true">
                         <div class="panel-body">
-                            @using (Html.BeginForm("AddPost", "Post", FormMethod.Post, new { @id = "postArticleForm", @class = "form-horizontal form-bordered" }))
+                            @using (Html.BeginForm("NewPost", "Post", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal form-bordered" }))
                             {                    
                                 <div class="form-body" id="divWallet">
                                     <div class="form-group">
@@ -54,8 +54,9 @@
                                     </div>
                                     <div class="form-group last">
                                         <label class="control-label col-md-3">Feature Image</label>
-                                        <div class="col-md-9">
-                                            <input type="file" id="input-file-now" class="dropify" />
+                                        <div class="col-md-9">                                                                                        
+                                            <input type="file" id="input-file-now" name="uploadFile" class="dropify" />
+                                            <span class="help-block" style="color: #a94442">@ViewBag.Message</span>
                                         </div>
                                     </div>
                                 </div>

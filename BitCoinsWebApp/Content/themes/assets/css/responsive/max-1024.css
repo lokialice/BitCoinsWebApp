@@ -1,0 +1,59 @@
+@media screen and (max-width: 1024px) {
+    /*     Project      */
+
+    .main-project-left {
+        padding-right: 15px;
+    }
+    .main-project-right {
+        padding-left: 15px;
+    }
+    /*     About      */
+
+    .wrapper-banner-why .why-icon:before {
+        height: 30%;
+    }
+    .achievement .title {
+        font-size: 25px;
+    }
+    .wrapper-timeline .content-timeline {
+        padding-left: 100px;
+    }
+    /*      TEAM       */
+
+    .section-team .wrapper-social-text {
+        bottom: -200px;
+    }
+    .section-team .wrapper-social-text {
+        padding: 15px 0 15px 0;
+    }
+    .section-team .widgets-social .number {
+        font-size: 50px;
+    }
+    .wrapper-section-see .wrapper-see-img {
+        left: 10px;
+
+        width: 25%;
+    }
+    .wrapper-see-text .title {
+        font-size: 25px;
+    }
+    .section-team ul li {
+        margin-right: 5px;
+    }
+    /*    BLOG    */
+
+    .main-blog-right .title-text {
+        font-size: 20px;
+    }
+    /*    BLOG    */
+
+    .who.who-banner {
+        background-position-x: 100%;
+        -webkit-background-size: cover;
+                background-size: cover;
+    }
+    .testimonial .content,
+    .testimonial-dark .content {
+        padding: 70px 420px 70px 40px;
+    }
+}

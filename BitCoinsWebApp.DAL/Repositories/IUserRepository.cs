@@ -62,7 +62,12 @@
         UserProfile CheckEmailExist(string email);
         int GetTotalRefID(UserProfile user);
         float GetAccountBalance(UserProfile user);
-        List<UserProfile> GetRefByUsername(string username);        
+        List<UserProfile> GetRefByUsername(string username);
+        List<UserProfile> GetAllUserLevel1(string username);
+        List<UserProfile> GetAllUserLevel2(string username);
+        bool ActiveUser(string id);
+        bool DefaultUser(string id);
+        int GetMoneyInterest(UserProfile user);
 
     }
 }

@@ -1,0 +1,474 @@
+@media screen and (max-width: 600px) {
+    /*
+    ====================================
+    =            GLOBAL STYLE          =
+    ====================================
+    */
+
+    /*
+    ----------  0.1. Miscellaneous  ----------
+    */
+
+    .padding-top,
+    .padding-top-small {
+        padding-top: 60px;
+    }
+    .padding-bottom,
+    .padding-bottom-small {
+        padding-bottom: 60px;
+    }
+    /*
+    ----------  0.2. Section Title  ----------
+    */
+
+    .title-wrapper {
+        margin-bottom: 40px;
+    }
+    .title-wrapper .subtitle {
+        font-size: 4.28571rem;
+
+        letter-spacing: 4px;
+    }
+    .title-wrapper .title {
+        font-size: 1.85714rem;
+    }
+    /*
+    =====  End of GLOBAL STYLE  ======
+    */
+
+    /*
+    ==============================
+    =           HEADER           =
+    ==============================
+    */
+
+    .bg-center .topbar.pull-right {
+        display: none;
+    }
+    .bg-center .topbar.pull-left {
+        width: 100%;
+    }
+    .bg-center .topbar.pull-left li:first-child {
+        float: left;
+    }
+    .bg-center .topbar.pull-left li:last-child {
+        float: right;
+    }
+    .bg-white .header-topbar .topbar.pull-left > li {
+        margin-right: 0;
+    }
+    .bg-white .header-topbar .topbar.pull-left > li:last-child {
+        display: none;
+    }
+    .header-topbar .btn-wrapper {
+        margin-left: 0;
+    }
+    /*
+    =====  End of HEADER  ======
+    */
+
+    /*
+    ==============================
+    =           SECTION          =
+    ==============================
+    */
+
+    /*
+    ----------  3.1 Homepage Banner  ----------
+    */
+
+    .homepage-01 .content-wrapper .subtitle,
+    .homepage-02 .content-wrapper .subtitle,
+    .homepage-03 .content-wrapper .subtitle {
+        font-size: 1.14286rem;
+    }
+    .homepage-01 .content-wrapper .title,
+    .homepage-02 .content-wrapper .title,
+    .homepage-03 .content-wrapper .title {
+        font-size: 2.14286rem;
+
+        margin-top: 15px;
+    }
+    .homepage-01 .page-banner,
+    .homepage-03 .page-banner {
+        min-height: 667px;
+    }
+    .homepage-01 .content-wrapper .title,
+    .homepage-03 .content-wrapper .title {
+        margin-top: 15px;
+    }
+    .homepage-01 .content-wrapper .text,
+    .homepage-03 .content-wrapper .text {
+        width: 80%;
+    }
+    .homepage-02 .page-banner {
+        height: 500px;
+        min-height: auto;
+    }
+    .newsletter .banner-middle {
+        padding-bottom: 60px;
+    }
+    .newsletter .banner-right {
+        padding-top: 60px;
+    }
+    .newsletter .banner-right:after {
+        bottom: -60px;
+    }
+    .finance .col-xs-6 {
+        width: 100%;
+    }
+    .finance-item .img-wrapper {
+        width: auto;
+        margin-right: 30px;
+    }
+    .finance .col-xs-6:nth-child(2) {
+        margin-bottom: 0;
+    }
+    .finance .col-xs-6:last-child .finance-item .img-wrapper {
+        margin-bottom: 0;
+    }
+    .portfolio .nav-tabs > .port-item:last-child,
+    .portfolio-alt .nav-tabs > .port-item:last-child,
+    .portfolio .nav-tabs > .port-item.active:last-child,
+    .portfolio-alt .nav-tabs > .port-item.active:last-child {
+        margin-top: 0;
+    }
+    .service-intro .title {
+        margin-top: 10px;
+    }
+    .who .banner-left:before {
+        top: -60px;
+        bottom: -60px;
+    }
+    .testimonial .w3-icon,
+    .testimonial-dark .w3-icon {
+        display: none;
+    }
+    .achievement .title,
+    .achievement-dark .title,
+    .achievement-light .title {
+        font-size: 24px;
+
+        margin-bottom: 20px;
+    }
+    .portfolio ul.nav-tabs > .port-item,
+    .portfolio-alt ul.nav-tabs > .port-item,
+    .portfolio ul.nav-tabs > .port-item.active,
+    .portfolio-alt ul.nav-tabs > .port-item.active {
+        margin: 40px 30px 20px 0;
+    }
+    /*
+    =====  End of SECTION  ======
+    */
+
+    /*
+    ==============================
+    =            PAGE            =
+    ==============================
+    */
+
+    /*
+    ----------  home page ----------
+    */
+
+    .testimonial .content,
+    .testimonial-dark .content {
+        padding: 60px 40px 100px 200px;
+    }
+    .page-title {
+        margin-bottom: 40px;
+    }
+    .testimonial .slick-dots,
+    .testimonial-dark .slick-dots {
+        top: 85%;
+        right: 45%;
+
+        margin-bottom: 0;
+    }
+    /*
+    ----------  3.1. Service  ----------
+    */
+
+    .main-our-service .text {
+        padding: 0 20px 20px 20px;
+    }
+    .wrapper-serve .main-text .wp-text {
+        padding-left: 0;
+    }
+    .banner-ceo .ceo-img .img {
+        width: 18%;
+    }
+    .banner-ceo .content-banner-ceo {
+        padding: 60px 0;
+    }
+    .banner-ceo .ceo-img .img {
+        display: none;
+    }
+    .wrapper-serve .main-text .timeline-text:before {
+        display: none;
+    }
+    .grid-item,
+    .grid-sizer {
+        float: left;
+
+        width: 33.33333%;
+    }
+    .grid-item--width2 {
+        width: 66.66667%;
+    }
+    /*
+    ----------  3.2. Project Single  ----------
+    */
+
+    .wrapper-ap-title .main-text {
+        display: inline-block;
+
+        width: 50%;
+    }
+    .wrapper-ap-title .main-text:nth-child(2) {
+        width: 50%;
+    }
+    .wrapper-ap-title .main-text:nth-child(4),
+    .wrapper-ap-title .main-text:nth-child(5) {
+        width: 50%;
+    }
+    .wrapper-ap-title {
+        margin-bottom: 30px;
+    }
+    .wrapper-ap-text .title-text {
+        margin-bottom: 20px;
+    }
+    .wrapper-ap-text .text {
+        margin-bottom: 20px;
+    }
+    .wrapper-ap-title .main-text {
+        margin-bottom: 20px;
+    }
+    .wrapper-our-text .title {
+        margin-bottom: 15px;
+    }
+    .main-project-left {
+        margin-bottom: 20px;
+    }
+    .wrapper-our-text .wrapper-skill .title {
+        margin-bottom: 5px;
+    }
+    /*
+    ----------  3.3. Blog  ----------
+    */
+
+    .main-blog-right .number {
+        font-size: 40px;
+    }
+    .main-blog-right .number-text {
+        font-size: 20px;
+    }
+    .main-blog-right .title-text {
+        font-size: 18px;
+
+        margin-bottom: 10px;
+    }
+    .main-blog-right .title {
+        margin-bottom: 5px;
+    }
+    .main-blog-right .title:before {
+        display: none;
+    }
+    .main-blog-right .title:before {
+        width: 70px;
+    }
+    .main-blog-right .content-text {
+        margin-bottom: 10px;
+    }
+    .main-blog-left-text .title {
+        font-size: 18px;
+    }
+    .main-blog-left-text .icon:before {
+        font-size: 70px;
+    }
+    .main-blog-left-text .text {
+        margin-bottom: 10px;
+    }
+    .main-blog-right .number {
+        padding-left: 0;
+    }
+    .main-blog-right .content-text .author {
+        display: block;
+    }
+    .main-blog-right .content-text .view {
+        display: block;
+    }
+    /*         ABOUT          */
+
+    .wrapper-banner-why {
+        padding: 60px 0;
+    }
+    .green-arrow-list .ga-list-item {
+        margin-bottom: 10px;
+    }
+    .wrapper-banner-why .why-title {
+        margin-bottom: 20px;
+    }
+    .wrapper-banner-why .why-text .text {
+        margin-bottom: 20px;
+    }
+    .content-about-done .done-title {
+        margin-bottom: 20px;
+    }
+    .achievement .title {
+        margin-bottom: 20px;
+    }
+    .achievement .text,
+    .achievement-dark .text,
+    .achievement-light .text {
+        margin-bottom: 20px;
+    }
+    .content-banner-map .left-text .number {
+        padding: 0 15px 15px 0;
+    }
+    /*     TEAM      */
+
+    .section-team ul .icon-tab {
+        padding: 8px 20px;
+    }
+    .section-team .tap-nav {
+        margin-bottom: 30px;
+    }
+    .wrapper-see-text .title {
+        font-size: 20px;
+
+        margin-bottom: 10px;
+    }
+    .wrapper-see-text .text {
+        margin-bottom: 20px;
+    }
+    .wrapper-section-see {
+        padding: 60px 0;
+    }
+    .wrapper-see-logo .item {
+        margin-bottom: 15px;
+    }
+    .content-open .main-position {
+        margin-bottom: 30px;
+    }
+    .wrapper-text-excel .text-excel {
+        margin-bottom: 20px;
+    }
+    .wrapper-text-excel .link-text {
+        margin-bottom: 10px;
+    }
+    .wrapper-llc .llc-title {
+        margin-bottom: 15px;
+    }
+    .wrapper-llc .list-llc {
+        margin-bottom: 20px;
+    }
+    .main-blog-left-text .title {
+        margin-bottom: 10px;
+    }
+    .main-blog-left-text .text {
+        margin-bottom: 10px;
+    }
+    /*
+    ----------  section news  ----------
+    */
+
+    .news .date {
+        padding-left: 0;
+    }
+    .news .date:before {
+        display: none;
+    }
+    .news .date {
+        margin-bottom: 20px;
+    }
+    .news .meta-info span {
+        display: block;
+    }
+    /*
+    ----------  3.4. Contact  ----------
+    */
+
+    .box-contact {
+        padding: 15px;
+    }
+    .wrapper-places .main-title {
+        top: 0;
+    }
+    .wrapper-places .main-content {
+        padding-left: 30px;
+    }
+    .wrapper-places .main-content .subtitle:before {
+        display: none;
+    }
+    /*
+    ----------  3.5. Blog Detail  ----------
+    */
+
+    .sidebar {
+        padding-top: 50px;
+    }
+    .col-2 {
+        width: 100%;
+        padding: 0 !important;
+    }
+    .col-2 .widget:last-child {
+        margin-bottom: 30px;
+    }
+    .blog-detail-wrapper .blog-content .dates {
+        display: table-caption;
+    }
+    .blog-detail-wrapper .blog-content .content .text {
+        margin-bottom: 20px;
+    }
+    .blog-detail-wrapper blockquote {
+        margin: 25px 0;
+    }
+    .blog-detail-wrapper blockquote .icons {
+        display: none;
+    }
+    .blog-detail-wrapper blockquote .quote-wrapper {
+        padding-left: 0;
+    }
+    .blog-comment {
+        margin-top: 50px;
+    }
+    .tags {
+        margin-top: 30px;
+    }
+    .leave-comment .comment-form .col-50 {
+        width: 100%;
+    }
+    .leave-comment .comment-form .col-50 .form-control {
+        margin-bottom: 30px;
+    }
+    .leave-comment .comment-form .col-50 .form-control:last-child {
+        margin-bottom: 30px;
+    }
+    /*
+    =====  End of PAGE  ======
+    */
+
+    /*
+    ==============================
+    =           FOOTER           =
+    ==============================
+    */
+
+    .footer-main .title {
+        margin-bottom: 30px;
+    }
+    .footer-main-wrapper [class*=col-] {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .footer-main-wrapper [class*=col-]:nth-last-child(-n+2) {
+        margin-bottom: 30px;
+    }
+    .footer-main-wrapper [class*=col-]:last-child {
+        margin-bottom: 0;
+    }
+    /*
+    =====  End of FOOTER  ======
+    */
+}

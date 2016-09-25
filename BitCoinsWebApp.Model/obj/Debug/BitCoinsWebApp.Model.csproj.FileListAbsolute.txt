@@ -2,3 +2,13 @@ F:\BitCoinsWebApp\BitCoinsWebApp.Model\bin\Debug\BitCoinsWebApp.Model.dll
 F:\BitCoinsWebApp\BitCoinsWebApp.Model\bin\Debug\BitCoinsWebApp.Model.pdb
 F:\BitCoinsWebApp\BitCoinsWebApp.Model\obj\Debug\BitCoinsWebApp.Model.dll
 F:\BitCoinsWebApp\BitCoinsWebApp.Model\obj\Debug\BitCoinsWebApp.Model.pdb
+C:\Users\Hoàng\Documents\GitHub\BitCoinsWebApp\BitCoinsWebApp.Model\bin\Debug\BitCoinsWebApp.Model.dll
+C:\Users\Hoàng\Documents\GitHub\BitCoinsWebApp\BitCoinsWebApp.Model\bin\Debug\BitCoinsWebApp.Model.pdb
+C:\Users\Hoàng\Documents\GitHub\BitCoinsWebApp\BitCoinsWebApp.Model\obj\Debug\BitCoinsWebApp.Model.dll
+C:\Users\Hoàng\Documents\GitHub\BitCoinsWebApp\BitCoinsWebApp.Model\obj\Debug\BitCoinsWebApp.Model.pdb
+C:\Users\Hoàng\Documents\GitHub\BitCoinsWebApp\BitCoinsWebApp.Model\obj\Debug\BitCoinsWebApp.Model.csprojResolveAssemblyReference.cache
+F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.Model\bin\Debug\BitCoinsWebApp.Model.dll
+F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.Model\bin\Debug\BitCoinsWebApp.Model.pdb
+F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.Model\obj\Debug\BitCoinsWebApp.Model.csprojResolveAssemblyReference.cache
+F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.Model\obj\Debug\BitCoinsWebApp.Model.dll
+F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.Model\obj\Debug\BitCoinsWebApp.Model.pdb

@@ -45,9 +45,9 @@
                                 <tr style="color: red">
                                     <td>@item.PostTittle</td>
                                     <td>@item.PostExcerpt</td>
-                                    <td>$@item.FeatureImage</td>
+                                    <td><img src="@Url.Content(@item.FeatureImage)" width="100" height="100" /></td>
                                     <td>
-                                        <button type="button" class="btn btn-info btn-circle"><i class="fa fa-check"></i></button>
+                                        <input type="checkbox" checked class="js-switch" data-color="#13dafe"/>
                                     </td>
                                 </tr>                                       
                                 }
@@ -56,9 +56,9 @@
                                 <tr style="color: red">
                                     <td>@item.PostTittle</td>
                                     <td>@item.PostExcerpt</td>
-                                    <td>$@item.FeatureImage</td>
+                                    <td><img src="@Url.Content(@item.FeatureImage)" width="100" height="100" /></td>
                                     <td>
-                                        <button type="button" class="btn btn-warning btn-circle"><i class="fa fa-times"></i></button>
+                                         <input type="checkbox" class="js-switch" data-color="#13dafe"/>
                                     </td>
                                 </tr>                                 
                                 }

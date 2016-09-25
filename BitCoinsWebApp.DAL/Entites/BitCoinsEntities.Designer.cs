@@ -2525,6 +2525,54 @@ namespace BitCoinsWebApp.DAL.Entites
         private global::System.String _Token;
         partial void OnTokenChanging(global::System.String value);
         partial void OnTokenChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> DefaultUser
+        {
+            get
+            {
+                return _DefaultUser;
+            }
+            set
+            {
+                OnDefaultUserChanging(value);
+                ReportPropertyChanging("DefaultUser");
+                _DefaultUser = StructuralObject.SetValidValue(value, "DefaultUser");
+                ReportPropertyChanged("DefaultUser");
+                OnDefaultUserChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _DefaultUser;
+        partial void OnDefaultUserChanging(Nullable<global::System.Boolean> value);
+        partial void OnDefaultUserChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> CreateDate
+        {
+            get
+            {
+                return _CreateDate;
+            }
+            set
+            {
+                OnCreateDateChanging(value);
+                ReportPropertyChanging("CreateDate");
+                _CreateDate = StructuralObject.SetValidValue(value, "CreateDate");
+                ReportPropertyChanged("CreateDate");
+                OnCreateDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _CreateDate;
+        partial void OnCreateDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnCreateDateChanged();
 
         #endregion
 

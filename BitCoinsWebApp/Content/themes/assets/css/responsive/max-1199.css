@@ -1,0 +1,19 @@
+@media screen and (max-width: 1199px) {
+    /*
+    ==============================
+    =           SECTION          =
+    ==============================
+    */
+
+    .who-alt .who-content {
+        padding-left: 15px;
+    }
+    .who-alt .who-content:before {
+        left: -50%;
+
+        background-color: rgba(147, 194, 61, .95);
+    }
+    /*
+    =====  End of Section  ======
+    */
+}
