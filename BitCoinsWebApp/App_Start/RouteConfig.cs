@@ -43,6 +43,11 @@ namespace BitCoinsWebApp
              url: "{controller}/{action}/{id}",
              defaults: new { controller = "Manage", action = "DefaultUser", id = UrlParameter.Optional }
          );
+            routes.MapRoute(
+            name: "GetBlogDetail",
+            url: "{controller}/{action}/{id}",
+            defaults: new { controller = "Post", action = "GetBlogDetail", id = UrlParameter.Optional }
+        );
         }
     }
 }

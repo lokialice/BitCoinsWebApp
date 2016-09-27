@@ -1,0 +1,248 @@
+﻿@model BitCoinsWebApp.Model.PostNews
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="body-wrapper-content">
+    <div class="sidenav-overlay"></div>
+    @Html.Partial("_HeaderPartial")
+    <div id="wrapper-content">
+        <!-- PAGE WRAPPER-->
+        <div id="page-wrapper">
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <!-- CONTENT-->
+                <div class="content">
+                    <section class="page-banner page-blog">
+                        <div class="container">
+                            <div class="page-title-wrapper">
+                                <div class="page-title-content">
+                                    <h1 class="title">news</h1>
+                                    <ol class="breadcrumb">
+                                        <li><a href="@Url.Action("Index","Home")" class="link home">Home</a></li>
+                                        <li><a href="#" class="link active">news</a></li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="section-blog padding-top padding-bottom">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8 col-xs-12 main-right blog-wrapper">
+                                    <div class="row">
+                                        @foreach(var item in Model.GetAllListPostNews){
+                                            <div class="content-blog">
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <div class="main-blog-left">
+                                                    <div class="wp-img">
+                                                        <a href="@Url.Action("BlogDetail", "Home", new { id = item.ID })">
+                                                            <img src="@Url.Content(item.FeatureImageURL.ImageFile)" alt="" class="img-responsive"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <div class="main-blog-right">
+                                                    <div class="title"><span class="number">@item.PostDate.Day</span><span class="number-text">- @item.PostDate.ToString("MMMM yyyy")</span></div>
+                                                    <a href="blog-detail.html" class="title-text">@item.PostTittle</a>
+                                                    <div class="content-text">
+                                                        <div class="author">Posted By: @item.UserPost.Name</div>
+                                                        <div class="view"><i class="icon fa fa-user"></i><span>View : 56</span></div>
+                                                        <div class="comment"><i class="icon fa fa-comment"></i><span>Comment : 239</span></div>
+                                                    </div>
+                                                    <p class="text">@item.PostExcerpt</p>
+                                                    <div class="btn-readmore"><a href="@Url.Action("BlogDetail", "Home", new { id = item.ID })">read more</a></div>
+                                                </div>
+                                            </div>
+                                        </div>            
+                                        }                            
+                                        <div class="clearfix"></div>
+                                        <nav class="pagination-wrapper">
+                                            <ul class="pagination">
+                                                <li class="pagi-inner"><a href="#" aria-label="Previous" class="pagi-link"><span aria-hidden="true" class="fa fa-chevron-left"></span></a></li>
+                                                <li class="pagi-inner"><a href="#" class="pagi-link active">1</a></li>
+                                                <li class="pagi-inner"><a href="#" class="pagi-link">2</a></li>
+                                                <li class="pagi-inner"><a href="#" class="pagi-link">...</a></li>
+                                                <li class="pagi-inner"><a href="#" class="pagi-link">9</a></li>
+                                                <li class="pagi-inner"><a href="#" aria-label="Next" class="pagi-link"><span aria-hidden="true" class="fa fa-chevron-right"></span></a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-xs-12 sidebar">
+                                    <div class="col-1">
+                                        <div class="search-widget widget">
+                                            <form>
+                                                <div class="input-group search-wrapper">
+                                                    <input type="text" placeholder="Search..." class="search-input form-control"><span class="input-group-btn">
+                                                        <button type="submit" class="btn submit-btn"><span class="fa fa-search"></span></button>
+                                                    </span>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="recent-post-widget widget">
+                                            <div class="title-widget">RECENT POST</div>
+                                            <div class="content-widget">
+                                                <div class="recent-post-list">
+                                                    <div class="single-recent-post-widget">
+                                                        <a href="blog-detail.html" class="thumb img-wrapper">
+                                                            <img src="@Url.Content("~/Content/themes/assets/img/blog/small-news-1.jpg")" alt="" class="img-responsive"></a>
+                                                        <div class="post-info">
+                                                            <div class="meta-info"><span>Aug 18, 2016</span><span class="sep">/</span><span class="fa-custom view-count">56</span><span class="fa-custom comment-count">239</span></div>
+                                                            <a href="#" class="description">Donec ullamcorper nulla non metus nisi auctor fringilla they can do.</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="single-recent-post-widget">
+                                                        <a href="blog-detail.html" class="thumb img-wrapper">
+                                                            <img src="@Url.Content("~/Content/themes/assets/img/blog/small-news-2.jpg")" alt="" class="img-responsive"></a>
+                                                        <div class="post-info">
+                                                            <div class="meta-info"><span>Aug 18, 2016</span><span class="sep">/</span><span class="fa-custom view-count">56</span><span class="fa-custom comment-count">239</span></div>
+                                                            <a href="#" class="description">Donec ullamcorper nulla non metus nisi auctor fringilla they can do.</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="single-recent-post-widget">
+                                                        <a href="blog-detail.html" class="thumb img-wrapper">
+                                                            <img src="@Url.Content("~/Content/themes/assets/img/blog/small-news-3.jpg")" alt="" class="img-responsive"></a>
+                                                        <div class="post-info">
+                                                            <div class="meta-info"><span>Aug 18, 2016</span><span class="sep">/</span><span class="fa-custom view-count">56</span><span class="fa-custom comment-count">239</span></div>
+                                                            <a href="#" class="description">Donec ullamcorper nulla non metus nisi auctor fringilla they can do.</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="single-recent-post-widget">
+                                                        <a href="blog-detail.html" class="thumb img-wrapper">
+                                                            <img src="@Url.Content("~/Content/themes/assets/img/blog/small-news-4.jpg")" alt="" class="img-responsive"></a>
+                                                        <div class="post-info">
+                                                            <div class="meta-info"><span>Aug 18, 2016</span><span class="sep">/</span><span class="fa-custom view-count">56</span><span class="fa-custom comment-count">239</span></div>
+                                                            <a href="#" class="description">Donec ullamcorper nulla non metus nisi auctor fringilla they can do.</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="single-recent-post-widget">
+                                                        <a href="blog-detail.html" class="thumb img-wrapper">
+                                                            <img src="@Url.Content("~/Content/themes/assets/img/blog/small-news-5.jpg")" alt="" class="img-responsive"></a>
+                                                        <div class="post-info">
+                                                            <div class="meta-info"><span>Aug 18, 2016</span><span class="sep">/</span><span class="fa-custom view-count">56</span><span class="fa-custom comment-count">239</span></div>
+                                                            <a href="#" class="description">Donec ullamcorper nulla non metus nisi auctor fringilla they can do.</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="categories-widget widget">
+                                            <div class="title-widget">CATEGORIES</div>
+                                            <div class="content-widget">
+                                                <ul class="widget-list">
+                                                    <li class="single-widget-item"><a href="#" class="link"><span class="fa-custom category">Investment</span><span class="count">27</span></a></li>
+                                                    <li class="single-widget-item"><a href="#" class="link"><span class="fa-custom category">Portfolio</span><span class="count">75</span></a></li>
+                                                    <li class="single-widget-item"><a href="#" class="link"><span class="fa-custom category">Fund Performence</span><span class="count">35</span></a></li>
+                                                    <li class="single-widget-item"><a href="#" class="link"><span class="fa-custom category">Hedge Fund</span><span class="count">34</span></a></li>
+                                                    <li class="single-widget-item"><a href="#" class="link"><span class="fa-custom category">Asset Management</span><span class="count">65</span></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="archives-widget widget">
+                                            <div class="title-widget">ARCHIVES</div>
+                                            <div class="content-widget">
+                                                <div class="archive-datepicker"></div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-widget widget">
+                                            <div class="title-widget">FROM GALLERY</div>
+                                            <div class="content-widget">
+                                                <ul class="list-unstyled list-inline">
+                                                    <li>
+                                                        <a href="#" class="thumb style-2">
+                                                            <img src="@Url.Content("~/Content/themes/assets/img/blog/gallery-1.jpg")" alt="gallery image 1" class="img-responsive"><span class="dh-overlay"></span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="thumb style-2">
+                                                            <img src="@Url.Content("~/Content/themes/assets/img/blog/gallery-2.jpg")" alt="gallery image 2" class="img-responsive"><span class="dh-overlay"></span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="thumb style-2">
+                                                            <img src="@Url.Content("~/Content/themes/assets/img/blog/gallery-3.jpg")" alt="gallery image 3" class="img-responsive"><span class="dh-overlay"></span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="thumb style-2">
+                                                            <img src="@Url.Content("~/Content/themes/assets/img/blog/gallery-4.jpg")" alt="gallery image 4" class="img-responsive"><span class="dh-overlay"></span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="thumb style-2">
+                                                            <img src="@Url.Content("~/Content/themes/assets/img/blog/gallery-5.jpg")" alt="gallery image 5" class="img-responsive"><span class="dh-overlay"></span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="thumb style-2">
+                                                            <img src="@Url.Content("~/Content/themes/assets/img/blog/gallery-6.jpg")" alt="gallery image 6" class="img-responsive"><span class="dh-overlay"></span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="thumb style-2">
+                                                            <img src="@Url.Content("~/Content/themes/assets/img/blog/gallery-7.jpg")" alt="gallery image 7" class="img-responsive"><span class="dh-overlay"></span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="thumb style-2">
+                                                            <img src="@Url.Content("~/Content/themes/assets/img/blog/gallery-8.jpg")" alt="gallery image 8" class="img-responsive"><span class="dh-overlay"></span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="social-widget widget">
+                                            <div class="title-widget">SOCIAL</div>
+                                            <div class="content-widget">
+                                                <ul class="list-unstyled list-inline">
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="social-icon fa fa-facebook"></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="social-icon fa fa-twitter"></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="social-icon fa fa-pinterest-p"></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="social-icon fa fa-google"></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="social-icon fa fa-rss"></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="social-icon fa fa-linkedin"></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)" class="social-icon fa fa-dribbble"></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sign-up">
+                        <div class="container">
+                            <div class="subscribe-email-wrapper">
+                                <div class="subscribe-email-left">
+                                    <p class="subscribe-email-title">Sign up for <span>GoAhead </span>viewpoints!</p>
+                                    <div class="description">Get a weekly email of our pros' current thinking about financial markets, investing and personal finance.</div>
+                                </div>
+                                <div class="subscribe-email-right">
+                                    <form>
+                                        <div class="input-group form-subscribe-email">
+                                            <input type="text" placeholder="Email" class="form-control"><span class="input-group-btn">
+                                                <button type="submit" class="btn-view">Get viewpoint</button></span></div>
+                                    </form>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="back-top"><a href="#top" class="link"><i class="fa fa-angle-double-up"></i></a></div>
+    </div>
+    @Html.Partial("_FooterPartial")
+</div>

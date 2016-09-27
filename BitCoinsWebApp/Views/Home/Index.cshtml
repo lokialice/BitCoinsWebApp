@@ -1,4 +1,5 @@
-﻿@{
+﻿@model BitCoinsWebApp.Model.PostNews
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Rotation Coins";
 }
@@ -364,38 +365,21 @@
                                 <h2 class="title">FRESH NEWS</h2>
                             </div>
                             <div class="row">
-                                <div class="article">
+                                @foreach(var item in Model.GetAllListPostNews){
+                                    <div class="article">
                                     <div class="col-md-6">
-                                        <a href="blog-detail.html" class="wp-img"><img src="@Url.Content("~/Content/themes/assets/img/homepage/news-1.jpg")" alt="" class="img-responsive"></a>
+                                        <a href="@Url.Action("BlogDetail", "Home", new { id = item.ID })" class="wp-img"><img src="@Url.Content(item.FeatureImageURL.ImageFile)" alt="" class="img-responsive"></a>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="date"><span class="day">01</span><span class="sep">-</span><span class="month">July</span></div><a href="blog-detail.html" class="article-title">Many people limit themselves</a>
-                                        <div class="meta-info"><span class="author">Posted By: John Smith</span><span class="view"><i class="fa fa-user"></i>View: 56</span><span class="comment"><i class="fa fa-comment"></i>Comment: 239</span></div>
-                                        <div class="preview">
-                                            <p class="paragraph">Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis nostrud exercitation.</p>
-                                            <p class="paragraph">
-                                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip consquat uis aute irure dolor ullamco laboris nisi in reprehenderit. Consectetur adipisicing elit, sed do eiusmod tempor
-                                                incididunt ut labore et dolore magna aliqua quis nostrud exercitsdsectetur adipisicing elit, sed do eiusmod tempor incididunt.
+                                        <div class="date"><span class="day">@item.PostDate.Day</span><span class="sep">-</span><span class="month">@item.PostDate.ToString("MMMM")</span></div><a href="blog-detail.html" class="article-title">@item.PostTittle</a>
+                                        <div class="meta-info"><span class="author">Posted By: @item.UserPost.Name</span><span class="view"><i class="fa fa-user"></i>View: 56</span><span class="comment"><i class="fa fa-comment"></i>Comment: 239</span></div>
+                                        <div class="preview">                                            
+                                            <p class="paragraph">@item.PostExcerpt                                               
                                             </p>
                                         </div><a href="javascript:void(0)" class="readmore">READ MORE<i class="fa fa-long-arrow-right"></i></a>
                                     </div>
-                                </div>
-                                <div class="article">
-                                    <div class="col-md-6">
-                                        <a href="blog-detail.html" class="wp-img"><img src="@Url.Content("~/Content/themes/assets/img/homepage/news-2.jpg")" alt="" class="img-responsive"></a>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="date"><span class="day">02</span><span class="sep">-</span><span class="month">July</span></div><a href="blog-detail.html" class="article-title">Many people limit themselves</a>
-                                        <div class="meta-info"><span class="author">Posted By: John Smith</span><span class="view"><i class="fa fa-user"></i>View: 56</span><span class="comment"><i class="fa fa-comment"></i>Comment: 239</span></div>
-                                        <div class="preview">
-                                            <p class="paragraph">Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis nostrud exercitation.</p>
-                                            <p class="paragraph">
-                                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip consquat uis aute irure dolor ullamco laboris nisi in reprehenderit. Consectetur adipisicing elit, sed do eiusmod tempor
-                                                incididunt ut labore et dolore magna aliqua quis nostrud exercitsdsectetur adipisicing elit, sed do eiusmod tempor incididunt.
-                                            </p>
-                                        </div><a href="javascript:void(0)" class="readmore">READ MORE<i class="fa fa-long-arrow-right"></i></a>
-                                    </div>
-                                </div>
+                                </div>                                
+                                }
                             </div>
                         </div>
                     </section>

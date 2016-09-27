@@ -1,39 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="BitCoinsModelStoreContainer" CdmEntityContainer="BitCoinsEntities">
-    <EntitySetMapping Name="UserAccounts">
-      <EntityTypeMapping TypeName="BitCoinsModel.UserAccount">
-        <MappingFragment StoreEntitySet="UserAccount">
-          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-          <ScalarProperty Name="DefaultUser" ColumnName="DefaultUser" />
-          <ScalarProperty Name="Token" ColumnName="Token" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="SkypeID" ColumnName="SkypeID" />
-          <ScalarProperty Name="FacebookLink" ColumnName="FacebookLink" />
-          <ScalarProperty Name="ImageProfile" ColumnName="ImageProfile" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="BitCoinsModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="BitCoinsModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="BitCoinsModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="BitCoinsModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BitCoinsModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="BitCoinsModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BitCoinsModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Age" ColumnName="Age" />
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="BitCoinsQR" ColumnName="BitCoinsQR" />
-          <ScalarProperty Name="BitCoinsCode" ColumnName="BitCoinsCode" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="IDRole" ColumnName="IDRole" />
-          <ScalarProperty Name="IDParent" ColumnName="IDParent" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BitCoinsModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BitCoinsModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="Currencies">
+      <EntityTypeMapping TypeName="BitCoinsModel.Currency">
+        <MappingFragment StoreEntitySet="Currency">
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Documents">
       <EntityTypeMapping TypeName="BitCoinsModel.Document">
         <MappingFragment StoreEntitySet="Document">
-          <ScalarProperty Name="DocumentFile" ColumnName="DocumentFile" />
           <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="DocumentFile" ColumnName="DocumentFile" />
           <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
           <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
         </MappingFragment>
@@ -42,42 +46,10 @@
     <EntitySetMapping Name="ImageUploads">
       <EntityTypeMapping TypeName="BitCoinsModel.ImageUpload">
         <MappingFragment StoreEntitySet="ImageUpload">
-          <ScalarProperty Name="ImageFile" ColumnName="ImageFile" />
           <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ImageFile" ColumnName="ImageFile" />
           <ScalarProperty Name="ImageName" ColumnName="ImageName" />
           <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="TransferHistories">
-      <EntityTypeMapping TypeName="BitCoinsModel.TransferHistory">
-        <MappingFragment StoreEntitySet="TransferHistory">
-          <ScalarProperty Name="TransferID" ColumnName="TransferID" />
-          <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
-          <ScalarProperty Name="Amout" ColumnName="Amout" />
-          <ScalarProperty Name="TransferType" ColumnName="TransferType" />
-          <ScalarProperty Name="TransferName" ColumnName="TransferName" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserRoles">
-      <EntityTypeMapping TypeName="BitCoinsModel.UserRole">
-        <MappingFragment StoreEntitySet="UserRole">
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="LevelUser" ColumnName="LevelUser" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="BitCoinsModel.sysdiagram">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="definition" ColumnName="definition" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -95,19 +67,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Currencies">
-      <EntityTypeMapping TypeName="BitCoinsModel.Currency">
-        <MappingFragment StoreEntitySet="Currency">
-          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="BitCoinsModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Transfers">
       <EntityTypeMapping TypeName="BitCoinsModel.Transfer">
         <MappingFragment StoreEntitySet="Transfer">
-          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="CurrencyType" ColumnName="CurrencyType" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -119,11 +94,60 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TransferHistories">
+      <EntityTypeMapping TypeName="BitCoinsModel.TransferHistory">
+        <MappingFragment StoreEntitySet="TransferHistory">
+          <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+          <ScalarProperty Name="Amout" ColumnName="Amout" />
+          <ScalarProperty Name="TransferType" ColumnName="TransferType" />
+          <ScalarProperty Name="TransferID" ColumnName="TransferID" />
+          <ScalarProperty Name="TransferName" ColumnName="TransferName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TransferTypes">
       <EntityTypeMapping TypeName="BitCoinsModel.TransferType">
         <MappingFragment StoreEntitySet="TransferType">
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="TransferType1" ColumnName="TransferType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAccounts">
+      <EntityTypeMapping TypeName="BitCoinsModel.UserAccount">
+        <MappingFragment StoreEntitySet="UserAccount">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="DefaultUser" ColumnName="DefaultUser" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="IDParent" ColumnName="IDParent" />
+          <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="BitCoinsCode" ColumnName="BitCoinsCode" />
+          <ScalarProperty Name="BitCoinsQR" ColumnName="BitCoinsQR" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SkypeID" ColumnName="SkypeID" />
+          <ScalarProperty Name="FacebookLink" ColumnName="FacebookLink" />
+          <ScalarProperty Name="ImageProfile" ColumnName="ImageProfile" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="BitCoinsModel.UserRole">
+        <MappingFragment StoreEntitySet="UserRole">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LevelUser" ColumnName="LevelUser" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

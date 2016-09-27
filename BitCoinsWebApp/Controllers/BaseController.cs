@@ -111,14 +111,14 @@ namespace BitCoinsWebApp.Controllers
 
         public Transactions AllTransfer
         {
-            get 
+            get
             {
                 _userTransfer.CurrencyList = _fundService.GetAllCurrencyType();
                 _userTransfer.FromUser = UserCurrent;
-                _userTransfer.ToUser = _userService.GetUserByUserName("lokialice");
-                _userTransfer.GetAllTransactions = _fundService.GetAllTransactions();  
-                return _allTransfer; 
-            }            
+                _userTransfer.ToUser = _userService.GetUserByUserName(ConfigurationManagerKey.UserDefault);
+                _userTransfer.GetAllTransactions = _fundService.GetAllTransactions();
+                return _allTransfer;
+            }
         }
         #endregion
 

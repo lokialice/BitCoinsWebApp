@@ -3,6 +3,7 @@ using BitCoinsWebApp.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,11 @@ namespace BitCoinsWebApp.BLL
         public bool CreatePost(PostNews post, string filePath)
         {
             return _repository.CreatePost(post, filePath);
+        }
+
+        public PostNews GetBlogDetail(int id)
+        {
+            return _repository.GetBlogDetail(id);
         }
     }
 }

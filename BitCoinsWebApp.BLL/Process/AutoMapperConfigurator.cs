@@ -35,7 +35,7 @@
                 CreateMap<Transfer, Transactions>().ForMember(x => x.FromUser, opt => opt.Ignore()).ForMember(x => x.ToUser, opt => opt.Ignore()).ForMember(x => x.UserCurrent, opt => opt.Ignore()).ForMember(x => x.CurrencyList, opt => opt.Ignore()).ForMember(x => x.ConfirmPassword, opt => opt.Ignore()).ForMember(x => x.GetAllTransactions, opt => opt.Ignore()).ReverseMap();
 
                 CreateMap<Transactions, Transfer>().ReverseMap();
-                CreateMap<Post, PostNews>().ForMember(x => x.GetAllListPostNews, opt => opt.Ignore()).ForMember(x => x.UserPost, opt => opt.Ignore()).ReverseMap();
+                CreateMap<Post, PostNews>().ForMember(x => x.GetAllListPostNews, opt => opt.Ignore()).ForMember(x => x.UserPost, opt => opt.Ignore()).ForMember(x => x.FeatureImageURL, opt => opt.Ignore()).ReverseMap();
                 CreateMap<PostNews, Post>().ReverseMap();
                 CreateMap<ImageUpload, ImageFileUpload>().ReverseMap();
                 CreateMap<ImageFileUpload, ImageUpload>().ReverseMap();

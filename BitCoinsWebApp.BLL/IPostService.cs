@@ -12,5 +12,6 @@ namespace BitCoinsWebApp.BLL
     {
         List<PostNews> GetAllListPost();
         bool CreatePost(PostNews post, string filePath);
+        PostNews GetBlogDetail(int id);
     }
 }

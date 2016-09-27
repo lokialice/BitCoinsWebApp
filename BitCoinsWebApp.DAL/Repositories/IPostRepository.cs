@@ -11,6 +11,7 @@ namespace BitCoinsWebApp.DAL.Repositories
     public interface IPostRepository
     {
         List<PostNews> GetAllListPost();
-        bool CreatePost(PostNews post, string filePath);        
+        bool CreatePost(PostNews post, string filePath);
+        PostNews GetBlogDetail(int id);
     }
 }

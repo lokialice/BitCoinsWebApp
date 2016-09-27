@@ -31,11 +31,7 @@
                             <li><a href="@Url.Action("About","Home")" class="main-menu"><span class="text">ABOUT</span></a></li>
                             <li><a href="@Url.Action("Service","Home")" class="main-menu"><span class="text">SERVICE</span></a></li>
                             <li class="dropdown">
-                                <a href="javascript:void(0)" class="main-menu"><span class="text">NEWS</span><span class="icons-dropdown"><i class="fa fa-angle-down"></i></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#" class="link-page">Blog</a></li>
-                                    <li><a href="#" class="link-page">Blog Detail</a></li>
-                                </ul>
+                                <a href="@Url.Action("Blog","Home")" class="main-menu"><span class="text">NEWS</span></a>                                
                             </li>
                             <li><a href="@Url.Action("Contact","Home")" class="main-menu"><span class="text">CONTACT</span></a></li>
                         </ul><a href="javascript:void(0)" class="search-btn"><i class="fa fa-search"></i></a>

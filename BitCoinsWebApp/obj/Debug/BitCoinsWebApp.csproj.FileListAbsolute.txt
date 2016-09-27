@@ -1,3 +1,4 @@
+F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp\obj\Debug\BitCoinsWebApp.csprojResolveAssemblyReference.cache
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp\bin\BitCoinsWebApp.dll
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp\bin\BitCoinsWebApp.pdb
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp\bin\Antlr3.Runtime.dll
@@ -56,6 +57,5 @@ F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp\bin\DotNetOpenAuth.OAuth.xml
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp\bin\DotNetOpenAuth.OpenId.xml
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp\bin\BitCoinsWebApp.DAL.pdb
-F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp\obj\Debug\BitCoinsWebApp.csprojResolveAssemblyReference.cache
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp\obj\Debug\BitCoinsWebApp.dll
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp\obj\Debug\BitCoinsWebApp.pdb

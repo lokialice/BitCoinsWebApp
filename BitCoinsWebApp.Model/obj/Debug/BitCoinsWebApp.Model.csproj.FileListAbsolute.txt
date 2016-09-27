@@ -9,6 +9,5 @@ C:\Users\Hoàng\Documents\GitHub\BitCoinsWebApp\BitCoinsWebApp.Model\obj\Debug\B
 C:\Users\Hoàng\Documents\GitHub\BitCoinsWebApp\BitCoinsWebApp.Model\obj\Debug\BitCoinsWebApp.Model.csprojResolveAssemblyReference.cache
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.Model\bin\Debug\BitCoinsWebApp.Model.dll
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.Model\bin\Debug\BitCoinsWebApp.Model.pdb
-F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.Model\obj\Debug\BitCoinsWebApp.Model.csprojResolveAssemblyReference.cache
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.Model\obj\Debug\BitCoinsWebApp.Model.dll
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.Model\obj\Debug\BitCoinsWebApp.Model.pdb

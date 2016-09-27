@@ -32,7 +32,7 @@
         public string PostContent { get; set; }
 
         [DataMember]
-        public string FeatureImage { get; set; }
+        public ImageFileUpload FeatureImageURL { get; set; }
 
         [DataMember]
         public bool PostStatus { get; set; }

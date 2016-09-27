@@ -28,6 +28,7 @@ C:\Users\Hoàng\Documents\GitHub\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\log
 C:\Users\Hoàng\Documents\GitHub\BitCoinsWebApp\BitCoinsWebApp.BLL\obj\Debug\BitCoinsWebApp.BLL.csprojResolveAssemblyReference.cache
 C:\Users\Hoàng\Documents\GitHub\BitCoinsWebApp\BitCoinsWebApp.BLL\obj\Debug\BitCoinsWebApp.BLL.dll
 C:\Users\Hoàng\Documents\GitHub\BitCoinsWebApp\BitCoinsWebApp.BLL\obj\Debug\BitCoinsWebApp.BLL.pdb
+F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.BLL\obj\Debug\BitCoinsWebApp.BLL.csprojResolveAssemblyReference.cache
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\BitCoinsWebApp.BLL.dll
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\BitCoinsWebApp.BLL.pdb
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\AutoMapper.dll
@@ -40,6 +41,5 @@ F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\BitCoinsWebApp.Model.p
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\BitCoinsWebApp.Utilities.pdb
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\AutoMapper.xml
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.BLL\bin\Debug\log4net.xml
-F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.BLL\obj\Debug\BitCoinsWebApp.BLL.csprojResolveAssemblyReference.cache
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.BLL\obj\Debug\BitCoinsWebApp.BLL.dll
 F:\BitcoinSVN\BitCoinsWebApp\BitCoinsWebApp.BLL\obj\Debug\BitCoinsWebApp.BLL.pdb

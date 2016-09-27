@@ -1,0 +1,272 @@
+﻿@model BitCoinsWebApp.Model.PostNews
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = Model.PostTittle;
+}
+<div class="body-wrapper-content">
+    <div class="sidenav-overlay"></div>
+    @Html.Partial("_HeaderPartial")
+    <div id="wrapper-content">
+                <!-- PAGE WRAPPER-->
+                <div id="page-wrapper">
+                    <!-- MAIN CONTENT-->
+                    <div class="main-content">
+                        <!-- CONTENT-->
+                        <div class="content">
+                            <section class="page-banner page-blog-detail">
+                                <div class="container">
+                                    <div class="page-title-wrapper">
+                                        <div class="page-title-content">
+                                            <h1 class="title">news detail</h1>
+                                            <ol class="breadcrumb">
+                                                <li><a href="@Url.Action("Index","Home")" class="link home">Home</a></li>
+                                                <li><a href="blog.html" class="link">blog</a></li>
+                                                <li><a href="#" class="link active">news detail</a></li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="section-blog padding-top padding-bottom">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-8 col-xs-12 main-right blog-detail-wrapper">
+                                            <div class="blog-post">
+                                                <div class="blog-image"><img src="@Url.Content(Model.FeatureImageURL.ImageFile)" alt="" class="img-responsive"></div>
+                                                <div class="blog-content">
+                                                    <div class="blog-detail-content">
+                                                        <div class="wrapper-infomation">
+                                                            <div class="wrapper-infomation dates">
+                                                                <div class="day">@Model.PostDate.Day</div>
+                                                                <div class="month-year">- @Model.PostDate.ToString("MMMM")</div>
+                                                            </div>
+                                                            <div class="content-text">
+                                                                <div class="author">Posted By: @Model.UserPost.Name</div>
+                                                                <div class="view"><i class="icon fa fa-user"></i><span>View : 56</span></div>
+                                                                <div class="comment"><i class="icon fa fa-comment"></i><span>Comment : 239</span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="content">
+                                                            <div class="title">@Model.PostTittle</div>
+                                                            <div class="description">@Html.Raw(Model.PostContent)                                                             
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>                                                
+                                                <div class="blog-comment">
+                                                    <h2 class="page-title">27 Comments</h2>
+                                                    <ul class="comment-list list-unstyled">
+                                                        <li class="parent">
+                                                            <div class="comment-item">
+                                                                <div class="comment-left">
+                                                                    <a href="#" class="media-image"><img src="@Url.Content("~/Content/themes/assets/img/blog/people-6.jpg")" alt="" class="img-responsive"></a>
+                                                                </div>
+                                                                <div class="comment-right">
+                                                                    <div class="pull-left">
+                                                                        <div class="author">Alexander Ly</div>
+                                                                    </div>
+                                                                    <div class="pull-right time"><i class="fa fa-clock-o"> </i><span>5 hours ago</span></div>
+                                                                    <div class="des">Donec faucibus iaculis nulla a consectetur. Nam sit amet tempor sapien, eu pellentesque justo. Morbi mattam et tempor sapien, eu pellentesque justo orbi mattis masa sed est eleifend.</div>
+                                                                    <a
+                                                                        href="#comment-form" class="btn-crystal btn"><i class="fa fa-reply"> </i>Reply</a>
+                                                                        <div class="clearfix"></div>
+                                                                </div>
+                                                            </div>
+                                                            <ul class="comment-list-children list-unstyled">
+                                                                <li class="child">
+                                                                    <div class="comment-item">
+                                                                        <div class="comment-left">
+                                                                            <a href="#" class="media-image"><img src="@Url.Content("~/Content/themes/assets/img/blog/people-7.jpg")" alt="" class="img-responsive"></a>
+                                                                        </div>
+                                                                        <div class="comment-right">
+                                                                            <div class="pull-left">
+                                                                                <div class="author">Tristan Jame</div>
+                                                                            </div>
+                                                                            <div class="pull-right time"><i class="fa fa-clock-o"> </i><span>6 hours ago</span></div>
+                                                                            <div class="des">Donec faucibus iaculis nulla a consectetur. Nam sitsapien, eu pellentesque justo. Morbi mattam et tempor sapien, eu pellentesque justo orbi mattis masa sed est eleifend.</div>
+                                                                            <a
+                                                                                href="#comment-form" class="btn-crystal btn"><i class="fa fa-reply"> </i>Reply</a>
+                                                                                <div class="clearfix"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="parent">
+                                                            <div class="comment-item">
+                                                                <div class="comment-left">
+                                                                    <a href="#" class="media-image"><img src="@Url.Content("~/Content/themes/assets/img/blog/people-8.jpg")" alt="" class="img-responsive"></a>
+                                                                </div>
+                                                                <div class="comment-right">
+                                                                    <div class="pull-left">
+                                                                        <div class="author">Kim D.Monkey</div>
+                                                                    </div>
+                                                                    <div class="pull-right time"><i class="fa fa-clock-o"> </i><span>8 hours ago</span></div>
+                                                                    <div class="des">Donec faucibus iaculis nulla a consectetur. Nam sit amet tempor sapien, eu pellentesque justo. Morbi mattam et tempor sapien, eu pellentesque justo orbi mattis masa sed est eleifend.</div>
+                                                                    <a
+                                                                        href="#comment-form" class="btn-crystal btn"><i class="fa fa-reply"> </i>Reply</a>
+                                                                        <div class="clearfix"></div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="leave-comment">
+                                                    <h2 class="page-title">Leave your comment</h2>
+                                                    <form id="comment-form" class="comment-form">
+                                                        <div class="col-50"><input type="text" placeholder="Your Name" class="form-control"><input type="email" placeholder="Your Email" class="form-control"></div>
+                                                        <div class="col-50"><textarea placeholder="Your Message" class="form-control form-textarea"></textarea></div>
+                                                        <div class="clearfix"></div><button type="submit" data-hover="SEND NOW" class="btn-submit"><span class="text">Submit Message</span><span class="icons fa fa-long-arrow-right"></span></button></form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-xs-12 sidebar">
+                                            <div class="col-1">
+                                                <div class="search-widget widget">
+                                                    <form>
+                                                        <div class="input-group search-wrapper"><input type="text" placeholder="Search..." class="search-input form-control"><span class="input-group-btn"><button type="submit" class="btn submit-btn"><span class="fa fa-search"></span></button>
+                                                            </span>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="recent-post-widget widget">
+                                                    <div class="title-widget">RECENT POST</div>
+                                                    <div class="content-widget">
+                                                        <div class="recent-post-list">
+                                                            <div class="single-recent-post-widget">
+                                                                <a href="blog-detail.html" class="thumb img-wrapper"><img src="@Url.Content("~/Content/themes/assets/img/blog/small-news-1.jpg")" alt="" class="img-responsive"></a>
+                                                                <div class="post-info">
+                                                                    <div class="meta-info"><span>Aug 18, 2016</span><span class="sep">/</span><span class="fa-custom view-count">56</span><span class="fa-custom comment-count">239</span></div><a href="#" class="description">Donec ullamcorper nulla non metus nisi auctor fringilla they can do.</a></div>
+                                                            </div>
+                                                            <div class="single-recent-post-widget">
+                                                                <a href="blog-detail.html" class="thumb img-wrapper"><img src="@Url.Content("~/Content/themes/assets/img/blog/small-news-2.jpg")" alt="" class="img-responsive"></a>
+                                                                <div class="post-info">
+                                                                    <div class="meta-info"><span>Aug 18, 2016</span><span class="sep">/</span><span class="fa-custom view-count">56</span><span class="fa-custom comment-count">239</span></div><a href="#" class="description">Donec ullamcorper nulla non metus nisi auctor fringilla they can do.</a></div>
+                                                            </div>
+                                                            <div class="single-recent-post-widget">
+                                                                <a href="blog-detail.html" class="thumb img-wrapper"><img src="@Url.Content("~/Content/themes/assets/img/blog/small-news-3.jpg")" alt="" class="img-responsive"></a>
+                                                                <div class="post-info">
+                                                                    <div class="meta-info"><span>Aug 18, 2016</span><span class="sep">/</span><span class="fa-custom view-count">56</span><span class="fa-custom comment-count">239</span></div><a href="#" class="description">Donec ullamcorper nulla non metus nisi auctor fringilla they can do.</a></div>
+                                                            </div>
+                                                            <div class="single-recent-post-widget">
+                                                                <a href="blog-detail.html" class="thumb img-wrapper"><img src="@Url.Content("~/Content/themes/assets/img/blog/small-news-4.jpg")" alt="" class="img-responsive"></a>
+                                                                <div class="post-info">
+                                                                    <div class="meta-info"><span>Aug 18, 2016</span><span class="sep">/</span><span class="fa-custom view-count">56</span><span class="fa-custom comment-count">239</span></div><a href="#" class="description">Donec ullamcorper nulla non metus nisi auctor fringilla they can do.</a></div>
+                                                            </div>
+                                                            <div class="single-recent-post-widget">
+                                                                <a href="blog-detail.html" class="thumb img-wrapper"><img src="@Url.Content("~/Content/themes/assets/img/blog/small-news-5.jpg")" alt="" class="img-responsive"></a>
+                                                                <div class="post-info">
+                                                                    <div class="meta-info"><span>Aug 18, 2016</span><span class="sep">/</span><span class="fa-custom view-count">56</span><span class="fa-custom comment-count">239</span></div><a href="#" class="description">Donec ullamcorper nulla non metus nisi auctor fringilla they can do.</a></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="categories-widget widget">
+                                                    <div class="title-widget">CATEGORIES</div>
+                                                    <div class="content-widget">
+                                                        <ul class="widget-list">
+                                                            <li class="single-widget-item"><a href="#" class="link"><span class="fa-custom category">Investment</span><span class="count">27</span></a></li>
+                                                            <li class="single-widget-item"><a href="#" class="link"><span class="fa-custom category">Portfolio</span><span class="count">75</span></a></li>
+                                                            <li class="single-widget-item"><a href="#" class="link"><span class="fa-custom category">Fund Performence</span><span class="count">35</span></a></li>
+                                                            <li class="single-widget-item"><a href="#" class="link"><span class="fa-custom category">Hedge Fund</span><span class="count">34</span></a></li>
+                                                            <li class="single-widget-item"><a href="#" class="link"><span class="fa-custom category">Asset Management</span><span class="count">65</span></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="archives-widget widget">
+                                                    <div class="title-widget">ARCHIVES</div>
+                                                    <div class="content-widget">
+                                                        <div class="archive-datepicker"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="gallery-widget widget">
+                                                    <div class="title-widget">FROM GALLERY</div>
+                                                    <div class="content-widget">
+                                                        <ul class="list-unstyled list-inline">
+                                                            <li>
+                                                                <a href="#" class="thumb style-2"><img src="@Url.Content("~/Content/themes/assets/img/blog/gallery-1.jpg")" alt="gallery image 1" class="img-responsive"><span class="dh-overlay"></span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="thumb style-2"><img src="@Url.Content("~/Content/themes/assets/img/blog/gallery-2.jpg")" alt="gallery image 2" class="img-responsive"><span class="dh-overlay"></span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="thumb style-2"><img src="@Url.Content("~/Content/themes/assets/img/blog/gallery-3.jpg")" alt="gallery image 3" class="img-responsive"><span class="dh-overlay"></span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="thumb style-2"><img src="@Url.Content("~/Content/themes/assets/img/blog/gallery-4.jpg")" alt="gallery image 4" class="img-responsive"><span class="dh-overlay"></span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="thumb style-2"><img src="@Url.Content("~/Content/themes/assets/img/blog/gallery-5.jpg")" alt="gallery image 5" class="img-responsive"><span class="dh-overlay"></span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="thumb style-2"><img src="@Url.Content("~/Content/themes/assets/img/blog/gallery-6.jpg")" alt="gallery image 6" class="img-responsive"><span class="dh-overlay"></span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="thumb style-2"><img src="@Url.Content("~/Content/themes/assets/img/blog/gallery-7.jpg")" alt="gallery image 7" class="img-responsive"><span class="dh-overlay"></span></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="thumb style-2"><img src="@Url.Content("~/Content/themes/assets/img/blog/gallery-8.jpg")" alt="gallery image 8" class="img-responsive"><span class="dh-overlay"></span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="social-widget widget">
+                                                    <div class="title-widget">SOCIAL</div>
+                                                    <div class="content-widget">
+                                                        <ul class="list-unstyled list-inline">
+                                                            <li>
+                                                                <a href="javascript:void(0)" class="social-icon fa fa-facebook"></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)" class="social-icon fa fa-twitter"></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)" class="social-icon fa fa-pinterest-p"></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)" class="social-icon fa fa-google"></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)" class="social-icon fa fa-rss"></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)" class="social-icon fa fa-linkedin"></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)" class="social-icon fa fa-dribbble"></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <div class="sign-up">
+                                <div class="container">
+                                    <div class="subscribe-email-wrapper">
+                                        <div class="subscribe-email-left">
+                                            <p class="subscribe-email-title">Sign up for <span> GoAhead </span> viewpoints!</p>
+                                            <div class="description">Get a weekly email of our pros' current thinking about financial markets, investing and personal finance.</div>
+                                        </div>
+                                        <div class="subscribe-email-right">
+                                            <form>
+                                                <div class="input-group form-subscribe-email"> <input type="text" placeholder="Email" class="form-control"><span class="input-group-btn"><button type="submit" class="btn-view">Get viewpoint</button></span></div>
+                                            </form>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="back-top"><a href="#top" class="link"><i class="fa fa-angle-double-up"></i></a></div>
+            </div>
+   @Html.Partial("_FooterPartial")   
+</div>
